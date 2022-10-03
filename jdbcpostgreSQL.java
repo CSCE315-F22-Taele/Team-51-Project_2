@@ -41,7 +41,7 @@ public class jdbcpostgreSQL {
 
        //Running a query
        //TODO: update the sql command here
-       String sqlStatement = "SELECT * FROM entrees";
+       String sqlStatement = "SELECT * FROM entrees;";
 
        //send statement to DBMS
        //This executeQuery command is useful for data retrieval
@@ -53,11 +53,11 @@ public class jdbcpostgreSQL {
        //OUTPUT
        //You will need to output the results differently depeninding on which function you use
        System.out.println("--------------------Query Results--------------------");
-       //while (result.next()) {
-       //System.out.println(result.getString("column_name"));
-       //}
+       while (result.next()) {
+           System.out.println(result.getString("name"));
+       }
        //OR
-       System.out.println(result);
+      //  System.out.println(result);
    } catch (Exception e){
        e.printStackTrace();
        System.err.println(e.getClass().getName()+": "+e.getMessage());
