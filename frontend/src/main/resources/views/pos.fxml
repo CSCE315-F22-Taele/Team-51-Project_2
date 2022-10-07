@@ -16,9 +16,9 @@
                <children>
                   <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label text="Current Order">
+                        <Label styleClass="sidebar--title" stylesheets="@../styles/style.css" text="Current Order">
                            <font>
-                              <Font size="36.0" />
+                              <Font name="System Bold" size="36.0" />
                            </font>
                            <HBox.margin>
                               <Insets left="25.0" />

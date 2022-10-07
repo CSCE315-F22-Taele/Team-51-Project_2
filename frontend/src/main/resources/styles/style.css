@@ -1,4 +1,12 @@
+@font-face {
+    font-family: "Inter Bold";
+    src: url("../fonts/Inter-Bold.ttf");
+    }
 .sidebar {
-    -fx-background-color: #CAD0DB
+    -fx-background-color: #CAD0DB;
+}
+.sidebar--title {
+    -fx-font-family: "Inter Bold";
+    -fx-font-size: 30px;
 }
 

@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5af2d59-0e4c-4996-b17e-0b09e5a73769" name="Changes" comment="Intellij files">
-      <change afterPath="$PROJECT_DIR$/frontend/src/main/resources/styles/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main/resources/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/resources/styles/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/main/resources/views/pos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/pos.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
