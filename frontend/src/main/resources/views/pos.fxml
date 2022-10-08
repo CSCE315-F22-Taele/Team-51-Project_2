@@ -1,33 +1,257 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.media.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane layoutX="50.0" layoutY="77.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <right>
-            <VBox prefHeight="200.0" prefWidth="425.0" styleClass="sidebar" stylesheets="@../styles/style.css" BorderPane.alignment="CENTER">
-               <children>
-                  <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+      <TabPane prefHeight="810.0" prefWidth="862.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="        Entrees        ">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="765.0" prefWidth="902.0">
                      <children>
-                        <Label styleClass="sidebar--title" stylesheets="@../styles/style.css" text="Current Order">
-                           <font>
-                              <Font name="System Bold" size="36.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="25.0" />
-                           </HBox.margin>
-                        </Label>
+                        <Button layoutX="639.0" layoutY="684.0" mnemonicParsing="false" text="Add Entrees to Cart" />
+                        <ToolBar layoutY="61.0" prefHeight="113.0" prefWidth="278.0">
+                          <items>
+                            <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" prefHeight="92.0" prefWidth="210.0" text="Black Bean Fillet +" />
+                          </items>
+                        </ToolBar>
+                        <ToolBar layoutX="-1.0" layoutY="189.0" prefHeight="106.0" prefWidth="280.0">
+                          <items>
+                            <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" prefHeight="88.0" prefWidth="209.0" text="     Burger Fillet    +" />
+                          </items>
+                        </ToolBar>
+                        <ToolBar layoutX="-2.0" layoutY="326.0" prefHeight="106.0" prefWidth="283.0">
+                          <items>
+                            <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" prefHeight="88.0" prefWidth="210.0" text="    Chicken Fillet   +" />
+                          </items>
+                        </ToolBar>
+                        <ToolBar layoutY="456.0" prefHeight="106.0" prefWidth="283.0">
+                          <items>
+                            <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" prefHeight="88.0" prefWidth="209.0" text="Chicken Tenders  +" />
+                          </items>
+                        </ToolBar>
+                        <ToolBar layoutX="1.0" layoutY="586.0" prefHeight="98.0" prefWidth="282.0">
+                          <items>
+                            <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="210.0" text="             Fries        +" />
+                          </items>
+                        </ToolBar>
+                        <ToolBar layoutX="291.0" layoutY="61.0" prefHeight="64.0" prefWidth="469.0">
+                           <items>
+                              <MenuButton mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" text="Cheese">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="American" />
+                                    <MenuItem mnemonicParsing="false" text="Swiss" />
+                                    <MenuItem mnemonicParsing="false" text="None" />
+                                 </items>
+                              </MenuButton>
+                              <Button mnemonicParsing="false" text="+bacon" />
+                              <Button mnemonicParsing="false" text="-lettuce" />
+                              <Button mnemonicParsing="false" text="-onion" />
+                              <Button mnemonicParsing="false" text="-pickles" />
+                              <Button mnemonicParsing="false" text="-tomato" />
+                           </items>
+                        </ToolBar>
+                        <ToolBar layoutX="296.0" layoutY="189.0" prefHeight="64.0" prefWidth="463.0">
+                           <items>
+                              <MenuButton mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" text="Cheese">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="American" />
+                                    <MenuItem mnemonicParsing="false" text="Swiss" />
+                                    <MenuItem mnemonicParsing="false" text="None" />
+                                 </items>
+                              </MenuButton>
+                              <Button mnemonicParsing="false" text="+bacon" />
+                              <Button mnemonicParsing="false" text="-lettuce" />
+                              <Button mnemonicParsing="false" text="-onion" />
+                              <Button mnemonicParsing="false" text="-pickles" />
+                              <Button mnemonicParsing="false" text="-tomato" />
+                           </items>
+                        </ToolBar>
+                        <ToolBar layoutX="293.0" layoutY="326.0" prefHeight="64.0" prefWidth="464.0">
+                           <items>
+                              <MenuButton mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" text="Cheese">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="American" />
+                                    <MenuItem mnemonicParsing="false" text="Swiss" />
+                                    <MenuItem mnemonicParsing="false" text="None" />
+                                 </items>
+                              </MenuButton>
+                              <Button mnemonicParsing="false" text="+bacon" />
+                              <Button mnemonicParsing="false" text="-lettuce" />
+                              <Button mnemonicParsing="false" text="-onion" />
+                              <Button mnemonicParsing="false" text="-pickles" />
+                              <Button mnemonicParsing="false" text="-tomato" />
+                           </items>
+                        </ToolBar>
                      </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </right></BorderPane>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="        Drinks        ">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="648.0" layoutY="699.0" mnemonicParsing="false" text="Add Drinks to Cart" />
+                        <ToolBar layoutX="27.0" layoutY="52.0" prefHeight="109.0" prefWidth="304.0">
+                          <items>
+                              <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" prefHeight="91.0" prefWidth="208.0" text="Brisk +" />
+                          </items>
+                        </ToolBar>
+                        <ToolBar layoutX="27.0" layoutY="182.0" prefHeight="109.0" prefWidth="307.0">
+                           <items>
+                              <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" prefHeight="91.0" prefWidth="208.0" text="Gatorade +" />
+                           </items>
+                        </ToolBar>
+                        <ToolBar layoutX="27.0" layoutY="311.0" prefHeight="109.0" prefWidth="306.0">
+                           <items>
+                              <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" prefHeight="91.0" prefWidth="208.0" text="Mug Rootbeer +" />
+                           </items>
+                        </ToolBar>
+                        <ToolBar layoutX="27.0" layoutY="436.0" prefHeight="109.0" prefWidth="305.0">
+                           <items>
+                              <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" prefHeight="91.0" prefWidth="208.0" text="Pepsi +" />
+                           </items>
+                        </ToolBar>
+                        <ToolBar layoutX="14.0" layoutY="566.0" prefHeight="109.0" prefWidth="319.0">
+                           <items>
+                              <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" prefHeight="91.0" prefWidth="208.0" text="Sierra Mist +" />
+                           </items>
+                        </ToolBar>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="        Sauces        ">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ToolBar layoutX="77.0" layoutY="69.0" prefHeight="63.0" prefWidth="275.0">
+                          <items>
+                              <Button mnemonicParsing="false" text="-" />
+                            <Button mnemonicParsing="false" text="Caesar Dressing +" />
+                          </items>
+                        </ToolBar>
+                        <ToolBar layoutX="77.0" layoutY="316.0" prefHeight="63.0" prefWidth="276.0">
+                           <items>
+                              <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" text="Ketchup +" />
+                           </items>
+                        </ToolBar>
+                        <ToolBar layoutX="77.0" layoutY="557.0" prefHeight="63.0" prefWidth="277.0">
+                           <items>
+                              <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" text="Ranch +" />
+                           </items>
+                        </ToolBar>
+                        <ToolBar layoutX="77.0" layoutY="232.0" prefHeight="63.0" prefWidth="276.0">
+                           <items>
+                              <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" text="Honey BBQ +" />
+                           </items>
+                        </ToolBar>
+                        <ToolBar layoutX="77.0" layoutY="400.0" prefHeight="63.0" prefWidth="277.0">
+                           <items>
+                              <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" text="Mayo +" />
+                           </items>
+                        </ToolBar>
+                        <ToolBar layoutX="77.0" layoutY="478.0" prefHeight="63.0" prefWidth="276.0">
+                           <items>
+                              <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" text="Mustard +" />
+                           </items>
+                        </ToolBar>
+                        <ToolBar layoutX="77.0" layoutY="148.0" prefHeight="63.0" prefWidth="277.0">
+                           <items>
+                              <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" text="Gigem Sauce +" />
+                           </items>
+                        </ToolBar>
+                        <Button layoutX="643.0" layoutY="699.0" mnemonicParsing="false" text="Add Sauces to Cart" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="    Desserts    ">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ToolBar layoutX="71.0" layoutY="52.0" prefHeight="63.0" prefWidth="338.0">
+                          <items>
+                            <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" text="Chocolate Ice Cream +" />
+                          </items>
+                        </ToolBar>
+                        <ToolBar layoutX="71.0" layoutY="147.0" prefHeight="63.0" prefWidth="338.0">
+                           <items>
+                              <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" text="Cookie +" />
+                           </items>
+                        </ToolBar>
+                        <ToolBar layoutX="71.0" layoutY="238.0" prefHeight="63.0" prefWidth="338.0">
+                           <items>
+                              <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" text="Cookie Sandwich +" />
+                           </items>
+                        </ToolBar>
+                        <ToolBar layoutX="71.0" layoutY="326.0" prefHeight="63.0" prefWidth="338.0">
+                           <items>
+                              <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" text="Dessert Bowl +" />
+                           </items>
+                        </ToolBar>
+                        <ToolBar layoutX="71.0" layoutY="417.0" prefHeight="63.0" prefWidth="338.0">
+                           <items>
+                              <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" text="Dessert Cup +" />
+                           </items>
+                        </ToolBar>
+                        <ToolBar layoutX="71.0" layoutY="507.0" prefHeight="63.0" prefWidth="338.0">
+                           <items>
+                              <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" text="Strawberry Ice Cream +" />
+                           </items>
+                        </ToolBar>
+                        <ToolBar layoutX="71.0" layoutY="602.0" prefHeight="63.0" prefWidth="338.0">
+                           <items>
+                              <Button mnemonicParsing="false" text="-" />
+                              <Button mnemonicParsing="false" text="Vanilla Ice Cream +" />
+                           </items>
+                        </ToolBar>
+                        <Button layoutX="629.0" layoutY="699.0" mnemonicParsing="false" text="Add Desserts to Cart" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <AnchorPane layoutX="878.0" prefHeight="810.0" prefWidth="228.0">
+         <children>
+            <ToolBar prefHeight="25.0" prefWidth="368.0">
+               <items>
+                  <Label text="                              Cart" />
+               </items>
+            </ToolBar>
+            <Button layoutX="133.0" layoutY="733.0" mnemonicParsing="false" text="Checkout" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
