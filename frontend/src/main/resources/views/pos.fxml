@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.media.*?>
@@ -237,6 +239,124 @@
                            </items>
                         </ToolBar>
                         <Button layoutX="629.0" layoutY="699.0" mnemonicParsing="false" text="Add Desserts to Cart" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Manager">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane prefHeight="751.0" prefWidth="779.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Access Required">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Label layoutX="32.0" layoutY="76.0" text="Enter Passcode: (required for inventory annd other tabs)" />
+                                          <PasswordField layoutX="283.0" layoutY="108.0" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab text="Inventory">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Accordion layoutX="217.0" layoutY="91.0" />
+                                          <Accordion layoutX="130.0" layoutY="192.0" />
+                                          <TableView layoutX="44.0" layoutY="75.0" prefHeight="634.0" prefWidth="692.0">
+                                            <columns>
+                                              <TableColumn prefWidth="224.0" text="ID" />
+                                              <TableColumn prefWidth="219.0" text="Name" />
+                                                <TableColumn prefWidth="138.0" text="Inventory " />
+                                            </columns>
+                                          </TableView>
+                                          <ToolBar layoutX="61.0" layoutY="5.0" prefHeight="63.0" prefWidth="596.0">
+                                            <items>
+                                                <MenuButton mnemonicParsing="false" text="Sort By">
+                                                  <items>
+                                                    <MenuItem mnemonicParsing="false" text="ID (Low - High)" />
+                                                    <MenuItem mnemonicParsing="false" text="Name (A - Z)" />
+                                                      <MenuItem mnemonicParsing="false" text="Inventory (Low - High)" />
+                                                      <MenuItem mnemonicParsing="false" text="Inventory (High - Low)" />
+                                                  </items>
+                                                </MenuButton>
+                                                <Label text="Enter ID:" />
+                                                <TextField prefHeight="45.0" prefWidth="219.0" />
+                                                <Button mnemonicParsing="false" text="Search" />
+                                            </items>
+                                          </ToolBar>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                              <Tab text="Graphs">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <LineChart layoutX="81.0" layoutY="176.0" prefHeight="366.0" prefWidth="559.0">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </LineChart>
+                                          <ScrollBar layoutX="739.0" layoutY="29.0" orientation="VERTICAL" prefHeight="576.0" prefWidth="26.0" />
+                                          <ToolBar layoutX="81.0" layoutY="72.0" prefHeight="63.0" prefWidth="542.0">
+                                            <items>
+                                                <Label text="Total Revenue for:" />
+                                                <SplitMenuButton mnemonicParsing="false" text="Time Frame">
+                                                  <items>
+                                                    <MenuItem mnemonicParsing="false" text="Most Recent Day" />
+                                                    <MenuItem mnemonicParsing="false" text="Past Week" />
+                                                      <MenuItem mnemonicParsing="false" text="Past 3 Weeks" />
+                                                  </items>
+                                                </SplitMenuButton>
+                                              <Button mnemonicParsing="false" text="Search" />
+                                            </items>
+                                          </ToolBar>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </Tab>
+                              <Tab text="Order History">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView layoutX="-1.0" layoutY="85.0" prefHeight="614.0" prefWidth="743.0">
+                                            <columns>
+                                              <TableColumn prefWidth="117.0" text="ID" />
+                                              <TableColumn prefWidth="116.0" text="Name" />
+                                                <TableColumn prefWidth="138.0" text="Date" />
+                                                <TableColumn prefWidth="140.0" text="Time" />
+                                                <TableColumn prefWidth="271.0" text="Quantity Ordered?" />
+                                            </columns>
+                                          </TableView>
+                                          <ToolBar layoutX="48.0" layoutY="8.0" prefHeight="63.0" prefWidth="596.0">
+                                             <items>
+                                                <MenuButton mnemonicParsing="false" text="Sort By">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" text="Date (Most Recent - Least Recent)" />
+                                                      <MenuItem mnemonicParsing="false" text="Date (Least Recent  - Most Recent)" />
+                                                      <MenuItem mnemonicParsing="false" text="ID ( Low - High)" />
+                                                      <MenuItem mnemonicParsing="false" text="Name ( A -  Z)" />
+                                                      <MenuItem mnemonicParsing="false" text="Name ( Z -  A)" />
+                                                   </items>
+                                                </MenuButton>
+                                                <Label text="Enter Date:" />
+                                                <TextField prefHeight="45.0" prefWidth="219.0" />
+                                                <Button mnemonicParsing="false" text="Search" />
+                                             </items>
+                                          </ToolBar>
+                                          <ScrollBar layoutX="752.0" layoutY="3.0" orientation="VERTICAL" prefHeight="694.0" prefWidth="26.0" />
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
                      </children>
                   </AnchorPane>
               </content>
