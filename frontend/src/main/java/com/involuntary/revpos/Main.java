@@ -11,9 +11,11 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/pos.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(fxmlLoader.load(), 1024, 768);
+        stage.setTitle("Revs American Grill [POS]");
         stage.setScene(scene);
+        stage.setMaximized(true);
+
         stage.show();
     }
 
