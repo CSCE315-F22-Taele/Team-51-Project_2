@@ -14,6 +14,7 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 1024, 768);
         stage.setTitle("Revs American Grill [POS]");
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
     }
 
