@@ -15,6 +15,7 @@ public class Main extends Application {
         stage.setTitle("Revs American Grill [POS]");
         stage.setScene(scene);
         stage.setMaximized(true);
+
         stage.show();
     }
 
