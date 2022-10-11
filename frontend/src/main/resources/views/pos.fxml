@@ -20,15 +20,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.PosController">
+<AnchorPane id="pos__container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../styles/pos.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.PosController">
    <children>
-      <TabPane prefHeight="810.0" prefWidth="862.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="768.0" prefWidth="700.0" side="BOTTOM" stylesheets="@../styles/pos.css" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="        Entrees        ">
+          <Tab text="ENTREES">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="765.0" prefWidth="902.0">
                      <children>
-                        <Button layoutX="639.0" layoutY="684.0" mnemonicParsing="false" text="Add Entrees to Cart" />
+                        <Button layoutX="570.0" layoutY="673.0" mnemonicParsing="false" text="Add Entrees to Cart" />
                         <ToolBar layoutY="61.0" prefHeight="113.0" prefWidth="278.0">
                           <items>
                             <Button mnemonicParsing="false" text="-" />
@@ -59,7 +59,7 @@
                               <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="210.0" text="             Fries        +" />
                           </items>
                         </ToolBar>
-                        <ToolBar layoutX="291.0" layoutY="61.0" prefHeight="64.0" prefWidth="469.0">
+                        <ToolBar layoutX="291.0" layoutY="61.0" prefHeight="64.0" prefWidth="388.0">
                            <items>
                               <MenuButton mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" text="Cheese">
                                  <items>
@@ -75,7 +75,7 @@
                               <Button mnemonicParsing="false" text="-tomato" />
                            </items>
                         </ToolBar>
-                        <ToolBar layoutX="296.0" layoutY="189.0" prefHeight="64.0" prefWidth="463.0">
+                        <ToolBar layoutX="296.0" layoutY="189.0" prefHeight="64.0" prefWidth="384.0">
                            <items>
                               <MenuButton mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" text="Cheese">
                                  <items>
@@ -91,7 +91,7 @@
                               <Button mnemonicParsing="false" text="-tomato" />
                            </items>
                         </ToolBar>
-                        <ToolBar layoutX="293.0" layoutY="326.0" prefHeight="64.0" prefWidth="464.0">
+                        <ToolBar layoutX="293.0" layoutY="326.0" prefHeight="64.0" prefWidth="390.0">
                            <items>
                               <MenuButton mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" text="Cheese">
                                  <items>
@@ -111,7 +111,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="        Drinks        ">
+          <Tab text="DRINKS">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -150,7 +150,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="        Sauces        ">
+            <Tab text="SAUCES">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -201,7 +201,7 @@
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab text="    Desserts    ">
+            <Tab text="DESSERTS">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -252,7 +252,7 @@
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab text="Manager">
+            <Tab text="MANAGER">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -260,10 +260,10 @@
                           <tabs>
                             <Tab text="Access Required">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="699.0" prefWidth="527.0">
                                        <children>
                                           <Label layoutX="32.0" layoutY="76.0" text="Enter Passcode: (required for inventory annd other tabs)" />
-                                          <PasswordField layoutX="283.0" layoutY="108.0" />
+                                          <PasswordField layoutX="277.0" layoutY="106.0" />
                                        </children>
                                     </AnchorPane>
                               </content>
@@ -372,16 +372,6 @@
             </Tab>
         </tabs>
       </TabPane>
-      <AnchorPane layoutX="878.0" prefHeight="810.0" prefWidth="228.0">
-         <children>
-            <ToolBar prefWidth="368.0">
-               <items>
-                  <Label text="                              Cart" />
-               </items>
-            </ToolBar>
-            <Button layoutX="133.0" layoutY="733.0" mnemonicParsing="false" text="Checkout" />
-            <VBox fx:id="cart" layoutX="27.0" layoutY="40.0" prefHeight="683.0" prefWidth="315.0" />
-         </children>
-      </AnchorPane>
+      <VBox fx:id="cart" layoutX="908.0" layoutY="35.0" prefHeight="768.0" prefWidth="324.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>
