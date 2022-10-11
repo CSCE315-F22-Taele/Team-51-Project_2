@@ -1,19 +1,14 @@
 package com.involuntary.revpos;
 
+import com.involuntary.revpos.database.DatabaseConnection;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 
 import java.io.IOException;
-import com.ShoppingCart.Cart;
-import com.ShoppingCart.CartItem;
-import com.involuntary.revpos.controller.PosController;
+import java.sql.Connection;
 
 public class Main extends Application {
     @Override
