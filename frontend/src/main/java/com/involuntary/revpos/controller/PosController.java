@@ -29,4 +29,36 @@ public class PosController {
         entry.getChildren().add(label);
         cart.getChildren().add(entry);
     }
+
+    @FXML
+    public void addBurgerFilet() {
+        HBox entry = new HBox();
+        Label label = new Label("Burger Filet");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addChickenFilet() {
+        HBox entry = new HBox();
+        Label label = new Label("Chicken Filet");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addChickenTenders() {
+        HBox entry = new HBox();
+        Label label = new Label("Chicken Tenders");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addFries() {
+        HBox entry = new HBox();
+        Label label = new Label("Fries");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
 }

@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5af2d59-0e4c-4996-b17e-0b09e5a73769" name="Changes" comment="Intellij files">
-      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/com/ShoppingCart/Cart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/com/ShoppingCart/CartItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/PosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/PosController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/main/resources/views/pos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/pos.fxml" afterDir="false" />
     </list>
