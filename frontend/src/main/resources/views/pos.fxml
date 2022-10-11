@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.media.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.PosController">
    <children>
       <TabPane prefHeight="810.0" prefWidth="862.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -23,7 +32,7 @@
                         <ToolBar layoutY="61.0" prefHeight="113.0" prefWidth="278.0">
                           <items>
                             <Button mnemonicParsing="false" text="-" />
-                              <Button mnemonicParsing="false" prefHeight="92.0" prefWidth="210.0" text="Black Bean Fillet +" />
+                              <Button mnemonicParsing="false" onAction="#addBlackBeanFilet" prefHeight="92.0" prefWidth="210.0" text="Black Bean Fillet +" />
                           </items>
                         </ToolBar>
                         <ToolBar layoutX="-1.0" layoutY="189.0" prefHeight="106.0" prefWidth="280.0">
@@ -365,12 +374,13 @@
       </TabPane>
       <AnchorPane layoutX="878.0" prefHeight="810.0" prefWidth="228.0">
          <children>
-            <ToolBar prefHeight="25.0" prefWidth="368.0">
+            <ToolBar prefWidth="368.0">
                <items>
                   <Label text="                              Cart" />
                </items>
             </ToolBar>
             <Button layoutX="133.0" layoutY="733.0" mnemonicParsing="false" text="Checkout" />
+            <VBox fx:id="cart" layoutX="27.0" layoutY="40.0" prefHeight="683.0" prefWidth="315.0" />
          </children>
       </AnchorPane>
    </children>
