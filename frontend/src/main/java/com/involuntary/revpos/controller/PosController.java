@@ -49,4 +49,188 @@ public class PosController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void addBurgerFilet() {
+        HBox entry = new HBox();
+        Label label = new Label("Burger Fillet");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addChickenFilet() {
+        HBox entry = new HBox();
+        Label label = new Label("Chicken Fillet");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addChickenTenders() {
+        HBox entry = new HBox();
+        Label label = new Label("Chicken Tenders");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addFries() {
+        HBox entry = new HBox();
+        Label label = new Label("Fries");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addBrisk() {
+        HBox entry = new HBox();
+        Label label = new Label("Brisk");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addGatorade() {
+        HBox entry = new HBox();
+        Label label = new Label("Gatorade");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addRootBeer() {
+        HBox entry = new HBox();
+        Label label = new Label("Root Beer");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addPepsi() {
+        HBox entry = new HBox();
+        Label label = new Label("Pepsi");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addSierraMist() {
+        HBox entry = new HBox();
+        Label label = new Label("Sierra Mist");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addCaesarDressing() {
+        HBox entry = new HBox();
+        Label label = new Label("Caesar Dressing");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addGigemSauce() {
+        HBox entry = new HBox();
+        Label label = new Label("Gigem Sauce");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addHoneyBBQ() {
+        HBox entry = new HBox();
+        Label label = new Label("Honey BBQ");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addKetchup() {
+        HBox entry = new HBox();
+        Label label = new Label("Ketchup");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addMayo() {
+        HBox entry = new HBox();
+        Label label = new Label("Mayo");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addMustard() {
+        HBox entry = new HBox();
+        Label label = new Label("Mustard");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addRanch() {
+        HBox entry = new HBox();
+        Label label = new Label("Ranch");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addChocolateIceCream() {
+        HBox entry = new HBox();
+        Label label = new Label("Chocolate Ice Cream");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addCookie() {
+        HBox entry = new HBox();
+        Label label = new Label("Cookie");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addCookieSandwich() {
+        HBox entry = new HBox();
+        Label label = new Label("Cookie Sandwich");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addDessertBowl() {
+        HBox entry = new HBox();
+        Label label = new Label("Dessert Bowl");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addDessertCup() {
+        HBox entry = new HBox();
+        Label label = new Label("Dessert Cup");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addStrawberryIceCream() {
+        HBox entry = new HBox();
+        Label label = new Label("Strawberry Ice Cream");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
+
+    @FXML
+    public void addVanillaIceCream() {
+        HBox entry = new HBox();
+        Label label = new Label("Vanilla Ice Cream");
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+    }
 }
