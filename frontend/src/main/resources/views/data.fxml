@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="887.0" prefWidth="1131.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <LineChart layoutX="111.0" layoutY="218.0" prefHeight="569.0" prefWidth="913.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <ToolBar layoutX="337.0" layoutY="111.0" prefHeight="63.0" prefWidth="390.0">
+         <items>
+            <Label text="Total Revenue for:" />
+            <MenuButton mnemonicParsing="false" text="time window">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Most Recent Day" />
+                <MenuItem mnemonicParsing="false" text="Past 1 Week" />
+                  <MenuItem mnemonicParsing="false" text="Past 3 Weeks" />
+              </items>
+            </MenuButton>
+         </items>
+      </ToolBar>
+   </children>
+</AnchorPane>

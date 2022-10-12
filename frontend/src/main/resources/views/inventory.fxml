@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="manager_content__inventory" prefHeight="768.0" prefWidth="819.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.InventoryController">
+   <children>
+      <TableView fx:id="inventoryTable" layoutX="35.0" layoutY="146.0" prefHeight="476.0" prefWidth="719.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="146.0">
+         <columns>
+            <TableColumn fx:id="idCol" prefWidth="144.0" text="Product ID" />
+            <TableColumn fx:id="nameCol" prefWidth="144.0" text="Product Name" />
+            <TableColumn fx:id="priceCol" prefWidth="144.0" text="Price" />
+            <TableColumn fx:id="caloriesCol" minWidth="0.0" prefWidth="144.0" text="Calories" />
+            <TableColumn fx:id="quantityCol" prefWidth="144.0" text="Quantity" />
+         </columns>
+      </TableView>
+    <Button layoutX="653.0" layoutY="48.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="99.0" text="search" />
+      <TextField layoutX="508.0" layoutY="48.0" prefHeight="45.0" prefWidth="129.0" />
+      <Label layoutX="386.0" layoutY="48.0" text="Enter ID:">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <MenuButton layoutX="50.0" layoutY="48.0" mnemonicParsing="false" text="Sort By">
+        <items>
+          <MenuItem mnemonicParsing="false" text="ID (Low - High)" />
+            <MenuItem mnemonicParsing="false" text="Quantity (Low - High)" />
+            <MenuItem mnemonicParsing="false" text="Quantity (High - Low)" />
+          <MenuItem mnemonicParsing="false" text="Product Name (A - Z)" />
+        </items>
+      </MenuButton>
+   </children>
+</AnchorPane>
