@@ -1,22 +1,16 @@
 package com.involuntary.revpos.controller;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import com.involuntary.revpos.database.DatabaseConnection;
+import com.involuntary.revpos.models.Product;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import com.ShoppingCart.Cart;
-import com.ShoppingCart.CartItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -24,6 +18,7 @@ import javafx.stage.Stage;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.List;
 
 public class PosController {
@@ -31,11 +26,28 @@ public class PosController {
     @FXML
     private VBox cart;
 
+    HashMap<String, Product> cartProducts = new HashMap<>();
 
     @FXML
     public void addBlackBeanFilet() {
+        if (!cartProducts.containsKey("blackbeanfillet")) {
+            cartProducts.put("blackbeanfillet", new Product(1010, "black bean fillet", 5.29, 570, 1));
+            cartProducts.put("bun", new Product(1011, "bun", 2.00, 200, 1));
+            cartProducts.put("lettuce", new Product(1012, "lettuce", 0, 0, 1));
+            cartProducts.put("tomato", new Product(1013, "tomato", 0, 0, 1));
+            cartProducts.put("pickles", new Product(1014, "pickles", 0, 0, 1));
+            cartProducts.put("onions", new Product(1015, "onions", 0, 0, 1));
+        } else {
+            cartProducts.put("blackbeanfillet", new Product(1010, "black bean fillet", 5.29, 570, cartProducts.get("blackbeanfillet").getQuantity()+1));
+            cartProducts.put("bun", new Product(1011, "bun", 2.00, 200, cartProducts.get("bun").getQuantity()+1));
+            cartProducts.put("lettuce", new Product(1012, "lettuce", 0, 0, cartProducts.get("lettuce").getQuantity()+1));
+            cartProducts.put("tomato", new Product(1013, "tomato", 0, 0, cartProducts.get("tomato").getQuantity()+1));
+            cartProducts.put("pickles", new Product(1014, "pickles", 0, 0, cartProducts.get("pickles").getQuantity()+1));
+            cartProducts.put("onions", new Product(1015, "onions", 0, 0, cartProducts.get("onions").getQuantity()+1));
+        }
+
         HBox entry = new HBox();
-        Label label = new Label("Black Bean Filet");
+        Label label = new Label("Black Bean Filet x" + cartProducts.get("blackbeanfillet").getQuantity());
         entry.getChildren().add(label);
         cart.getChildren().add(entry);
 
@@ -57,11 +69,28 @@ public class PosController {
 
     @FXML
     public void addBurgerFilet() {
+        if (!cartProducts.containsKey("burgerfillet")) {
+            cartProducts.put("burgerfillet", new Product(1008, "burger fillet", 4.49, 310, 1));
+            cartProducts.put("bun", new Product(1011, "bun", 2.00, 200, 1));
+            cartProducts.put("lettuce", new Product(1012, "lettuce", 0, 0, 1));
+            cartProducts.put("tomato", new Product(1013, "tomato", 0, 0, 1));
+            cartProducts.put("pickles", new Product(1014, "pickles", 0, 0, 1));
+            cartProducts.put("onions", new Product(1015, "onions", 0, 0, 1));
+        } else {
+            cartProducts.put("burgerfillet", new Product(1008, "burger fillet", 4.49, 310, cartProducts.get("burgerfillet").getQuantity()+1));
+            cartProducts.put("bun", new Product(1011, "bun", 2.00, 200, cartProducts.get("bun").getQuantity()+1));
+            cartProducts.put("lettuce", new Product(1012, "lettuce", 0, 0, cartProducts.get("lettuce").getQuantity()+1));
+            cartProducts.put("tomato", new Product(1013, "tomato", 0, 0, cartProducts.get("tomato").getQuantity()+1));
+            cartProducts.put("pickles", new Product(1014, "pickles", 0, 0, cartProducts.get("pickles").getQuantity()+1));
+            cartProducts.put("onions", new Product(1015, "onions", 0, 0, cartProducts.get("onions").getQuantity()+1));
+        }
+
         HBox entry = new HBox();
-        Label label = new Label("Burger Fillet");
+        Label label = new Label("Burger Fillet x" + cartProducts.get("burgerfillet").getQuantity());
         entry.getChildren().add(label);
         cart.getChildren().add(entry);
     }
+
 
     @FXML
     public void addChickenFilet() {
