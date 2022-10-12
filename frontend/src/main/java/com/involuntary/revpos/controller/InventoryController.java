@@ -58,11 +58,11 @@ public class InventoryController implements Initializable {
 
                 while(result.next()) {
                     Product product = new Product(
-                            result.getInt(1),
-                            result.getString(2),
-                            result.getDouble(3),
-                            result.getInt(4),
-                            result.getInt(5)
+                            result.getInt("id"),
+                            result.getString("name"),
+                            result.getDouble("price"),
+                            result.getInt("calories"),
+                            result.getInt("inventory")
                     );
                     inventoryList.add(product);
                 }

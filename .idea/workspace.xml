@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5af2d59-0e4c-4996-b17e-0b09e5a73769" name="Changes" comment="Added more functionality to settings">
-      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/InventoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/inventory.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/ManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/SettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/InventoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main/resources/views/inventory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/inventory.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/main/resources/views/manager.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/manager.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
