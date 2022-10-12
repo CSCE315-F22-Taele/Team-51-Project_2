@@ -21,7 +21,6 @@ public class DatabaseConnection {
             System.exit(0);
         }
 
-        System.out.println("Opened database successfully");
         return databaseLink;
     }
 

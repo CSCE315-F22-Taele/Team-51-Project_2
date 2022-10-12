@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.ManagerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.ManagerController">
    <children>
-      <BorderPane layoutX="193.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0">
-         <center>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" BorderPane.alignment="CENTER" />
-         </center>
-      </BorderPane>
+      <VBox layoutX="14.0" layoutY="14.0" prefHeight="768.0" prefWidth="205.0" style="-fx-background-color: #EF626C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutX="556.0" layoutY="255.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TableView fx:id="inventoryTable" layoutX="35.0" layoutY="146.0" prefHeight="476.0" prefWidth="719.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="146.0">
+              <columns>
+                <TableColumn fx:id="idCol" prefWidth="144.0" text="Product ID" />
+                <TableColumn fx:id="nameCol" prefWidth="144.0" text="Product Name" />
+                  <TableColumn fx:id="priceCol" prefWidth="144.0" text="Price" />
+                  <TableColumn fx:id="caloriesCol" minWidth="0.0" prefWidth="144.0" text="Calories" />
+                  <TableColumn fx:id="quantityCol" prefWidth="144.0" text="Quantity" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

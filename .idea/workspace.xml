@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5af2d59-0e4c-4996-b17e-0b09e5a73769" name="Changes" comment="Implemented settings menu">
+    <list default="true" id="c5af2d59-0e4c-4996-b17e-0b09e5a73769" name="Changes" comment="Added more functionality to settings">
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/models/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/SettingsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/resources/views/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/ManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/database/DatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main/resources/views/manager.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/manager.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,8 +49,8 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/jwonn/Desktop/test.fxml",
-    "project.structure.last.edited": "Problems",
+    "last_opened_file_path": "C:/Users/jwonn/Desktop/test2.fxml",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog"
@@ -64,6 +67,9 @@
       <recent name="C:\Users\jwonn\IdeaProjects\RevPOS\frontend\src\main\resources" />
       <recent name="C:\Users\jwonn\IdeaProjects\RevPOS\" />
       <recent name="C:\Users\jwonn\IdeaProjects\RevPOS\frontend" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.involuntary.revpos.controller" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -147,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665542328943</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added more functionality to settings">
+      <created>1665543310867</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1665543310867</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -181,7 +194,8 @@
     <MESSAGE value="Redesigned Login Screen" />
     <MESSAGE value="Finalized login screen" />
     <MESSAGE value="Implemented settings menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented settings menu" />
+    <MESSAGE value="Added more functionality to settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more functionality to settings" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

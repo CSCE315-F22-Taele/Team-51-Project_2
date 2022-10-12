@@ -10,4 +10,6 @@ module com.involuntary.revpos {
     opens com.involuntary.revpos.controller to javafx.fxml;
     exports com.involuntary.revpos.database;
     opens com.involuntary.revpos.database to javafx.fxml;
+    exports com.involuntary.revpos.models;
+    opens com.involuntary.revpos.models to javafx.fxml;
 }
