@@ -23,6 +23,15 @@ public class ManagerController {
         } catch (Exception ex) {}
 
     }
+
+    @FXML
+    public void openData() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/views/data.fxml"));
+            manager_content__main.getChildren().setAll(root);
+        } catch (Exception ex) {}
+
+    }
     @FXML
     public void openPOS(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/views/pos.fxml"));

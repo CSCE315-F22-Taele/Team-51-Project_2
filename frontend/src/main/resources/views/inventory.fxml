@@ -15,5 +15,20 @@
             <TableColumn fx:id="quantityCol" prefWidth="144.0" text="Quantity" />
          </columns>
       </TableView>
+    <Button layoutX="653.0" layoutY="48.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="99.0" text="search" />
+      <TextField layoutX="508.0" layoutY="48.0" prefHeight="45.0" prefWidth="129.0" />
+      <Label layoutX="386.0" layoutY="48.0" text="Enter ID:">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <MenuButton layoutX="50.0" layoutY="48.0" mnemonicParsing="false" text="Sort By">
+        <items>
+          <MenuItem mnemonicParsing="false" text="ID (Low - High)" />
+            <MenuItem mnemonicParsing="false" text="Quantity (Low - High)" />
+            <MenuItem mnemonicParsing="false" text="Quantity (High - Low)" />
+          <MenuItem mnemonicParsing="false" text="Product Name (A - Z)" />
+        </items>
+      </MenuButton>
    </children>
 </AnchorPane>
