@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "Inter Bold";
+    src: url("../fonts/Inter-Bold.ttf");
+    }
+
+.settings-btn__container {
+    -fx-background-color:  #FBFBFE;
+    -fx-background-radius: 35px;
+}
+.settings-btn--text {
+    -fx-font-size: 24px;
+    -fx-font-family: "Inter Bold";
+}

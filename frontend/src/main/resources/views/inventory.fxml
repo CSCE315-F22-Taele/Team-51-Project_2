@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="manager_content__inventory" prefHeight="768.0" prefWidth="819.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.InventoryController">
+<AnchorPane fx:id="manager_content__inventory" prefHeight="768.0" prefWidth="819.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.InventoryController">
    <children>
       <TableView fx:id="inventoryTable" layoutX="35.0" layoutY="146.0" prefHeight="476.0" prefWidth="719.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="146.0">
          <columns>

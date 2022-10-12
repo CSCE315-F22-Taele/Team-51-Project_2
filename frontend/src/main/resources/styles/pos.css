@@ -1,0 +1,65 @@
+@font-face {
+    font-family: "Inter Bold";
+    src: url("../fonts/Inter-Bold.ttf");
+    }
+@font-face {
+    font-family: "SourceSansPro Bold";
+    src: url("../fonts/SourceSansPro-Bold.ttf");
+    }
+@font-face {
+    font-family: "SourceSansPro SemiBold";
+    src: url("../fonts/SourceSansPro-SemiBold.ttf");
+    }
+@font-face {
+    font-family: "SourceSansPro Regular";
+    src: url("../fonts/SourceSansPro-Regular.ttf");
+    }
+
+#pos__container {
+    -fx-background-color: #F5F7F9;
+}
+
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;
+}
+.tab-pane {
+    -fx-tab-min-width:90px;
+    -fx-tab-min-height: 45px;
+}
+.tab{
+    -fx-background-insets: 0 1 0 1,0,0;
+}
+.tab-pane .tab {
+    -fx-background-color: #e6e6e6;
+}
+.tab-pane .tab:selected {
+    -fx-background-color: #F05756;
+}
+.tab .tab-label {
+    -fx-font-family: "Inter Bold";
+    -fx-alignment: CENTER;
+    -fx-text-fill: #615F67;
+    -fx-font-size: 12px;
+}
+
+.tab:selected .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #FDFDFD;
+}
+
+#cart {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 0 0 0 25px;
+}
+.cart-title__container {
+    -fx-spacing: 4px;
+}
+.cart--header {
+    -fx-font-family: "Source Sans Pro SemiBold";
+    -fx-font-size: 24px;
+}
+.cart--subheader {
+    -fx-font-family: "SourceSansPro Bold";
+    -fx-font-size: 16px;
+}

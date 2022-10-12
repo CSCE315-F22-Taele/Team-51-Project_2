@@ -1,0 +1,11 @@
+.logo__container {
+    -fx-background-color: #CB5058;
+}
+.login__container {
+    -fx-background-color: #FFFFFF;
+}
+.text-field {
+    -fx-background-color: -fx-text-box-border, #FFFFFF ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
+}
