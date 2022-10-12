@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5af2d59-0e4c-4996-b17e-0b09e5a73769" name="Changes" comment="Added more functionality to settings">
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/InventoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/inventory.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/ManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/PosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/PosController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/SettingsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/database/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/models/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main/resources/views/manager.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/manager.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -161,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665543310867</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Implement initial inventory table">
+      <created>1665557557318</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1665557557318</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -196,7 +202,8 @@
     <MESSAGE value="Finalized login screen" />
     <MESSAGE value="Implemented settings menu" />
     <MESSAGE value="Added more functionality to settings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more functionality to settings" />
+    <MESSAGE value="Implement initial inventory table" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement initial inventory table" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

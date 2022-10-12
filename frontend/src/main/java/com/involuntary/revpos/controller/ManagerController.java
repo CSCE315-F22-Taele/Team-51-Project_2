@@ -1,94 +1,33 @@
 package com.involuntary.revpos.controller;
 
-import com.involuntary.revpos.database.DatabaseConnection;
-import com.involuntary.revpos.models.Product;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TreeItemPropertyValueFactory;
-import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
+import java.io.IOException;
 
-public class ManagerController implements Initializable {
+public class ManagerController {
     @FXML
-    private TableView<Product> inventoryTable;
-    @FXML
-    private TableColumn<Product, Integer> idCol;
-    @FXML
-    private TableColumn<Product, String> nameCol;
-    @FXML
-    private TableColumn<Product, Double> priceCol;
-    @FXML
-    private TableColumn<Product, Integer> caloriesCol;
-    @FXML
-    private TableColumn<Product, Integer> quantityCol;
+    private AnchorPane manager_content__main;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        updateTable();
-    }
-
-    /**
-     * Queries the database and adds every product and its information to a readable list for FXML
-     *
-     * @return a list containing all the product from the database
-     */
-    public ObservableList<Product> queryProducts() {
-        ObservableList<Product> inventoryList = FXCollections.observableArrayList();
-
+    @FXML
+    public void openInventory() {
         try {
-            DatabaseConnection connectNow = new DatabaseConnection();
-            Connection dbConnection = connectNow.getConnection();
+            Parent root = FXMLLoader.load(getClass().getResource("/views/inventory.fxml"));
+            manager_content__main.getChildren().setAll(root);
+        } catch (Exception ex) {}
 
-            Statement statement = dbConnection.createStatement();
-            String queryData = "SELECT * FROM entrees";
-            ResultSet result = statement.executeQuery(queryData);
-
-            while(result.next()) {
-                Product product = new Product(
-                        result.getInt(1),
-                        result.getString(2),
-                        result.getDouble(3),
-                        result.getInt(4),
-                        result.getInt(5)
-                );
-                inventoryList.add(product);
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        return inventoryList;
     }
-
-    /**
-     * Populates the TableView (Inventory) with the generated list.
-     *
-     */
-    public void updateTable() {
-        try {
-            ObservableList inventoryList = queryProducts();
-            idCol.setCellValueFactory(new PropertyValueFactory<Product, Integer>("id"));
-            nameCol.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
-            priceCol.setCellValueFactory(new PropertyValueFactory<Product, Double>("price"));
-            caloriesCol.setCellValueFactory(new PropertyValueFactory<Product, Integer>("calories"));
-            quantityCol.setCellValueFactory(new PropertyValueFactory<Product, Integer>("quantity"));
-            inventoryTable.setItems(inventoryList);
-
-        } catch (Exception e) {}
+    @FXML
+    public void openPOS(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/pos.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(root);
     }
 }

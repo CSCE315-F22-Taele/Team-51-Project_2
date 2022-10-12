@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="manager_content__inventory" prefHeight="768.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.InventoryController">
+   <children>
+      <TableView fx:id="inventoryTable" layoutX="35.0" layoutY="146.0" prefHeight="476.0" prefWidth="719.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="146.0">
+         <columns>
+            <TableColumn fx:id="idCol" prefWidth="144.0" text="Product ID" />
+            <TableColumn fx:id="nameCol" prefWidth="144.0" text="Product Name" />
+            <TableColumn fx:id="priceCol" prefWidth="144.0" text="Price" />
+            <TableColumn fx:id="caloriesCol" minWidth="0.0" prefWidth="144.0" text="Calories" />
+            <TableColumn fx:id="quantityCol" prefWidth="144.0" text="Quantity" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>
