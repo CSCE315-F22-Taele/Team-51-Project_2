@@ -14,6 +14,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class InventoryController implements Initializable {
@@ -43,24 +44,28 @@ public class InventoryController implements Initializable {
      */
     public ObservableList<Product> queryProducts() {
         ObservableList<Product> inventoryList = FXCollections.observableArrayList();
+        List<String> categories = List.of("entrees", "drinks", "sauces", "desserts");
 
         try {
             DatabaseConnection connectNow = new DatabaseConnection();
             Connection dbConnection = connectNow.getConnection();
 
             Statement statement = dbConnection.createStatement();
-            String queryData = "SELECT * FROM entrees";
-            ResultSet result = statement.executeQuery(queryData);
 
-            while(result.next()) {
-                Product product = new Product(
-                        result.getInt(1),
-                        result.getString(2),
-                        result.getDouble(3),
-                        result.getInt(4),
-                        result.getInt(5)
-                );
-                inventoryList.add(product);
+            for(String category : categories) {
+                String queryData = "SELECT * FROM " + category;
+                ResultSet result = statement.executeQuery(queryData);
+
+                while(result.next()) {
+                    Product product = new Product(
+                            result.getInt(1),
+                            result.getString(2),
+                            result.getDouble(3),
+                            result.getInt(4),
+                            result.getInt(5)
+                    );
+                    inventoryList.add(product);
+                }
             }
         } catch (Exception ex) {
             ex.printStackTrace();
