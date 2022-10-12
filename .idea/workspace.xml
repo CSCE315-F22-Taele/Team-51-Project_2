@@ -170,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665557557318</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added list functionality for cart">
+      <created>1665607012840</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1665607012840</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,7 +213,8 @@
     <MESSAGE value="Implemented settings menu" />
     <MESSAGE value="Added more functionality to settings" />
     <MESSAGE value="Implement initial inventory table" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement initial inventory table" />
+    <MESSAGE value="Added list functionality for cart" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added list functionality for cart" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
