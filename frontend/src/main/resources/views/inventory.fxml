@@ -1,34 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="manager_content__inventory" prefHeight="768.0" prefWidth="819.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.InventoryController">
+<AnchorPane fx:id="manager_content__main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.InventoryController">
    <children>
-      <TableView fx:id="inventoryTable" layoutX="35.0" layoutY="146.0" prefHeight="476.0" prefWidth="719.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="146.0">
-         <columns>
-            <TableColumn fx:id="idCol" prefWidth="144.0" text="Product ID" />
-            <TableColumn fx:id="nameCol" prefWidth="144.0" text="Product Name" />
-            <TableColumn fx:id="priceCol" prefWidth="144.0" text="Price" />
-            <TableColumn fx:id="caloriesCol" minWidth="0.0" prefWidth="144.0" text="Calories" />
-            <TableColumn fx:id="quantityCol" prefWidth="144.0" text="Quantity" />
-         </columns>
-      </TableView>
-    <Button layoutX="653.0" layoutY="48.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="99.0" text="search" />
-      <TextField layoutX="508.0" layoutY="48.0" prefHeight="45.0" prefWidth="129.0" />
-      <Label layoutX="386.0" layoutY="48.0" text="Enter ID:">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <MenuButton layoutX="50.0" layoutY="48.0" mnemonicParsing="false" text="Sort By">
-        <items>
-          <MenuItem mnemonicParsing="false" text="ID (Low - High)" />
-            <MenuItem mnemonicParsing="false" text="Quantity (Low - High)" />
-            <MenuItem mnemonicParsing="false" text="Quantity (High - Low)" />
-          <MenuItem mnemonicParsing="false" text="Product Name (A - Z)" />
-        </items>
-      </MenuButton>
+      <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="14.0" prefHeight="768.0" prefWidth="205.0" style="-fx-background-color: #EF626C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#openHome" prefHeight="45.0" prefWidth="205.0" text="Home" />
+            <Button mnemonicParsing="false" onAction="#openInventory" prefHeight="45.0" prefWidth="205.0" text="Inventory" />
+            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="205.0" text="TEMP" />
+            <Button layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#openData" prefHeight="45.0" prefWidth="205.0" text="Data" />
+            <Button mnemonicParsing="false" onAction="#openPOS" prefHeight="45.0" prefWidth="205.0" text="Exit" />
+         </children>
+      </VBox>
+      <AnchorPane fx:id="manager_content__inventory" layoutX="10.0" layoutY="10.0" prefHeight="768.0" prefWidth="819.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TableView fx:id="inventoryTable" layoutX="35.0" layoutY="146.0" prefHeight="476.0" prefWidth="719.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="146.0">
+               <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY" /></columnResizePolicy>
+               <columns>
+                  <TableColumn fx:id="idCol" maxWidth="3000.0" minWidth="-Infinity" prefWidth="144.0" text="Product ID" />
+                  <TableColumn fx:id="nameCol" maxWidth="3000.0" minWidth="-Infinity" prefWidth="144.0" resizable="false" text="Product Name" />
+                  <TableColumn fx:id="priceCol" maxWidth="3000.0" minWidth="-Infinity" prefWidth="144.0" text="Price" />
+                  <TableColumn fx:id="caloriesCol" maxWidth="3000.0" minWidth="-Infinity" prefWidth="144.0" resizable="false" text="Calories" />
+                  <TableColumn fx:id="quantityCol" maxWidth="3000.0" minWidth="-Infinity" prefWidth="144.0" text="Quantity" />
+               </columns>
+            </TableView>
+            <Button layoutX="653.0" layoutY="48.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="99.0" text="search" />
+            <TextField layoutX="508.0" layoutY="48.0" prefHeight="45.0" prefWidth="129.0" />
+            <Label layoutX="386.0" layoutY="48.0" text="Enter ID:">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <MenuButton layoutX="50.0" layoutY="48.0" mnemonicParsing="false" text="Sort By">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="ID (Low - High)" />
+                  <MenuItem mnemonicParsing="false" text="Quantity (Low - High)" />
+                  <MenuItem mnemonicParsing="false" text="Quantity (High - Low)" />
+                  <MenuItem mnemonicParsing="false" text="Product Name (A - Z)" />
+               </items>
+            </MenuButton>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
