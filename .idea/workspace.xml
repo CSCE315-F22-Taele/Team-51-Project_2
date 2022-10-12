@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5af2d59-0e4c-4996-b17e-0b09e5a73769" name="Changes" comment="Finalized login screen">
-      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/ManagerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/SettingsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/main/resources/styles/manager.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/main/resources/styles/settings.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/manager.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/settings.fxml" afterDir="false" />
+    <list default="true" id="c5af2d59-0e4c-4996-b17e-0b09e5a73769" name="Changes" comment="Implemented settings menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/PosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/PosController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/resources/views/pos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/pos.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/SettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main/resources/views/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/settings.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665533113132</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Implemented settings menu">
+      <created>1665542328943</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1665542328943</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -179,7 +180,8 @@
     <MESSAGE value="Added psql jar" />
     <MESSAGE value="Redesigned Login Screen" />
     <MESSAGE value="Finalized login screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finalized login screen" />
+    <MESSAGE value="Implemented settings menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented settings menu" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

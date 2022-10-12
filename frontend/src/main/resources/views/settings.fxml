@@ -25,7 +25,7 @@
          <children>
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="256.0" prefWidth="256.0" styleClass="settings-btn__container" stylesheets="@../styles/settings.css">
                <children>
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="28.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="openManagerBtn" fitHeight="200.0" fitWidth="200.0" layoutX="28.0" layoutY="28.0" onMousePressed="#openManager" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/inventory.png" />
                      </image>
@@ -43,7 +43,7 @@
          <children>
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="256.0" prefWidth="256.0" styleClass="settings-btn__container" stylesheets="@../styles/settings.css">
                <children>
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="28.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="logoutBtn" fitHeight="200.0" fitWidth="200.0" layoutX="28.0" layoutY="28.0" onMousePressed="#logout" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/logout.png" />
                      </image>
