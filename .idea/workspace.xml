@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5af2d59-0e4c-4996-b17e-0b09e5a73769" name="Changes" comment="Added more functionality to settings">
+    <list default="true" id="32dd5d67-56bd-4343-98f9-58d5af858986" name="Changes" comment="Added list functionality for cart">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/InventoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/resources/views/inventory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/inventory.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/resources/views/manager.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/manager.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/PosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/PosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main/resources/views/pos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/pos.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +164,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665557557318</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added list functionality for cart">
+      <created>1665607012840</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1665607012840</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -201,7 +207,8 @@
     <MESSAGE value="Implemented settings menu" />
     <MESSAGE value="Added more functionality to settings" />
     <MESSAGE value="Implement initial inventory table" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement initial inventory table" />
+    <MESSAGE value="Added list functionality for cart" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added list functionality for cart" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
