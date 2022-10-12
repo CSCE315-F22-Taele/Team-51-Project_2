@@ -7,8 +7,11 @@ import com.involuntary.revpos.database.DatabaseConnection;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -16,6 +19,7 @@ import com.ShoppingCart.Cart;
 import com.ShoppingCart.CartItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -232,5 +236,12 @@ public class PosController {
         Label label = new Label("Vanilla Ice Cream");
         entry.getChildren().add(label);
         cart.getChildren().add(entry);
+    }
+
+    public void openSettings(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/settings.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(root);
     }
 }
