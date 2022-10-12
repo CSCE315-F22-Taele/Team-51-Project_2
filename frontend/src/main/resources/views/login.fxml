@@ -82,7 +82,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="loginNote" stylesheets="@../styles/login.css" />
+                        <Label fx:id="loginMsgLabel" stylesheets="@../styles/login.css" />
                      </children>
                   </HBox>
                </children>

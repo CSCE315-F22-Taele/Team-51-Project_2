@@ -7,8 +7,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
@@ -21,6 +24,8 @@ public class LoginController {
     private TextField employeeUsernameField;
     @FXML
     private PasswordField employeePasswordField;
+    @FXML
+    private Label loginMsgLabel;
 
     public void verifyLogin(ActionEvent event) {
         DatabaseConnection connectNow = new DatabaseConnection();
@@ -31,15 +36,16 @@ public class LoginController {
             ResultSet queryResult = statement.executeQuery(loginData);
             while(queryResult.next()) {
                 if(queryResult.getInt(1) == 1) {
-                    System.out.println("FOUND");
+                    loginMsgLabel.setText("Success! Logging in...");
                     Parent root = FXMLLoader.load(getClass().getResource("/views/pos.fxml"));
-                    Scene scene = new Scene(root);
-                    Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    appStage.setScene(scene);
-                    appStage.show();
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    Scene scene = ((Node) event.getSource()).getScene();
+                    scene.setRoot(root);
+                    stage.setTitle("Revs American Grill [POS]");
+
                 }
                 else {
-                    System.out.println("NOT VALID");
+                    loginMsgLabel.setText("Invalid credentials, try again!");
                 }
             }
         } catch (Exception error) {
