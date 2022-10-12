@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="manager_content__main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.DataController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="14.0" prefHeight="768.0" prefWidth="205.0" style="-fx-background-color: #EF626C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#openHome" prefHeight="45.0" prefWidth="205.0" text="Home" />
+            <Button mnemonicParsing="false" onAction="#openInventory" prefHeight="45.0" prefWidth="205.0" text="Inventory" />
+            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="205.0" text="TEMP" />
+            <Button layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#openData" prefHeight="45.0" prefWidth="205.0" text="Data" />
+            <Button mnemonicParsing="false" onAction="#openPOS" prefHeight="45.0" prefWidth="205.0" text="Exit" />
+         </children>
+      </VBox>
+      <AnchorPane layoutX="246.0" layoutY="-59.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1005.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <LineChart layoutX="39.0" layoutY="235.0" prefHeight="452.0" prefWidth="725.0">
+               <xAxis>
+                  <CategoryAxis side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis side="LEFT" />
+               </yAxis>
+            </LineChart>
+            <ToolBar layoutX="230.0" layoutY="121.0" prefHeight="63.0" prefWidth="390.0">
+               <items>
+                  <Label text="Total Revenue for:" />
+                  <MenuButton mnemonicParsing="false" text="time window">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Most Recent Day" />
+                        <MenuItem mnemonicParsing="false" text="Past 1 Week" />
+                        <MenuItem mnemonicParsing="false" text="Past 3 Weeks" />
+                     </items>
+                  </MenuButton>
+               </items>
+            </ToolBar>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

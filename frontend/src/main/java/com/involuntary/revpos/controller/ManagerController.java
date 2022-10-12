@@ -13,15 +13,27 @@ import java.io.IOException;
 
 public class ManagerController {
     @FXML
-    private AnchorPane manager_content__main;
+    public void openHome(ActionEvent event) throws IOException {
+        System.out.println("GOING HOME");
+        Parent root = FXMLLoader.load(getClass().getResource("/views/manager.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(root);
+    }
+    @FXML
+    public void openInventory(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/inventory.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(root);
+    }
 
     @FXML
-    public void openInventory() {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/views/inventory.fxml"));
-            manager_content__main.getChildren().setAll(root);
-        } catch (Exception ex) {}
-
+    public void openData(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/data.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(root);
     }
     @FXML
     public void openPOS(ActionEvent event) throws IOException {
