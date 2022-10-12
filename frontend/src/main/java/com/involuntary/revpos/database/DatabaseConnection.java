@@ -3,9 +3,18 @@ package com.involuntary.revpos.database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ *
+ * @author Johnny Le
+ */
 public class DatabaseConnection {
     public Connection databaseLink;
 
+    /**
+     * Establishes a connection to the database through psql.jar
+     *
+     * @return the Connection Object from the database
+     */
     public Connection getConnection() {
         String teamNumber = "51";
         String sectionNumber = "904";

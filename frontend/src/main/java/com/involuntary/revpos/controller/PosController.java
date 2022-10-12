@@ -31,6 +31,7 @@ public class PosController {
     @FXML
     private VBox cart;
 
+
     @FXML
     public void addBlackBeanFilet() {
         HBox entry = new HBox();

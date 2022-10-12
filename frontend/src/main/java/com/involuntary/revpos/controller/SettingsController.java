@@ -20,6 +20,10 @@ public class SettingsController {
     @FXML
     private ImageView logoutBtn;
 
+    /**
+     * Switches scene on call within Settings scene to POS scene
+     *
+     */
     @FXML
     public void goBack() throws ClassNotFoundException {
         Scene scene = settingBackBtn.getScene();
@@ -28,6 +32,10 @@ public class SettingsController {
             scene.setRoot(root);
         } catch(Exception e) {}
     }
+    /**
+     * Switches scene on call within Settings scene to Manager scene
+     *
+     */
     @FXML
     public void openManager() {
         Scene scene = openManagerBtn.getScene();
@@ -36,6 +44,11 @@ public class SettingsController {
             scene.setRoot(root);
         } catch(Exception e) {}
     }
+
+    /**
+     * Switches scene on call within Settings scene to Login scene
+     *
+     */
     @FXML
     public void logout() {
         Scene scene = logoutBtn.getScene();

@@ -39,10 +39,14 @@ public class ManagerController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("HELLO");
         updateTable();
     }
 
+    /**
+     * Queries the database and adds every product and its information to a readable list for FXML
+     *
+     * @return a list containing all the product from the database
+     */
     public ObservableList<Product> queryProducts() {
         ObservableList<Product> inventoryList = FXCollections.observableArrayList();
 
@@ -70,6 +74,11 @@ public class ManagerController implements Initializable {
 
         return inventoryList;
     }
+
+    /**
+     * Populates the TableView (Inventory) with the generated list.
+     *
+     */
     public void updateTable() {
         try {
             ObservableList inventoryList = queryProducts();
