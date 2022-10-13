@@ -10,12 +10,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,10 +38,17 @@ public class InventoryController extends ManagerController implements Initializa
     private TableColumn<Product, Integer> caloriesCol;
     @FXML
     private TableColumn<Product, Integer> quantityCol;
+    @FXML
+    private Label manageInvStatusLabel;
+    @FXML
+    private TextField manageIDField;
+    @FXML
+    private TextField manageQuantityField;
+    @FXML
+    private ComboBox manageCategoryField;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("POPULATING TABLE");
         updateTable();
     }
 
@@ -88,6 +95,7 @@ public class InventoryController extends ManagerController implements Initializa
      */
     public void updateTable() {
         try {
+            System.out.println("UPDATING TABLE");
             ObservableList inventoryList = queryProducts();
             idCol.setCellValueFactory(new PropertyValueFactory<Product, Integer>("id"));
             nameCol.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
@@ -99,6 +107,10 @@ public class InventoryController extends ManagerController implements Initializa
         } catch (Exception e) {}
     }
 
+    /**
+     * Open another window used to manage the inventory
+     *
+     */
     public void openInventoryModal() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/views/manageInventory.fxml"));
         Scene scene = new Scene(root);
@@ -111,4 +123,49 @@ public class InventoryController extends ManagerController implements Initializa
         modal.getIcons().add(new Image(getClass().getResourceAsStream("/images/box.png")));
         modal.showAndWait();
     }
+
+    /**
+     * Queries the database and updates a product's stock
+     *
+     * @param category identifies the database table
+     * @param id represents the product id inside database
+     * @param quantity represents the new inventory value
+     *
+     * @return true if query is successful, and false if query failed
+     */
+    public boolean updateCall(String category, String id, int quantity) {
+        try {
+            String sql = "UPDATE " + category + " SET inventory = " + quantity + " WHERE id = " + id;
+            DatabaseConnection connectNow = new DatabaseConnection();
+            Connection dbConnection = connectNow.getConnection();
+
+            Statement statement = dbConnection.createStatement();
+            int callStatus = statement.executeUpdate(sql);
+            if(callStatus != 1) {
+                return false;
+            }
+        } catch (Exception ex) {
+            System.err.println(ex.getClass().getName()+": "+ex.getMessage());
+            ex.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public void updateInventory() {
+        try {
+            String category = (String) manageCategoryField.getValue();
+            String id = manageIDField.getText();
+            int quantity = Integer.parseInt(manageQuantityField.getText());
+            if(updateCall(category, id, quantity)) {
+                manageInvStatusLabel.setText("Database Updated!");
+            } else {
+                manageInvStatusLabel.setText("Database Failed to Update...");
+            }
+        } catch (Exception ex) {
+            manageInvStatusLabel.setText("Invalid Info!");
+        }
+    }
+
+
 }

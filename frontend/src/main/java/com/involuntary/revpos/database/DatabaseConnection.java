@@ -24,10 +24,9 @@ public class DatabaseConnection {
         try {
             Class.forName("org.postgresql.Driver");
             databaseLink = DriverManager.getConnection(dbConnectionString, dbSetup.user, dbSetup.pswd);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println(e.getClass().getName()+": "+e.getMessage());
-            System.exit(0);
+        } catch (Exception ex) {
+            System.err.println(ex.getClass().getName()+": "+ex.getMessage());
+            return null;
         }
 
         return databaseLink;

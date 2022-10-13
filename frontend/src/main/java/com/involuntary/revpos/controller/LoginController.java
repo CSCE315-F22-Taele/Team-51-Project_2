@@ -37,7 +37,13 @@ public class LoginController {
     public void verifyLogin(ActionEvent event) {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection dbConnection = connectNow.getConnection();
+        if(dbConnection == null) {
+            loginMsgLabel.setText("Failed to connect to database...");
+            return;
+        }
         String loginData = "SELECT count(1) FROM accounts WHERE username = '" + employeeUsernameField.getText() + "' AND password = '" + employeePasswordField.getText() + "'";
+
+        System.out.println(dbConnection);
         try {
             Statement statement = dbConnection.createStatement();
             ResultSet queryResult = statement.executeQuery(loginData);

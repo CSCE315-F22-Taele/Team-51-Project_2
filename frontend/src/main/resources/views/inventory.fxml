@@ -8,6 +8,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -15,7 +17,7 @@
 
 <AnchorPane fx:id="manager_content__main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.InventoryController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="14.0" prefHeight="768.0" prefWidth="205.0" style="-fx-background-color: #EF626C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="768.0" prefWidth="205.0" style="-fx-background-color: #EF626C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button mnemonicParsing="false" onAction="#openHome" prefHeight="45.0" prefWidth="205.0" text="Home" />
             <Button mnemonicParsing="false" onAction="#openInventory" prefHeight="45.0" prefWidth="205.0" text="Inventory" />
@@ -53,14 +55,19 @@
                   <MenuItem mnemonicParsing="false" text="Product Name (A - Z)" />
                </items>
             </MenuButton>
-            <HBox alignment="CENTER_LEFT" layoutX="310.0" layoutY="648.0" prefHeight="75.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <HBox layoutX="310.0" layoutY="648.0" prefHeight="75.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#openInventoryModal" text="Manage Inventory">
+                  <Button mnemonicParsing="false" onAction="#openInventoryModal" prefHeight="37.0" prefWidth="167.0" text="Manage Inventory">
                      <HBox.margin>
-                        <Insets left="100.0" />
+                        <Insets left="50.0" />
                      </HBox.margin>
                   </Button>
                </children></HBox>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="745.0" layoutY="118.0" onMouseClicked="#updateTable" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="118.0">
+               <image>
+                  <Image url="@../images/refresh.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
