@@ -2,6 +2,7 @@ package com.involuntary.revpos.controller;
 
 import java.io.IOException;
 
+import com.involuntary.revpos.controller.InventoryController;
 import com.involuntary.revpos.database.DatabaseConnection;
 import com.involuntary.revpos.models.Product;
 import javafx.event.ActionEvent;
@@ -499,5 +500,58 @@ public class PosController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = ((Node) event.getSource()).getScene();
         scene.setRoot(root);
+    }
+
+    public String getCategory(Product p) {
+        String category = "";
+        if (p.getId() >= 1000 && p.getId() <= 1006) {
+            category = "drinks";
+        } else if (p.getId() >= 1007 && p.getId() <= 1024) { //entree
+            category = "entrees";
+        } else if (p.getId() >= 1025 && p.getId() <= 1031) {
+            category = "sauces";
+        } else if (p.getId() >= 1032 && p.getId() <= 1038) {
+            category = "desserts";
+        } else {
+            category = "error";
+        }
+        return category;
+    }
+
+    public boolean updateCall(String category, String id, int quantity) {
+        Connection dbConnection = null;
+        Statement statement = null;
+        try {
+            String sql = "UPDATE " + category + " SET inventory = inventory - " + quantity + " WHERE id = " + id;
+            DatabaseConnection connectNow = new DatabaseConnection();
+            dbConnection = connectNow.getConnection();
+
+            statement = dbConnection.createStatement();
+            int callStatus = statement.executeUpdate(sql);
+            if(callStatus != 1) {
+                return false;
+            }
+        } catch (Exception ex) {
+            System.err.println(ex.getClass().getName()+": "+ex.getMessage());
+            ex.printStackTrace();
+            return false;
+        } finally {
+            try { if(statement != null) statement.close(); } catch (Exception e) {};
+            try { if(dbConnection != null) dbConnection.close(); } catch (Exception e) {};
+        }
+        return true;
+    }
+
+    public void checkout() {
+        int total_cost = 0;
+        for (Product item : cartProducts.values()) {
+            total_cost += item.getQuantity()*item.getPrice();
+            String id = String.valueOf(item.getId());
+            updateCall(getCategory(item), id, item.getQuantity());
+        }
+
+        cart.getChildren().clear();
+        String cost = String.valueOf(total_cost);
+        cart.getChildren().add(new Label(cost));
     }
 }
