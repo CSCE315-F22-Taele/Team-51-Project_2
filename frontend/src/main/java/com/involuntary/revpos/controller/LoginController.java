@@ -35,18 +35,23 @@ public class LoginController {
      */
 
     public void verifyLogin(ActionEvent event) {
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection dbConnection = connectNow.getConnection();
-        if(dbConnection == null) {
-            loginMsgLabel.setText("Failed to connect to database...");
-            return;
-        }
-        String loginData = "SELECT count(1) FROM accounts WHERE username = '" + employeeUsernameField.getText() + "' AND password = '" + employeePasswordField.getText() + "'";
+        Connection dbConnection = null;
+        Statement statement = null;
+        ResultSet queryResult = null;
 
         System.out.println(dbConnection);
         try {
-            Statement statement = dbConnection.createStatement();
-            ResultSet queryResult = statement.executeQuery(loginData);
+            DatabaseConnection connectNow = new DatabaseConnection();
+            dbConnection = connectNow.getConnection();
+            if(dbConnection == null) {
+                loginMsgLabel.setText("Failed to connect to database...");
+                return;
+            }
+
+            String loginData = "SELECT count(1) FROM accounts WHERE username = '" + employeeUsernameField.getText() + "' AND password = '" + employeePasswordField.getText() + "'";
+            statement = dbConnection.createStatement();
+            queryResult = statement.executeQuery(loginData);
+
             while(queryResult.next()) {
                 if(queryResult.getInt(1) == 1) {
                     loginMsgLabel.setText("Success! Logging in...");
@@ -63,6 +68,10 @@ public class LoginController {
             }
         } catch (Exception error) {
             error.printStackTrace();
+        } finally {
+            try { if(queryResult != null) queryResult.close(); } catch (Exception e) {};
+            try { if(statement != null) statement.close(); } catch (Exception e) {};
+            try { if(dbConnection != null) dbConnection.close(); } catch (Exception e) {};
         }
     }
 }

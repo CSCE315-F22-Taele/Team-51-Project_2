@@ -36,7 +36,9 @@ public class SettingsController {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/views/manager.fxml"));
             scene.setRoot(root);
-        } catch(Exception e) {}
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**

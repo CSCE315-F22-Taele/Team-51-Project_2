@@ -17,12 +17,12 @@
 
 <AnchorPane fx:id="manager_content__main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.InventoryController">
    <children>
-      <VBox alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="768.0" prefWidth="205.0" style="-fx-background-color: #EF626C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="TOP_CENTER" layoutX="24.0" layoutY="24.0" prefHeight="768.0" prefWidth="205.0" style="-fx-background-color: #EF626C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button mnemonicParsing="false" onAction="#openHome" prefHeight="45.0" prefWidth="205.0" text="Home" />
             <Button mnemonicParsing="false" onAction="#openInventory" prefHeight="45.0" prefWidth="205.0" text="Inventory" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="205.0" text="TEMP" />
-            <Button layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#openData" prefHeight="45.0" prefWidth="205.0" text="Data" />
+            <Button mnemonicParsing="false" onAction="#openManageMenu" prefHeight="45.0" prefWidth="205.0" text="Manage Menu" />
+            <Button layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#openStats" prefHeight="45.0" prefWidth="205.0" text="Statistics" />
             <Button mnemonicParsing="false" onAction="#openPOS" prefHeight="45.0" prefWidth="205.0" text="Exit" />
          </children>
       </VBox>
@@ -40,14 +40,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Button layoutX="653.0" layoutY="48.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="99.0" text="search" />
-            <TextField layoutX="508.0" layoutY="48.0" prefHeight="45.0" prefWidth="129.0" />
-            <Label layoutX="386.0" layoutY="48.0" text="Enter ID:">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-            <MenuButton layoutX="50.0" layoutY="48.0" mnemonicParsing="false" text="Sort By">
+            <MenuButton layoutX="50.0" layoutY="113.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="132.0" text="Sort By">
                <items>
                   <MenuItem mnemonicParsing="false" text="ID (Low - High)" />
                   <MenuItem mnemonicParsing="false" text="Quantity (Low - High)" />
@@ -62,6 +55,16 @@
                         <Insets left="50.0" />
                      </HBox.margin>
                   </Button>
+                  <Label text="Enter ID:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="100.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField prefHeight="37.0" prefWidth="109.0" />
+                  <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="99.0" text="search" />
                </children></HBox>
             <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="745.0" layoutY="118.0" onMouseClicked="#updateTable" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="118.0">
                <image>

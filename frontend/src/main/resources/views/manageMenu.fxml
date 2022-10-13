@@ -13,7 +13,8 @@
             <Button mnemonicParsing="false" onAction="#openManageMenu" prefHeight="45.0" prefWidth="205.0" text="Manage Menu" />
             <Button layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#openStats" prefHeight="45.0" prefWidth="205.0" text="Statistics" />
             <Button mnemonicParsing="false" onAction="#openPOS" prefHeight="45.0" prefWidth="205.0" text="Exit" />
-         </children></VBox>
+         </children>
+      </VBox>
       <AnchorPane layoutX="217.0" prefHeight="768.0" prefWidth="819.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="-12.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

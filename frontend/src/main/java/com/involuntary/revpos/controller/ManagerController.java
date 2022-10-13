@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,7 +13,6 @@ import java.io.IOException;
 public class ManagerController {
     @FXML
     public void openHome(ActionEvent event) throws IOException {
-        System.out.println("GOING HOME");
         Parent root = FXMLLoader.load(getClass().getResource("/views/manager.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = ((Node) event.getSource()).getScene();
@@ -27,10 +25,16 @@ public class ManagerController {
         Scene scene = ((Node) event.getSource()).getScene();
         scene.setRoot(root);
     }
-
     @FXML
-    public void openData(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/views/data.fxml"));
+    public void openManageMenu(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/manageMenu.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(root);
+    }
+    @FXML
+    public void openStats(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/stats.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = ((Node) event.getSource()).getScene();
         scene.setRoot(root);

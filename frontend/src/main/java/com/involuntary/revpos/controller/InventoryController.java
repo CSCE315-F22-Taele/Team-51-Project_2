@@ -95,7 +95,6 @@ public class InventoryController extends ManagerController implements Initializa
      */
     public void updateTable() {
         try {
-            System.out.println("UPDATING TABLE");
             ObservableList inventoryList = queryProducts();
             idCol.setCellValueFactory(new PropertyValueFactory<Product, Integer>("id"));
             nameCol.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
@@ -134,12 +133,14 @@ public class InventoryController extends ManagerController implements Initializa
      * @return true if query is successful, and false if query failed
      */
     public boolean updateCall(String category, String id, int quantity) {
+        Connection dbConnection = null;
+        Statement statement = null;
         try {
             String sql = "UPDATE " + category + " SET inventory = " + quantity + " WHERE id = " + id;
             DatabaseConnection connectNow = new DatabaseConnection();
-            Connection dbConnection = connectNow.getConnection();
+            dbConnection = connectNow.getConnection();
 
-            Statement statement = dbConnection.createStatement();
+            statement = dbConnection.createStatement();
             int callStatus = statement.executeUpdate(sql);
             if(callStatus != 1) {
                 return false;
@@ -148,6 +149,9 @@ public class InventoryController extends ManagerController implements Initializa
             System.err.println(ex.getClass().getName()+": "+ex.getMessage());
             ex.printStackTrace();
             return false;
+        } finally {
+            try { if(statement != null) statement.close(); } catch (Exception e) {};
+            try { if(dbConnection != null) dbConnection.close(); } catch (Exception e) {};
         }
         return true;
     }
