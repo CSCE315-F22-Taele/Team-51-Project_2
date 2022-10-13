@@ -261,6 +261,7 @@
                         <Insets />
                     </opaqueInsets>
                 </VBox>
+            <Button mnemonicParsing="false" onAction="#checkout" text="Checkout" />
             </children></VBox>
     </children>
 </AnchorPane>
