@@ -4,6 +4,7 @@ import com.involuntary.revpos.database.DatabaseConnection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 
@@ -16,6 +17,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1024, 768);
         stage.setTitle("Login");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/tamulogo.png")));
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.show();
