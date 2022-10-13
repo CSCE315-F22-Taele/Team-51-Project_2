@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
@@ -27,6 +28,8 @@ public class PosController {
 
     @FXML
     private VBox cart;
+    @FXML
+    private Button checkoutBtn;
 
     HashMap<String, Product> cartProducts = new HashMap<>();
 
@@ -543,15 +546,19 @@ public class PosController {
     }
 
     public void checkout() {
-        int total_cost = 0;
+        double total_cost = 0;
         for (Product item : cartProducts.values()) {
             total_cost += item.getQuantity()*item.getPrice();
             String id = String.valueOf(item.getId());
-            updateCall(getCategory(item), id, item.getQuantity());
+            if(updateCall(getCategory(item), id, item.getQuantity())) {
+                System.out.println("UPDATED");
+            } else {
+                System.out.println("FAILED UPDATE");
+            }
         }
 
         cart.getChildren().clear();
         String cost = String.valueOf(total_cost);
-        cart.getChildren().add(new Label(cost));
+        checkoutBtn.setText("CHARGE $" + cost);
     }
 }
