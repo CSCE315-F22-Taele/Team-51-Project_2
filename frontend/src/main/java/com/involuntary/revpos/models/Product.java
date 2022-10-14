@@ -6,6 +6,7 @@ package com.involuntary.revpos.models;
  *
  */
 public class Product {
+    private String category;
     private int id;
     private String name;
     private double price;
@@ -21,7 +22,8 @@ public class Product {
      *
      * @return a new Product object
      */
-    public Product(int id, String name, double price) {
+    public Product(String category, int id, String name, double price) {
+        this.category = category;
         this.id = id;
         this.name = name;
         this.price = price;
@@ -45,6 +47,18 @@ public class Product {
         this.quantity = quantity;
     }
 
+    /**
+     * @return category of a product
+     */
+    public String getCategory() {
+        return category;
+    }
+    /**
+     * @param category category to set (string)
+     */
+    public void setCategory(String category) {
+        this.category = category;
+    }
     /**
      * @return id of a product
      */

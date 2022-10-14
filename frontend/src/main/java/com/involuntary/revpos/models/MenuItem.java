@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class MenuItem {
     private ArrayList<Product> ingredients;
-    private int name;
+    private String name;
     private int price;
     private int calories;
 
-    public MenuItem(ArrayList<Product> ingredients, int name) {
+    public MenuItem(ArrayList<Product> ingredients, String name) {
         this.ingredients = ingredients;
         this.name = name;
     }
@@ -21,11 +21,11 @@ public class MenuItem {
         this.ingredients = ingredients;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 
