@@ -18,7 +18,7 @@
          <children>
             <Label text="Category">
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets top="10.0" />
                </VBox.margin>
             </Label>
             <HBox prefHeight="37.0" prefWidth="311.0">
@@ -35,9 +35,27 @@
                   </ComboBox>
                </children>
             </HBox>
-            <Label text="ID">
+            <Label text="Type">
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <HBox prefHeight="37.0" prefWidth="311.0">
+               <children>
+                  <ComboBox fx:id="manageTypeField" prefHeight="35.0" prefWidth="349.0">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Price" />
+                           <String fx:value="Calories" />
+                           <String fx:value="Quantity" />
+                        </FXCollections>
+                     </items>
+                  </ComboBox>
+               </children>
+            </HBox>
+            <Label text="Product ID">
+               <VBox.margin>
+                  <Insets top="10.0" />
                </VBox.margin>
             </Label>
             <TextField fx:id="manageIDField" prefHeight="37.0" prefWidth="311.0">
@@ -45,12 +63,12 @@
                   <Insets />
                </VBox.margin>
             </TextField>
-            <Label text="Quantity">
+            <Label text="Value">
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="manageQuantityField" prefHeight="37.0" prefWidth="311.0" />
+            <TextField fx:id="manageValueField" prefHeight="37.0" prefWidth="311.0" />
             <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
                <VBox.margin>
                   <Insets top="15.0" />

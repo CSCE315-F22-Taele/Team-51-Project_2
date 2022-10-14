@@ -21,11 +21,6 @@
       </VBox>
       <VBox layoutX="110.0" layoutY="30.0" prefHeight="337.0" prefWidth="375.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="475.0" style="-fx-spacing: 25;">
-               <VBox.margin>
-                  <Insets top="25.0" />
-               </VBox.margin>
-            </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <VBox prefHeight="69.0" prefWidth="209.0" HBox.hgrow="ALWAYS">
@@ -101,7 +96,7 @@
                               <Button mnemonicParsing="false" onAction="#removeInventory" prefHeight="37.0" prefWidth="109.0" text="Remove" />
                            </children>
                         </HBox>
-                        <Label fx:id="manageInvStatusLabel" text="Label" />
+                        <Label fx:id="manageInvStatusLabel" />
                      </children>
                   </VBox>
                </children>

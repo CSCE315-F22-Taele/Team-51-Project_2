@@ -41,6 +41,10 @@ public class InventoryController extends ManagerController implements Initializa
     @FXML
     private Label manageInvStatusLabel;
     @FXML
+    private ComboBox manageTypeField;
+    @FXML
+    private TextField manageValueField;
+    @FXML
     private ComboBox manageCategoryField;
     @FXML
     private TextField manageIDField;
@@ -146,16 +150,17 @@ public class InventoryController extends ManagerController implements Initializa
      * Queries the database and updates a product's stock
      *
      * @param category identifies the database table
+     * @param type identifies which column of the database is being modified
      * @param id represents the product id inside database
-     * @param quantity represents the new inventory value
+     * @param value represents the new value going to the database
      *
      * @return true if query is successful, and false if query failed
      */
-    public boolean updateCall(String category, String id, int quantity) {
+    public boolean updateCall(String category, String type, String id, int value) {
         Connection dbConnection = null;
         Statement statement = null;
         try {
-            String sql = "UPDATE " + category + " SET inventory = " + quantity + " WHERE id = " + id;
+            String sql = "UPDATE " + category + " SET " + type + " = " + value + " WHERE id = " + id;
             DatabaseConnection connectNow = new DatabaseConnection();
             dbConnection = connectNow.getConnection();
 
@@ -224,9 +229,10 @@ public class InventoryController extends ManagerController implements Initializa
     public void updateInventory() {
         try {
             String category = (String) manageCategoryField.getValue();
+            String type = (String) manageTypeField.getValue();
             String id = manageIDField.getText();
-            int quantity = Integer.parseInt(manageQuantityField.getText());
-            if(updateCall(category, id, quantity)) {
+            int value = Integer.parseInt(manageValueField.getText());
+            if(updateCall(category, type, id, value)) {
                 manageInvStatusLabel.setText("Database Updated!");
             } else {
                 manageInvStatusLabel.setText("Database Failed to Update...");

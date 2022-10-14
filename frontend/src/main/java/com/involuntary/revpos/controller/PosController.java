@@ -35,7 +35,7 @@ public class PosController extends MenuController {
     public void addItemToCart(Product product) {
         Integer count = currentCart.containsKey(product) ? currentCart.get(product) : 0;
         currentCart.put(product, count + 1);
-        cartTotal += checkPrice(product);
+        cartTotal += checkPrice(product) * 1.0625;
     }
     @FXML
     public void addBlackBeanBurger() {
