@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -15,7 +16,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,11 +41,17 @@ public class InventoryController extends ManagerController implements Initializa
     @FXML
     private Label manageInvStatusLabel;
     @FXML
+    private ComboBox manageCategoryField;
+    @FXML
     private TextField manageIDField;
     @FXML
-    private TextField manageQuantityField;
+    private TextField manageNameField;
     @FXML
-    private ComboBox manageCategoryField;
+    private TextField managePriceField;
+    @FXML
+    private TextField manageCaloriesField;
+    @FXML
+    private TextField manageQuantityField;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -118,9 +124,22 @@ public class InventoryController extends ManagerController implements Initializa
         modal.initModality(Modality.APPLICATION_MODAL);
         modal.setAlwaysOnTop(true);
         modal.setIconified(false);
+        modal.setResizable(false);
         modal.setTitle("Manage Inventory");
         modal.getIcons().add(new Image(getClass().getResourceAsStream("/images/box.png")));
         modal.showAndWait();
+    }
+    public void switchInventoryModal(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/manageInventory.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(root);
+    }
+    public void switchAddDeleteModal(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/manageInventoryExpanded.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(root);
     }
 
     /**
@@ -155,6 +174,52 @@ public class InventoryController extends ManagerController implements Initializa
         }
         return true;
     }
+    public boolean addCall(String category, String id, String name, double price, int calories, int quantity) {
+        Connection dbConnection = null;
+        Statement statement = null;
+        try {
+            String sql = "INSERT INTO " + category + " (id, name, price, calories, inventory) VALUES ('" +id+ "','" + name + "','" + price + "','" + calories + "','" + quantity + "')";
+            DatabaseConnection connectNow = new DatabaseConnection();
+            dbConnection = connectNow.getConnection();
+
+            statement = dbConnection.createStatement();
+            int callStatus = statement.executeUpdate(sql);
+            if(callStatus != 1) {
+                return false;
+            }
+        } catch (Exception ex) {
+            System.err.println(ex.getClass().getName()+": "+ex.getMessage());
+            ex.printStackTrace();
+            return false;
+        } finally {
+            try { if(statement != null) statement.close(); } catch (Exception e) {};
+            try { if(dbConnection != null) dbConnection.close(); } catch (Exception e) {};
+        }
+        return true;
+    }
+    public boolean removeCall(String category, String id) {
+        Connection dbConnection = null;
+        Statement statement = null;
+        try {
+            String sql = "DELETE FROM " + category + " WHERE id = " + id;
+            DatabaseConnection connectNow = new DatabaseConnection();
+            dbConnection = connectNow.getConnection();
+
+            statement = dbConnection.createStatement();
+            int callStatus = statement.executeUpdate(sql);
+            if(callStatus != 1) {
+                return false;
+            }
+        } catch (Exception ex) {
+            System.err.println(ex.getClass().getName()+": "+ex.getMessage());
+            ex.printStackTrace();
+            return false;
+        } finally {
+            try { if(statement != null) statement.close(); } catch (Exception e) {};
+            try { if(dbConnection != null) dbConnection.close(); } catch (Exception e) {};
+        }
+        return true;
+    }
 
     public void updateInventory() {
         try {
@@ -169,6 +234,38 @@ public class InventoryController extends ManagerController implements Initializa
         } catch (Exception ex) {
             manageInvStatusLabel.setText("Invalid Info!");
         }
+    }
+    public void addInventory() {
+        try {
+            String category = (String) manageCategoryField.getValue();
+            String id = manageIDField.getText();
+            String name = manageNameField.getText();
+            double price = Double.parseDouble(managePriceField.getText());
+            int calories = Integer.parseInt(manageCaloriesField.getText());
+            int quantity = Integer.parseInt(manageQuantityField.getText());
+            if(addCall(category, id, name, price, calories, quantity)) {
+                manageInvStatusLabel.setText("Database Updated!");
+            } else {
+                manageInvStatusLabel.setText("Database Failed to Update...");
+            }
+        } catch (Exception ex) {
+            manageInvStatusLabel.setText("Invalid Info!");
+        }
+    }
+    public void removeInventory() {
+        try {
+            String category = (String) manageCategoryField.getValue();
+            String id = manageIDField.getText();
+
+            if(removeCall(category, id)) {
+                manageInvStatusLabel.setText("Database Updated!");
+            } else {
+                manageInvStatusLabel.setText("Database Failed to Update...");
+            }
+        } catch (Exception ex) {
+            manageInvStatusLabel.setText("Invalid Info!");
+        }
+
     }
 
 
