@@ -37,6 +37,61 @@ public class PosController extends MenuController {
     private static DecimalFormat df2 = new DecimalFormat("#.00");
 
     @FXML
+    public void removeBun() {
+        if(currentCart.containsKey(bun)) {
+            if (currentCart.get(bun) <= 1) {
+                currentCart.remove(bun);
+            System.out.println("Bun removed");
+            } else {
+                currentCart.put(bun, currentCart.get(bun)-1);
+            }
+        } else {
+            System.out.println("No buns to be removed");
+        }
+    }
+    @FXML
+    public void removeLettuce() {
+        if(currentCart.containsKey(lettuce)) {
+            currentCart.remove(lettuce);
+            if (currentCart.get(lettuce) <= 1) {
+                currentCart.remove(lettuce);
+            } else {
+                currentCart.put(lettuce, currentCart.get(lettuce)-1);
+            }
+        }
+    }
+    @FXML
+    public void removeTomato() {
+        if(currentCart.containsKey(tomato)) {
+            if (currentCart.get(tomato) <= 1) {
+                currentCart.remove(tomato);
+            } else {
+                currentCart.put(tomato, currentCart.get(tomato)-1);
+            }
+        }
+    }
+    @FXML
+    public void removePickles() {
+        if(currentCart.containsKey(pickles)) {
+            if (currentCart.get(pickles) <= 1) {
+                currentCart.remove(pickles);
+            } else {
+                currentCart.put(pickles, currentCart.get(pickles)-1);
+            }
+        }
+    }
+
+    @FXML
+    public void removeOnion() {
+        if(currentCart.containsKey(onions)) {
+            if (currentCart.get(onions) <= 1) {
+                currentCart.remove(onions);
+            } else {
+                currentCart.put(onions, currentCart.get(onions)-1);
+            }
+        }
+    }
+    @FXML
     public void addBlackBeanBurger() {
         addItemToCart(blackBeanFillet);
         addItemToCart(bun);
