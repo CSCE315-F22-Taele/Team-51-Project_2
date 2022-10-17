@@ -18,6 +18,41 @@
 #pos__container {
     -fx-background-color: #F5F7F9;
 }
+/*
+MENU STYLING
+*/
+.menu-grid {
+    -fx-background-color: #4B5A73;
+}
+.menu-selector {
+    -fx-background-color: #20314C;
+}
+.menu-selector--btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Source Sans Pro";
+    -fx-font-weight: bold;
+    -fx-font-size: 21px;
+}
+/*
+CART STYLING
+*/
+.cart--side-bar {
+    -fx-background-color: #8F98A6;
+    -fx-padding: 25px 25px 15px 25px;
+    -fx-font-family: "Inter Bold";
+}
+.cart--scroll-pane {
+    -fx-background-color:transparent;
+}
+#checkoutBtn {
+    -fx-background-color: #20314C;
+    -fx-background-radius: 25px;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Source Sans Pro Bold";
+    -fx-font-size: 20px;
+    -fx-margin: 50px 0 0 0
+}
 
 
 .tab-pane .tab-header-area .tab-header-background {
@@ -48,10 +83,6 @@
     -fx-text-fill: #FDFDFD;
 }
 
-#cart_side_bar {
-    -fx-background-color: #FFFFFF;
-    -fx-padding: 25px 25px 25px 25px;
-}
 .scroll-pane > .viewport {
    -fx-background-color: transparent;
 }
