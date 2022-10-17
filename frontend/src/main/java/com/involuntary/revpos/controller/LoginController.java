@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -25,6 +26,8 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
 
+    @FXML
+    private Button loginButton;
     @FXML
     private TextField employeeUsernameField;
     private static TextField referEmployeeUsername;
@@ -40,6 +43,22 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            loginButton.setDefaultButton(true);
+            loginButton.setOnKeyPressed(event -> {
+                if (event.getCode() == KeyCode.ENTER) {
+                    verifyLogin(null);
+                }
+            });
+        } catch (Exception e) {}
+        try {
+            managerLoginButton.setDefaultButton(true);
+            managerLoginButton.setOnKeyPressed(event -> {
+                if (event.getCode() == KeyCode.ENTER) {
+                    verifyLogin(null);
+                }
+            });
+        } catch (Exception e) {}
         LoginController.referEmployeeUsername = employeeUsernameField;
         LoginController.referEmployeePassword = employeePasswordField;
         LoginController.referLoginMsg = loginMsgLabel;
