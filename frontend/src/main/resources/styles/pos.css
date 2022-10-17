@@ -34,6 +34,9 @@ MENU STYLING
     -fx-font-weight: bold;
     -fx-font-size: 21px;
 }
+.menu-selector--btn:hover {
+    -fx-text-fill: #A5676E;
+}
 /*
 CART STYLING
 */
@@ -42,16 +45,23 @@ CART STYLING
     -fx-padding: 25px 25px 15px 25px;
     -fx-font-family: "Inter Bold";
 }
+.cart--label {
+    -fx-font-size: 13px;
+}
 .cart--scroll-pane {
     -fx-background-color:transparent;
 }
-#checkoutBtn {
+.checkout-btn {
     -fx-background-color: #20314C;
     -fx-background-radius: 25px;
     -fx-text-fill: #FFFFFF;
     -fx-font-family: "Source Sans Pro Bold";
     -fx-font-size: 20px;
-    -fx-margin: 50px 0 0 0
+    -fx-margin: 50px 0 0 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);
+}
+#checkoutBtn:hover {
+    -fx-background-color: #3aa646;
 }
 
 

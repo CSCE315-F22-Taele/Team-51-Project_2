@@ -9,13 +9,13 @@
    <children>
       <VBox alignment="CENTER" layoutX="34.0" layoutY="34.0" prefHeight="768.0" prefWidth="100.0" styleClass="side-bar" stylesheets="@../styles/manager.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="manageHomeBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#openManageHome" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="manageHomeBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#openManageHome" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--home" />
+            <ImageView fx:id="manageInventoryBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#openManageInventory" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--inventory" />
+            <ImageView fx:id="manageMenuBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#openManageMenu" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/onhomebutton.png" />
+                  <Image url="@../images/onmenubutton.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="manageInventoryBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#openManageInventory" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--inventory" />
-            <ImageView fx:id="manageMenuBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#openManageMenu" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--menu" />
             <ImageView fx:id="manageStatsBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#openManageStats" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--stats" />
             <ImageView fx:id="manageExitBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#exitManage" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--exit" />
          </children>

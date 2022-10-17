@@ -2,33 +2,34 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="manager_content__main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.InventoryController">
+<AnchorPane fx:id="manager_content__main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../styles/manager.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.InventoryController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="24.0" layoutY="24.0" prefHeight="768.0" prefWidth="205.0" style="-fx-background-color: #EF626C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" layoutX="24.0" layoutY="24.0" prefHeight="768.0" prefWidth="100.0" styleClass="side-bar" stylesheets="@../styles/manager.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#openHome" prefHeight="45.0" prefWidth="205.0" text="Home" />
-            <Button mnemonicParsing="false" onAction="#openInventory" prefHeight="45.0" prefWidth="205.0" text="Inventory" />
-            <Button mnemonicParsing="false" onAction="#openManageMenu" prefHeight="45.0" prefWidth="205.0" text="Manage Menu" />
-            <Button layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#openStats" prefHeight="45.0" prefWidth="205.0" text="Statistics" />
-            <Button mnemonicParsing="false" onAction="#openPOS" prefHeight="45.0" prefWidth="205.0" text="Exit" />
+            <ImageView fx:id="manageHomeBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#openManageHome" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--home" />
+            <ImageView fx:id="manageInventoryBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#openManageInventory" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/oninventorybutton.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="manageMenuBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#openManageMenu" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--menu" />
+            <ImageView fx:id="manageStatsBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#openManageStats" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--stats" />
+            <ImageView fx:id="manageExitBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#exitManage" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--exit" />
          </children>
       </VBox>
-      <AnchorPane fx:id="manager_content__inventory" layoutX="10.0" layoutY="10.0" prefHeight="768.0" prefWidth="819.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="manager_content__inventory" layoutX="10.0" layoutY="10.0" prefHeight="768.0" prefWidth="819.0" styleClass="inventory-page" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TableView fx:id="inventoryTable" layoutX="35.0" layoutY="146.0" prefHeight="476.0" prefWidth="719.0" AnchorPane.bottomAnchor="146.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="146.0">
+            <TableView fx:id="inventoryTable" layoutX="35.0" layoutY="146.0" prefHeight="476.0" prefWidth="719.0" styleClass="inventory-table" AnchorPane.bottomAnchor="146.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="146.0">
                <columns>
                   <TableColumn fx:id="idCol" editable="false" maxWidth="3000.0" minWidth="-Infinity" prefWidth="-1.0" sortable="false" text="Product ID" />
                   <TableColumn fx:id="nameCol" editable="false" maxWidth="3000.0" minWidth="-Infinity" prefWidth="-1.0" sortable="false" text="Product Name" />
@@ -50,21 +51,11 @@
             </MenuButton>
             <HBox layoutX="310.0" layoutY="648.0" prefHeight="75.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#openInventoryModal" prefHeight="37.0" prefWidth="167.0" text="Manage Inventory">
+                  <Button mnemonicParsing="false" onAction="#openInventoryModal" prefHeight="37.0" prefWidth="167.0" styleClass="manageinventory-btn" text="Manage Inventory">
                      <HBox.margin>
                         <Insets left="50.0" />
                      </HBox.margin>
                   </Button>
-                  <Label text="Enter ID:">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="100.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField prefHeight="37.0" prefWidth="109.0" />
-                  <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="99.0" text="search" />
                </children></HBox>
             <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="745.0" layoutY="118.0" onMouseClicked="#updateTable" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="118.0">
                <image>
