@@ -13,12 +13,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 
 public class PosController extends MenuController {
@@ -27,16 +29,13 @@ public class PosController extends MenuController {
     private VBox cart;
     @FXML
     private Button checkoutBtn;
+    @FXML
+    private ImageView openSettingsBtn;
 
-    HashMap<String, Product> cartProducts = new HashMap<>();
     HashMap<Product, Integer> currentCart = new HashMap<>();
-    public double cartTotal = 0;
+    private double cartTotal = 0;
+    private static DecimalFormat df2 = new DecimalFormat("#.00");
 
-    public void addItemToCart(Product product) {
-        Integer count = currentCart.containsKey(product) ? currentCart.get(product) : 0;
-        currentCart.put(product, count + 1);
-        cartTotal += checkPrice(product) * 1.0625;
-    }
     @FXML
     public void addBlackBeanBurger() {
         addItemToCart(blackBeanFillet);
@@ -59,7 +58,7 @@ public class PosController extends MenuController {
         cart.getChildren().add(entry);
         Separator separator = new Separator();
         cart.getChildren().add(separator);
-        checkoutBtn.setText("CHARGE $" + cartTotal);
+        computePrice();
     }
 
     @FXML
@@ -84,7 +83,7 @@ public class PosController extends MenuController {
         cart.getChildren().add(entry);
         Separator separator = new Separator();
         cart.getChildren().add(separator);
-        checkoutBtn.setText("CHARGE $" + cartTotal);
+        computePrice();
     }
 
 
@@ -111,7 +110,7 @@ public class PosController extends MenuController {
         cart.getChildren().add(entry);
         Separator separator = new Separator();
         cart.getChildren().add(separator);
-        checkoutBtn.setText("CHARGE $" + cartTotal);
+        computePrice();
     }
 
     @FXML
@@ -119,6 +118,7 @@ public class PosController extends MenuController {
         addItemToCart(chickenTender);
         addItemToCart(chickenTender);
         addItemToCart(chickenTender);
+        addFries();
         addItemToCart(mealTray);
         addItemToCart(salt);
         addItemToCart(pepper);
@@ -132,7 +132,7 @@ public class PosController extends MenuController {
         cart.getChildren().add(entry);
         Separator separator = new Separator();
         cart.getChildren().add(separator);
-        checkoutBtn.setText("CHARGE $" + cartTotal);
+        computePrice();
     }
 
     @FXML
@@ -150,7 +150,7 @@ public class PosController extends MenuController {
         cart.getChildren().add(entry);
         Separator separator = new Separator();
         cart.getChildren().add(separator);
-        checkoutBtn.setText("CHARGE $" + cartTotal);
+        computePrice();
     }
 
     @FXML
@@ -164,7 +164,7 @@ public class PosController extends MenuController {
         cart.getChildren().add(entry);
         Separator separator = new Separator();
         cart.getChildren().add(separator);
-        checkoutBtn.setText("CHARGE $" + cartTotal);
+        computePrice();
     }
 
     @FXML
@@ -178,7 +178,7 @@ public class PosController extends MenuController {
         cart.getChildren().add(entry);
         Separator separator = new Separator();
         cart.getChildren().add(separator);
-        checkoutBtn.setText("CHARGE $" + cartTotal);
+        computePrice();
     }
 
     @FXML
@@ -192,7 +192,7 @@ public class PosController extends MenuController {
         cart.getChildren().add(entry);
         Separator separator = new Separator();
         cart.getChildren().add(separator);
-        checkoutBtn.setText("CHARGE $" + cartTotal);
+        computePrice();
     }
 
     @FXML
@@ -206,7 +206,7 @@ public class PosController extends MenuController {
         cart.getChildren().add(entry);
         Separator separator = new Separator();
         cart.getChildren().add(separator);
-        checkoutBtn.setText("CHARGE $" + cartTotal);
+        computePrice();
     }
 
     @FXML
@@ -220,7 +220,7 @@ public class PosController extends MenuController {
         cart.getChildren().add(entry);
         Separator separator = new Separator();
         cart.getChildren().add(separator);
-        checkoutBtn.setText("CHARGE $" + cartTotal);
+        computePrice();
     }
 
     @FXML
@@ -234,7 +234,7 @@ public class PosController extends MenuController {
         cart.getChildren().add(entry);
         Separator separator = new Separator();
         cart.getChildren().add(separator);
-        checkoutBtn.setText("CHARGE $" + cartTotal);
+        computePrice();
     }
 
     @FXML
@@ -320,7 +320,7 @@ public class PosController extends MenuController {
         cart.getChildren().add(entry);
         Separator separator = new Separator();
         cart.getChildren().add(separator);
-        checkoutBtn.setText("CHARGE $" + cartTotal);
+        computePrice();
     }
 
     @FXML
@@ -338,7 +338,7 @@ public class PosController extends MenuController {
         cart.getChildren().add(entry);
         Separator separator = new Separator();
         cart.getChildren().add(separator);
-        checkoutBtn.setText("CHARGE $" + cartTotal);
+        computePrice();
     }
 
     @FXML
@@ -353,29 +353,19 @@ public class PosController extends MenuController {
 
     @FXML
     public void addStrawberryIceCream() {
-        if (!cartProducts.containsKey("strawberryicecream")) {
-            cartProducts.put("strawberryicecream", new Product(1034, "strawberry", 3.29, 342, 1));
-        } else {
-            cartProducts.put("strawberryicecream", new Product(1034, "strawberry", 3.29, 342, cartProducts.get("strawberryicecream").getQuantity()));
-        }
 
         addDessertCup();
         HBox entry = new HBox();
-        Label label = new Label("Strawberry Ice Cream x" + cartProducts.get("strawberryicecream").getQuantity());
+        Label label = new Label("Strawberry Ice Cream");
         entry.getChildren().add(label);
         cart.getChildren().add(entry);
         Separator separator = new Separator();
         cart.getChildren().add(separator);
-        checkoutBtn.setText("CHARGE $" + cartTotal);
+        computePrice();
     }
 
     @FXML
     public void addVanillaIceCream() {
-        if (!cartProducts.containsKey("vanillaicecream")) {
-            cartProducts.put("vanillaicecream", new Product(1034, "vanilla", 3.29, 342, 1));
-        } else {
-            cartProducts.put("vanillaicecream", new Product(1034, "vanilla", 3.29, 342, cartProducts.get("vanillaicecream").getQuantity()));
-        }
 
         addDessertCup();
         HBox entry = new HBox();
@@ -384,16 +374,14 @@ public class PosController extends MenuController {
         cart.getChildren().add(entry);
         Separator separator = new Separator();
         cart.getChildren().add(separator);
-        checkoutBtn.setText("CHARGE $" + cartTotal);
+        computePrice();
     }
 
-    public void openSettings(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/views/settings.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = ((Node) event.getSource()).getScene();
-        scene.setRoot(root);
+    public void addItemToCart(Product product) {
+        Integer count = currentCart.containsKey(product) ? currentCart.get(product) : 0;
+        currentCart.put(product, count + 1);
+        cartTotal += checkPrice(product) * 1.0625;
     }
-
 
     public boolean updateCall(String category, String id, int quantity) {
         Connection dbConnection = null;
@@ -419,19 +407,23 @@ public class PosController extends MenuController {
         return true;
     }
 
-
+    public void computePrice() {
+        checkoutBtn.setText("CHARGE $" + df2.format(cartTotal));
+    }
     public void checkout() {
         for (Product item : currentCart.keySet()) {
-            if(updateCall(item.getCategory(), String.valueOf(item.getId()), currentCart.get(item))) {
-                System.out.println("UPDATED");
-            } else {
-                System.out.println("FAILED UPDATE");
-            }
+            updateCall(item.getCategory(), String.valueOf(item.getId()), currentCart.get(item));
         }
 
         cart.getChildren().clear();
         currentCart.clear();
         cartTotal = 0.00;
-        checkoutBtn.setText("CHARGE $" + cartTotal);
+        checkoutBtn.setText("CHARGE $" + df2.format(cartTotal));
+    }
+
+    public void openSettings() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/settings.fxml"));
+        Scene scene = openSettingsBtn.getScene();
+        scene.setRoot(root);
     }
 }
