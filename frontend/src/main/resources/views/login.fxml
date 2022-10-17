@@ -8,85 +8,62 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.LoginController">
-   <AnchorPane prefHeight="200.0" prefWidth="450.0" styleClass="logo__container" stylesheets="@../styles/login.css" HBox.hgrow="ALWAYS">
+   <AnchorPane prefHeight="200.0" prefWidth="450.0" stylesheets="@../styles/login.css" HBox.hgrow="ALWAYS">
       <children>
-         <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-           <columnConstraints>
-             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-           </columnConstraints>
-           <rowConstraints>
-             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-           </rowConstraints>
+         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="424.0" styleClass="logo--container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-               <HBox alignment="CENTER">
+               <ImageView fitHeight="397.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../images/revslogo.png" />
+                  </image>
+               </ImageView>
+            </children>
+         </VBox>
+         <VBox alignment="CENTER" prefWidth="574.0" styleClass="login--container" stylesheets="@../styles/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="424.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+               <HBox alignment="BOTTOM_CENTER" prefHeight="239.0" prefWidth="574.0">
                   <children>
-                     <ImageView fitHeight="397.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+                     <ImageView fitHeight="122.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                           <Image url="@../images/revslogo.png" />
+                           <Image url="@../images/lock.png" />
                         </image>
+                        <HBox.margin>
+                           <Insets bottom="40.0" />
+                        </HBox.margin>
                      </ImageView>
                   </children>
                </HBox>
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <TextField fx:id="employeeUsernameField" prefHeight="45.0" prefWidth="400.0" promptText="Username" />
+                  </children>
+               </HBox>
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <PasswordField fx:id="employeePasswordField" prefHeight="45.0" prefWidth="400.0" promptText="Password" />
+                  </children>
+               </HBox>
+               <HBox alignment="BOTTOM_CENTER" prefHeight="96.0" prefWidth="574.0">
+                  <children>
+                     <Button fx:id="loginButton" mnemonicParsing="false" onAction="#verifyLogin" prefHeight="55.0" prefWidth="322.0" styleClass="login--btn" stylesheets="@../styles/login.css" text="Login">
+                        <font>
+                           <Font size="20.0" />
+                        </font>
+                     </Button>
+                  </children>
+               </HBox>
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <Label fx:id="loginMsgLabel" style="-fx-text-fill: FFFFFF;" styleClass="login-status--text" stylesheets="@../styles/login.css" />
+                  </children>
+               </HBox>
             </children>
-         </GridPane>
-      </children>
-   </AnchorPane>
-   <GridPane prefWidth="574.0" HBox.hgrow="ALWAYS">
-      <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      </rowConstraints>
-      <children>
-            <VBox alignment="CENTER" prefWidth="574.0" styleClass="login__container" stylesheets="@../styles/login.css">
-               <children>
-                  <HBox alignment="BOTTOM_CENTER" prefHeight="239.0" prefWidth="574.0">
-                     <children>
-                        <ImageView fitHeight="122.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/lock.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets bottom="40.0" />
-                           </HBox.margin>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <TextField fx:id="employeeUsernameField" prefHeight="45.0" prefWidth="400.0" promptText="Username" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <PasswordField fx:id="employeePasswordField" prefHeight="45.0" prefWidth="400.0" promptText="Password" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="BOTTOM_CENTER" prefHeight="96.0" prefWidth="574.0">
-                     <children>
-                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#verifyLogin" prefHeight="55.0" prefWidth="322.0" style="-fx-border-radius: 25; -fx-background-radius: 25;" stylesheets="@../styles/login.css" text="Login">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Label fx:id="loginMsgLabel" stylesheets="@../styles/login.css" />
-                     </children>
-                  </HBox>
-               </children>
          </VBox>
       </children>
-   </GridPane>
+   </AnchorPane>
 </HBox>

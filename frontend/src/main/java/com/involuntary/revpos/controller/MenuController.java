@@ -22,7 +22,7 @@ public class MenuController {
             statement = dbConnection.createStatement();
             result = statement.executeQuery(sql);
             while(result.next()) {
-                price = result.getDouble("price");
+                price = Math.round(result.getDouble("price") * 100.0)/ 100.0;
             }
         } catch (Exception ex) {
             System.err.println(ex.getClass().getName()+": "+ex.getMessage());

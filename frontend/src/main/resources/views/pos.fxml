@@ -2,169 +2,83 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="pos__container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../styles/pos.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.PosController">
     <children>
-        <TabPane prefHeight="768.0" prefWidth="720.0" side="BOTTOM" stylesheets="@../styles/pos.css" tabClosingPolicy="UNAVAILABLE">
-            <tabs>
-                <Tab text="Entrees">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="765.0" prefWidth="902.0">
-                            <children>
-                                <ToolBar layoutY="61.0" prefHeight="113.0" prefWidth="278.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addBlackBeanBurger" prefHeight="92.0" prefWidth="210.0" text="Black Bean Burger" />
-                                    </items>
-                                </ToolBar>
-                                <ToolBar layoutX="-1.0" layoutY="189.0" prefHeight="106.0" prefWidth="280.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addClassicHamburger" prefHeight="88.0" prefWidth="209.0" text="Classic Hamburger" />
-                                    </items>
-                                </ToolBar>
-                                <ToolBar layoutX="-2.0" layoutY="326.0" prefHeight="106.0" prefWidth="283.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addChickenSandwich" prefHeight="88.0" prefWidth="210.0" text="Chicken Sandwich" />
-                                    </items>
-                                </ToolBar>
-                                <ToolBar layoutY="456.0" prefHeight="106.0" prefWidth="283.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addChickenTenders" prefHeight="88.0" prefWidth="209.0" text="Chicken Tenders" />
-                                    </items>
-                                </ToolBar>
-                                <ToolBar layoutX="1.0" layoutY="586.0" prefHeight="98.0" prefWidth="282.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addFries" prefHeight="80.0" prefWidth="210.0" text="French Fries" />
-                                    </items>
-                                </ToolBar>
-                        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#openSettings" text="Temporary Manager Button" />
-                            </children>
-                        </AnchorPane>
-                    </content>
-                </Tab>
-                <Tab text="Drinks">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                            <children>
-                                <Button layoutX="572.0" layoutY="675.0" mnemonicParsing="false" text="Add Drinks to Cart" />
-                                <ToolBar layoutX="27.0" layoutY="52.0" prefHeight="109.0" prefWidth="304.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addBrisk" prefHeight="91.0" prefWidth="208.0" text="Brisk +" />
-                                    </items>
-                                </ToolBar>
-                                <ToolBar layoutX="27.0" layoutY="182.0" prefHeight="109.0" prefWidth="307.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addGatorade" prefHeight="91.0" prefWidth="208.0" text="Gatorade +" />
-                                    </items>
-                                </ToolBar>
-                                <ToolBar layoutX="27.0" layoutY="311.0" prefHeight="109.0" prefWidth="306.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addRootBeer" prefHeight="91.0" prefWidth="208.0" text="Mug Rootbeer +" />
-                                    </items>
-                                </ToolBar>
-                                <ToolBar layoutX="27.0" layoutY="436.0" prefHeight="109.0" prefWidth="305.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addPepsi" prefHeight="91.0" prefWidth="208.0" text="Pepsi +" />
-                                    </items>
-                                </ToolBar>
-                                <ToolBar layoutX="14.0" layoutY="566.0" prefHeight="109.0" prefWidth="319.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addSierraMist" prefHeight="91.0" prefWidth="208.0" text="Sierra Mist +" />
-                                    </items>
-                                </ToolBar>
-                            </children>
-                        </AnchorPane>
-                    </content>
-                </Tab>
-                <Tab text="Sauces">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                            <children>
-                                <ToolBar layoutX="77.0" layoutY="69.0" prefHeight="63.0" prefWidth="275.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addCaesarDressing" text="Caesar Dressing +" />
-                                    </items>
-                                </ToolBar>
-                                <ToolBar layoutX="77.0" layoutY="316.0" prefHeight="63.0" prefWidth="276.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addKetchup" text="Ketchup +" />
-                                    </items>
-                                </ToolBar>
-                                <ToolBar layoutX="77.0" layoutY="557.0" prefHeight="63.0" prefWidth="277.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addRanch" text="Ranch +" />
-                                    </items>
-                                </ToolBar>
-                                <ToolBar layoutX="77.0" layoutY="232.0" prefHeight="63.0" prefWidth="276.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addHoneyBBQ" text="Honey BBQ +" />
-                                    </items>
-                                </ToolBar>
-                                <ToolBar layoutX="77.0" layoutY="400.0" prefHeight="63.0" prefWidth="277.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addMayo" text="Mayo +" />
-                                    </items>
-                                </ToolBar>
-                                <ToolBar layoutX="77.0" layoutY="478.0" prefHeight="63.0" prefWidth="276.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addMustard" text="Mustard +" />
-                                    </items>
-                                </ToolBar>
-                                <ToolBar layoutX="77.0" layoutY="148.0" prefHeight="63.0" prefWidth="277.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addGigemSauce" text="Gigem Sauce +" />
-                                    </items>
-                                </ToolBar>
-                                <Button layoutX="569.0" layoutY="677.0" mnemonicParsing="false" text="Add Sauces to Cart" />
-                            </children>
-                        </AnchorPane>
-                    </content>
-                </Tab>
-                <Tab text="Desserts">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                            <children>
-                                <ToolBar layoutX="71.0" layoutY="52.0" prefHeight="63.0" prefWidth="338.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addChocolateIceCream" text="Chocolate Ice Cream +" />
-                                    </items>
-                                </ToolBar>
-                                <ToolBar layoutX="71.0" layoutY="147.0" prefHeight="63.0" prefWidth="338.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addCookie" text="Cookie +" />
-                                    </items>
-                                </ToolBar>
-                                <ToolBar layoutX="71.0" layoutY="238.0" prefHeight="63.0" prefWidth="338.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addCookieSandwich" text="Cookie Sandwich +" />
-                                    </items>
-                                </ToolBar>
-                                <ToolBar layoutX="71.0" layoutY="327.0" prefHeight="63.0" prefWidth="338.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addStrawberryIceCream" text="Strawberry Ice Cream +" />
-                                    </items>
-                                </ToolBar>
-                                <ToolBar layoutX="71.0" layoutY="418.0" prefHeight="63.0" prefWidth="338.0">
-                                    <items>
-                                        <Button mnemonicParsing="false" onAction="#addVanillaIceCream" text="Vanilla Ice Cream +" />
-                                    </items>
-                                </ToolBar>
-                                <Button layoutX="560.0" layoutY="671.0" mnemonicParsing="false" text="Add Desserts to Cart" />
-                            </children>
-                        </AnchorPane>
-                    </content>
-                </Tab>
-            </tabs>
-        </TabPane>
-        <VBox fx:id="cart_side_bar" layoutX="908.0" layoutY="49.0" prefHeight="719.0" prefWidth="304.0" stylesheets="@../styles/pos.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox layoutX="-9.0" prefHeight="768.0" prefWidth="728.0" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="304.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ScrollPane prefHeight="700.0" prefWidth="720.0" styleClass="menu-grid" HBox.hgrow="ALWAYS">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="695.0" prefWidth="717.0">
+                     <children>
+                        <Button layoutX="8.0" layoutY="14.0" mnemonicParsing="false" onAction="#addClassicHamburger" prefHeight="85.0" prefWidth="145.0" text="Classic Hamburger" />
+                        <Button layoutX="8.0" layoutY="117.0" mnemonicParsing="false" onAction="#removeBun" prefHeight="25.0" prefWidth="68.0" text="- bun" textAlignment="CENTER" textFill="#962121" />
+                        <Button layoutX="85.0" layoutY="117.0" mnemonicParsing="false" onAction="#removeLettuce" prefHeight="25.0" prefWidth="68.0" text="- lettuce" textAlignment="CENTER" textFill="#962121" />
+                        <Button layoutX="8.0" layoutY="160.0" mnemonicParsing="false" onAction="#removePickles" prefHeight="25.0" prefWidth="68.0" text="- pickles" textAlignment="CENTER" textFill="#962121" />
+                        <Button layoutX="85.0" layoutY="160.0" mnemonicParsing="false" onAction="#removeTomato" prefHeight="25.0" prefWidth="68.0" text="- tomato" textAlignment="CENTER" textFill="#962121" />
+                        <Button layoutX="201.0" layoutY="14.0" mnemonicParsing="false" onAction="#addBlackBeanBurger" prefHeight="85.0" prefWidth="145.0" text="Black Bean Burger" />
+                        <Button layoutX="201.0" layoutY="117.0" mnemonicParsing="false" onAction="#removeBun" prefHeight="25.0" prefWidth="68.0" text="- bun" textAlignment="CENTER" textFill="#962121" />
+                        <Button layoutX="278.0" layoutY="117.0" mnemonicParsing="false" onAction="#removeLettuce" prefHeight="25.0" prefWidth="68.0" text="- lettuce" textAlignment="CENTER" textFill="#962121" />
+                        <Button layoutX="201.0" layoutY="160.0" mnemonicParsing="false" onAction="#removePickles" prefHeight="25.0" prefWidth="68.0" text="- pickles" textAlignment="CENTER" textFill="#962121" />
+                        <Button layoutX="278.0" layoutY="160.0" mnemonicParsing="false" onAction="#removeTomato" prefHeight="25.0" prefWidth="68.0" text="- tomato" textAlignment="CENTER" textFill="#962121" />
+                        <Button layoutX="391.0" layoutY="14.0" mnemonicParsing="false" onAction="#addChickenSandwich" prefHeight="85.0" prefWidth="145.0" text="Chicken Sandwich" />
+                        <Button layoutX="391.0" layoutY="117.0" mnemonicParsing="false" onAction="#removeBun" prefHeight="25.0" prefWidth="68.0" text="- bun" textAlignment="CENTER" textFill="#962121" />
+                        <Button layoutX="468.0" layoutY="117.0" mnemonicParsing="false" onAction="#removeLettuce" prefHeight="25.0" prefWidth="68.0" text="- lettuce" textAlignment="CENTER" textFill="#962121" />
+                        <Button layoutX="391.0" layoutY="160.0" mnemonicParsing="false" onAction="#removePickles" prefHeight="25.0" prefWidth="68.0" text="- pickles" textAlignment="CENTER" textFill="#962121" />
+                        <Button layoutX="468.0" layoutY="160.0" mnemonicParsing="false" onAction="#removeOnion" prefHeight="25.0" prefWidth="68.0" text="- onion" textAlignment="CENTER" textFill="#962121" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children></HBox>
+      <HBox fillHeight="false" layoutY="702.0" maxHeight="-Infinity" prefHeight="68.0" prefWidth="720.0" styleClass="menu-selector" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="304.0">
+         <children>
+            <ImageView fx:id="openSettingsBtn" fitHeight="68.0" fitWidth="68.0" onMousePressed="#openSettings" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/managerBtn.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <GridPane alignment="CENTER" prefHeight="68.0" prefWidth="1041.0" HBox.hgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" styleClass="menu-selector--btn" text="ENTREES" GridPane.halignment="CENTER" />
+                  <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" styleClass="menu-selector--btn" text="SIDES" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                  <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" styleClass="menu-selector--btn" text="DRINKS" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                     <font>
+                        <Font name="Source Sans Pro Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" styleClass="menu-selector--btn" text="DESSERTS" GridPane.columnIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" styleClass="menu-selector--btn" text="MISC" GridPane.columnIndex="4" />
+               </children>
+            </GridPane>
+         </children>
+      </HBox>
+        <VBox layoutX="908.0" layoutY="49.0" prefHeight="719.0" prefWidth="304.0" styleClass="cart--side-bar" stylesheets="@../styles/pos.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <VBox prefHeight="64.0" prefWidth="254.0" styleClass="cart-title__container" stylesheets="@../styles/pos.css">
                     <children>
@@ -183,16 +97,42 @@
                 </VBox>
             <VBox prefHeight="633.0" prefWidth="279.0" VBox.vgrow="ALWAYS">
                <children>
-                  <ScrollPane fx:id="cart_scroll_pane" prefHeight="2000.0" prefWidth="254.0" style="-fx-background-color: #FFFFFF;" VBox.vgrow="ALWAYS">
+                  <ScrollPane prefHeight="2000.0" prefWidth="254.0" styleClass="cart--scroll-pane" VBox.vgrow="ALWAYS">
                      <content>
                         <VBox fx:id="cart" prefWidth="252.0" />
                      </content>
                   </ScrollPane>
                </children></VBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" />
-            <Button fx:id="checkoutBtn" mnemonicParsing="false" onAction="#checkout" prefHeight="100.0" prefWidth="254.0" text="CHARGE $0.00">
+            <HBox prefHeight="19.0" prefWidth="254.0">
+               <children>
+                  <HBox prefHeight="17.0" prefWidth="295.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="175.0" styleClass="cart--label" text="Tax" />
+                        <HBox alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="75.0">
+                           <children>
+                              <Label styleClass="cart--label" text="\$0.00" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children></HBox>
+            <HBox prefHeight="19.0" prefWidth="254.0">
+               <children>
+                  <HBox prefHeight="17.0" prefWidth="295.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="175.0" styleClass="cart--label" text="Discount" />
+                        <HBox alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="75.0">
+                           <children>
+                              <Label styleClass="cart--label" text="\$0.00" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <Button fx:id="checkoutBtn" maxHeight="-Infinity" mnemonicParsing="false" onAction="#checkout" prefHeight="41.0" prefWidth="254.0" styleClass="checkout-btn" stylesheets="@../styles/pos.css" text="CHARGE $0.00" VBox.vgrow="NEVER">
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets top="30.0" />
                </VBox.margin></Button>
             </children></VBox>
     </children>

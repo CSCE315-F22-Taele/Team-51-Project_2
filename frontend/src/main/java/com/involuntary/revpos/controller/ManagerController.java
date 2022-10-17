@@ -1,49 +1,53 @@
 package com.involuntary.revpos.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 
 public class ManagerController {
     @FXML
-    public void openHome(ActionEvent event) throws IOException {
+    private ImageView manageHomeBtn;
+    @FXML
+    public void openManageHome() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/views/manager.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = ((Node) event.getSource()).getScene();
+        Scene scene = manageHomeBtn.getScene();
         scene.setRoot(root);
     }
     @FXML
-    public void openInventory(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/views/inventory.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = ((Node) event.getSource()).getScene();
+    private ImageView manageInventoryBtn;
+    @FXML
+    public void openManageInventory() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/managerInventory.fxml"));
+        Scene scene = manageInventoryBtn.getScene();
         scene.setRoot(root);
     }
     @FXML
-    public void openManageMenu(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/views/manageMenu.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = ((Node) event.getSource()).getScene();
+    private ImageView manageMenuBtn;
+    @FXML
+    public void openManageMenu() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/managerMenu.fxml"));
+        Scene scene = manageMenuBtn.getScene();
         scene.setRoot(root);
     }
     @FXML
-    public void openStats(ActionEvent event) throws IOException {
+    private ImageView manageStatsBtn;
+    @FXML
+    public void openManageStats() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/views/stats.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = ((Node) event.getSource()).getScene();
+        Scene scene = manageStatsBtn.getScene();
         scene.setRoot(root);
     }
+
     @FXML
-    public void openPOS(ActionEvent event) throws IOException {
+    private ImageView manageExitBtn;
+    @FXML
+    public void exitManage() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/views/pos.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = ((Node) event.getSource()).getScene();
+        Scene scene = manageExitBtn.getScene();
         scene.setRoot(root);
     }
 }

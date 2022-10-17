@@ -3,23 +3,28 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="manager_content__main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.StatsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.StatsController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="34.0" layoutY="34.0" prefHeight="768.0" prefWidth="205.0" style="-fx-background-color: #EF626C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" layoutX="34.0" layoutY="34.0" prefHeight="768.0" prefWidth="100.0" styleClass="side-bar" stylesheets="@../styles/manager.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#openHome" prefHeight="45.0" prefWidth="205.0" text="Home" />
-            <Button mnemonicParsing="false" onAction="#openInventory" prefHeight="45.0" prefWidth="205.0" text="Inventory" />
-            <Button mnemonicParsing="false" onAction="#openManageMenu" prefHeight="45.0" prefWidth="205.0" text="Manage Menu" />
-            <Button layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#openStats" prefHeight="45.0" prefWidth="205.0" text="Statistics" />
-            <Button mnemonicParsing="false" onAction="#openPOS" prefHeight="45.0" prefWidth="205.0" text="Exit" />
+            <ImageView fx:id="manageHomeBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#openManageHome" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--home" />
+            <ImageView fx:id="manageInventoryBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#openManageInventory" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--inventory" />
+            <ImageView fx:id="manageMenuBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#openManageMenu" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--menu" />
+            <ImageView fx:id="manageStatsBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#openManageStats" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/onstatsbutton.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="manageExitBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#exitManage" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--exit" />
          </children>
       </VBox>
       <AnchorPane layoutX="246.0" layoutY="-59.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1005.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
