@@ -3,6 +3,9 @@
     src: url("../fonts/Inter-Bold.ttf");
     }
 
+.settings-page {
+    -fx-background-color: #4B5A73;
+}
 .settings-btn__container {
     -fx-background-color:  #FBFBFE;
     -fx-background-radius: 35px;

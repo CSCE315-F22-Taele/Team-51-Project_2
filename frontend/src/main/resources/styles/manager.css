@@ -1,0 +1,92 @@
+.side-bar {
+    -fx-background-color: #20304B;
+}
+.side-bar--home {
+    -fx-image: url("../images/homebutton.png");
+}
+.side-bar--home:hover {
+    -fx-image: url("../images/onhomebutton.png");
+}
+.side-bar--inventory {
+    -fx-image: url("../images/inventorybutton.png");
+}
+.side-bar--inventory:hover {
+    -fx-image: url("../images/oninventorybutton.png");
+}
+.side-bar--menu {
+    -fx-image: url("../images/menubutton.png");
+}
+.side-bar--menu:hover {
+    -fx-image: url("../images/onmenubutton.png");
+}
+.side-bar--stats {
+    -fx-image: url("../images/statsbutton.png");
+}
+.side-bar--stats:hover {
+    -fx-image: url("../images/onstatsbutton.png");
+}
+.side-bar--exit {
+    -fx-image: url("../images/exitbutton.png");
+}
+.side-bar--exit:hover {
+    -fx-image: url("../images/onexitbutton.png");
+}
+
+
+.inventory-page {
+    -fx-background-color: #8E97A5;
+}
+.inventory-table {
+    -fx-background-color: transparent;
+}
+.inventory-table .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+.inventory-table .column-header-background{
+    -fx-background-color: linear-gradient(to bottom, #ffffff, #88a3cc);
+    -fx-background-radius: 10px 10px 0px 0px;
+    -fx-background-insets: 0 11px 0 0;
+    -fx-padding: 0 0 5px 0;
+}
+.inventory-table .column-header {
+    -fx-background-color: transparent;
+}
+
+.inventory-table .table-cell{
+    -fx-border-color: transparent;
+    -fx-padding: 2 0 2 10px;
+}
+.inventory-table .table-row-cell: hover {
+    -fx-background-color: #dfe6f1;
+    -fx-text-background-color: #6D2830;
+    -fx-font-weight: bold;
+}
+.inventory-table .table-row-cell: odd{
+    -fx-background-color: #dfe6f1;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+.inventory-table .table-row-cell: even{
+    -fx-background-color: #f0faff;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+.inventory-table .virtual-flow .scroll-bar:vertical,
+.inventory-table .virtual-flow .scroll-bar:vertical .track,
+.inventory-table .virtual-flow .scroll-bar:vertical .track-background,
+.inventory-table .virtual-flow .scroll-bar:horizontal,
+.inventory-table .virtual-flow .scroll-bar:horizontal .track,
+.inventory-table .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+}
+.inventory-table .virtual-flow .scroll-bar:vertical .thumb{
+    -fx-background-color:  linear-gradient(to bottom, #ffffff, #88a3cc);
+}
+.inventory-table .virtual-flow .scroll-bar:horizontal .thumb {
+    -fx-background-color:  linear-gradient(to right, #ffffff, #88a3cc);
+}
+
+.manageinventory-btn {
+    -fx-background-radius: 25px;
+}

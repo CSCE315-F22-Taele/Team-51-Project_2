@@ -64,7 +64,7 @@
             </GridPane>
          </children>
       </HBox>
-        <VBox fx:id="cart_side_bar" layoutX="908.0" layoutY="49.0" prefHeight="719.0" prefWidth="304.0" styleClass="cart--side-bar" stylesheets="@../styles/pos.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox layoutX="908.0" layoutY="49.0" prefHeight="719.0" prefWidth="304.0" styleClass="cart--side-bar" stylesheets="@../styles/pos.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <VBox prefHeight="64.0" prefWidth="254.0" styleClass="cart-title__container" stylesheets="@../styles/pos.css">
                     <children>
@@ -83,7 +83,7 @@
                 </VBox>
             <VBox prefHeight="633.0" prefWidth="279.0" VBox.vgrow="ALWAYS">
                <children>
-                  <ScrollPane fx:id="cart_scroll_pane" prefHeight="2000.0" prefWidth="254.0" styleClass="cart--scroll-pane" VBox.vgrow="ALWAYS">
+                  <ScrollPane prefHeight="2000.0" prefWidth="254.0" styleClass="cart--scroll-pane" VBox.vgrow="ALWAYS">
                      <content>
                         <VBox fx:id="cart" prefWidth="252.0" />
                      </content>
@@ -93,10 +93,10 @@
                <children>
                   <HBox prefHeight="17.0" prefWidth="295.0">
                      <children>
-                        <Label prefHeight="17.0" prefWidth="175.0" text="Tax" />
+                        <Label prefHeight="17.0" prefWidth="175.0" styleClass="cart--label" text="Tax" />
                         <HBox alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="75.0">
                            <children>
-                              <Label text="\$0.00" />
+                              <Label styleClass="cart--label" text="\$0.00" />
                            </children>
                         </HBox>
                      </children>
@@ -106,17 +106,17 @@
                <children>
                   <HBox prefHeight="17.0" prefWidth="295.0">
                      <children>
-                        <Label prefHeight="17.0" prefWidth="175.0" text="Discount" />
+                        <Label prefHeight="17.0" prefWidth="175.0" styleClass="cart--label" text="Discount" />
                         <HBox alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="75.0">
                            <children>
-                              <Label text="\$0.00" />
+                              <Label styleClass="cart--label" text="\$0.00" />
                            </children>
                         </HBox>
                      </children>
                   </HBox>
                </children>
             </HBox>
-            <Button fx:id="checkoutBtn" maxHeight="-Infinity" mnemonicParsing="false" onAction="#checkout" prefHeight="41.0" prefWidth="254.0" stylesheets="@../styles/pos.css" text="CHARGE $0.00" VBox.vgrow="NEVER">
+            <Button fx:id="checkoutBtn" maxHeight="-Infinity" mnemonicParsing="false" onAction="#checkout" prefHeight="41.0" prefWidth="254.0" styleClass="checkout-btn" stylesheets="@../styles/pos.css" text="CHARGE $0.00" VBox.vgrow="NEVER">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin></Button>

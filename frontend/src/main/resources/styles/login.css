@@ -1,11 +1,43 @@
-.logo__container {
-    -fx-background-color: #CB5058;
+@font-face {
+    font-family: "Inter Bold";
+    src: url("../fonts/Inter-Bold.ttf");
+    }
+@font-face {
+    font-family: "SourceSansPro Regular";
+    src: url("../fonts/SourceSansPro-Regular.ttf");
+    }
+
+.logo--container {
+    -fx-background-color: #20314C;
 }
-.login__container {
-    -fx-background-color: #FFFFFF;
+.login--container {
+    -fx-background-color: #4B5A73;
 }
 .text-field {
-    -fx-background-color: -fx-text-box-border, #FFFFFF ;
+    -fx-background-color: -fx-text-box-border, #4B5A73;
     -fx-background-insets: 0, 0 0 1 0 ;
     -fx-background-radius: 0 ;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Source Sans Pro";
+    -fx-font-size: 14px;
+}
+.login--btn {
+    -fx-border-radius: 25px;
+    -fx-background-radius: 25px;
+    -fx-font-size: 20px;
+    -fx-font-family: "Source Sans Pro";
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 5);
+}
+.login--btn:hover {
+    -fx-font-family: "Source Sans Pro";
+    -fx-background-color: #6D2830;
+    -fx-text-fill: #FFFFFF;
+}
+.login--text {
+    -fx-font-size: 35px;
+    -fx-font-family: "Inter Bold";
+}
+.login-status--text {
+    -fx-font-family: "Source Sans Pro";
+    -fx-text-fill: #FFFFFF;
 }

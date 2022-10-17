@@ -4,11 +4,7 @@ import java.io.IOException;
 
 import com.involuntary.revpos.database.DatabaseConnection;
 import com.involuntary.revpos.models.Product;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,7 +12,6 @@ import javafx.scene.control.Separator;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -420,10 +415,8 @@ public class PosController extends MenuController {
         cartTotal = 0.00;
         checkoutBtn.setText("CHARGE $" + df2.format(cartTotal));
     }
-
     public void openSettings() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/views/settings.fxml"));
         Scene scene = openSettingsBtn.getScene();
-        scene.setRoot(root);
+        LoginController.openModal(scene);
     }
 }

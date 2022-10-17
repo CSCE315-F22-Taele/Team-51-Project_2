@@ -121,7 +121,7 @@ public class InventoryController extends ManagerController implements Initializa
      *
      */
     public void openInventoryModal() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/views/manageInventory.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/views/managerInventoryUpdate.fxml"));
         Scene scene = new Scene(root);
         Stage modal = new Stage();
         modal.setScene(scene);
@@ -134,13 +134,13 @@ public class InventoryController extends ManagerController implements Initializa
         modal.showAndWait();
     }
     public void switchInventoryModal(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/views/manageInventory.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/views/managerInventoryUpdate.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = ((Node) event.getSource()).getScene();
         scene.setRoot(root);
     }
     public void switchAddDeleteModal(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/views/manageInventoryExpanded.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/views/manageInventoryCreate.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = ((Node) event.getSource()).getScene();
         scene.setRoot(root);
