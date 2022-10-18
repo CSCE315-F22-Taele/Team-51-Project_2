@@ -45,8 +45,6 @@ public class InventoryController extends ManagerController implements Initializa
     @FXML
     private TextField manageValueField;
     @FXML
-    private ComboBox manageCategoryField;
-    @FXML
     private TextField manageIDField;
     @FXML
     private TextField manageNameField;
@@ -69,7 +67,6 @@ public class InventoryController extends ManagerController implements Initializa
      */
     public ObservableList<Product> queryProducts() {
         ObservableList<Product> inventoryList = FXCollections.observableArrayList();
-        List<String> categories = List.of("entrees", "drinks", "sauces", "desserts");
 
         try {
             DatabaseConnection connectNow = new DatabaseConnection();
@@ -77,24 +74,20 @@ public class InventoryController extends ManagerController implements Initializa
 
             Statement statement = dbConnection.createStatement();
 
-            for(String category : categories) {
-                String queryData = "SELECT * FROM " + category;
-                ResultSet result = statement.executeQuery(queryData);
+            String queryData = "SELECT * FROM ingredients" ;
+            ResultSet result = statement.executeQuery(queryData);
 
-                while(result.next()) {
-                    Product product = new Product(
-                            result.getInt("id"),
-                            result.getString("name"),
-                            result.getDouble("price"),
-                            result.getInt("calories"),
-                            result.getInt("inventory")
-                    );
-                    inventoryList.add(product);
-                }
+            while(result.next()) {
+                Product product = new Product(
+                        result.getInt("id"),
+                        result.getString("name"),
+                        result.getDouble("price"),
+                        result.getInt("calories"),
+                        result.getInt("inventory")
+                );
+                inventoryList.add(product);
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        } catch (Exception ex) { ex.printStackTrace(); }
 
         return inventoryList;
     }
@@ -133,12 +126,20 @@ public class InventoryController extends ManagerController implements Initializa
         modal.getIcons().add(new Image(getClass().getResourceAsStream("/images/box.png")));
         modal.showAndWait();
     }
+    /**
+     * Open another window used to manage the inventory
+     *
+     */
     public void switchInventoryModal(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/views/managerInventoryUpdate.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = ((Node) event.getSource()).getScene();
         scene.setRoot(root);
     }
+    /**
+     * Switch to managerInventory.fxml where product attributes can be updates and saved
+     *
+     */
     public void switchAddDeleteModal(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/views/manageInventoryCreate.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -149,18 +150,17 @@ public class InventoryController extends ManagerController implements Initializa
     /**
      * Queries the database and updates a product's stock
      *
-     * @param category identifies the database table
      * @param type identifies which column of the database is being modified
      * @param id represents the product id inside database
      * @param value represents the new value going to the database
      *
      * @return true if query is successful, and false if query failed
      */
-    public boolean updateCall(String category, String type, String id, int value) {
+    public boolean updateCall(String type, String id, String value) {
         Connection dbConnection = null;
         Statement statement = null;
         try {
-            String sql = "UPDATE " + category + " SET " + type + " = " + value + " WHERE id = " + id;
+            String sql = "UPDATE ingredients SET " + type + " = " + value + " WHERE id = " + id;
             DatabaseConnection connectNow = new DatabaseConnection();
             dbConnection = connectNow.getConnection();
 
@@ -179,11 +179,22 @@ public class InventoryController extends ManagerController implements Initializa
         }
         return true;
     }
-    public boolean addCall(String category, String id, String name, double price, int calories, int quantity) {
+    /**
+     * Queries the database and adds a product's attributes
+     *
+     * @param id represents the product id to be inserted inside database
+     * @param name represents the product name to be inserted inside the database
+     * @param price represents the product price to be inserted inside the database
+     * @param calories represents the product calories to be inserted inside the database
+     * @param quantity represents the quantity of product to be inserted inside the database
+     *
+     * @return true if query is successful, and false if query failed
+     */
+    public boolean addCall(String id, String name, double price, int calories, int quantity) {
         Connection dbConnection = null;
         Statement statement = null;
         try {
-            String sql = "INSERT INTO " + category + " (id, name, price, calories, inventory) VALUES ('" +id+ "','" + name + "','" + price + "','" + calories + "','" + quantity + "')";
+            String sql = "INSERT INTO ingredients" + " (id, name, price, calories, inventory) VALUES ('" +id+ "','" + name + "','" + price + "','" + calories + "','" + quantity + "')";
             DatabaseConnection connectNow = new DatabaseConnection();
             dbConnection = connectNow.getConnection();
 
@@ -202,11 +213,18 @@ public class InventoryController extends ManagerController implements Initializa
         }
         return true;
     }
-    public boolean removeCall(String category, String id) {
+    /**
+     * Queries the database to removes a product
+     *
+     * @param id represents the product id to be deleted from database
+     *
+     * @return true if query is successful, and false if query failed
+     */
+    public boolean removeCall(String id) {
         Connection dbConnection = null;
         Statement statement = null;
         try {
-            String sql = "DELETE FROM " + category + " WHERE id = " + id;
+            String sql = "DELETE FROM ingredients" + " WHERE id = " + id;
             DatabaseConnection connectNow = new DatabaseConnection();
             dbConnection = connectNow.getConnection();
 
@@ -225,14 +243,16 @@ public class InventoryController extends ManagerController implements Initializa
         }
         return true;
     }
-
+    /**
+     * Queries the database to save updated changes of specified product and its new value
+     */
     public void updateInventory() {
         try {
-            String category = (String) manageCategoryField.getValue();
             String type = (String) manageTypeField.getValue();
             String id = manageIDField.getText();
-            int value = Integer.parseInt(manageValueField.getText());
-            if(updateCall(category, type, id, value)) {
+            String value = manageValueField.getText();
+
+            if(updateCall(type, id, value)) {
                 manageInvStatusLabel.setText("Database Updated!");
             } else {
                 manageInvStatusLabel.setText("Database Failed to Update...");
@@ -241,15 +261,18 @@ public class InventoryController extends ManagerController implements Initializa
             manageInvStatusLabel.setText("Invalid Info!");
         }
     }
+    /**
+     * Queries the database to add specified product and its attributes to inventory for FXML
+     *
+     */
     public void addInventory() {
         try {
-            String category = (String) manageCategoryField.getValue();
             String id = manageIDField.getText();
             String name = manageNameField.getText();
             double price = Double.parseDouble(managePriceField.getText());
             int calories = Integer.parseInt(manageCaloriesField.getText());
             int quantity = Integer.parseInt(manageQuantityField.getText());
-            if(addCall(category, id, name, price, calories, quantity)) {
+            if(addCall(id, name, price, calories, quantity)) {
                 manageInvStatusLabel.setText("Database Updated!");
             } else {
                 manageInvStatusLabel.setText("Database Failed to Update...");
@@ -258,12 +281,15 @@ public class InventoryController extends ManagerController implements Initializa
             manageInvStatusLabel.setText("Invalid Info!");
         }
     }
+    /**
+     * Queries the database to remove specified product from inventory for FXML
+     *
+     */
     public void removeInventory() {
         try {
-            String category = (String) manageCategoryField.getValue();
             String id = manageIDField.getText();
 
-            if(removeCall(category, id)) {
+            if(removeCall(id)) {
                 manageInvStatusLabel.setText("Database Updated!");
             } else {
                 manageInvStatusLabel.setText("Database Failed to Update...");

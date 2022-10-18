@@ -13,6 +13,9 @@ public class Product {
     private int calories;
     private int quantity;
 
+    public Product(int id) {
+        this.id = id;
+    }
     /**
      * Creates a product object given the params
      *
