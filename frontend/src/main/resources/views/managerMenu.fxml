@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.ManagerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="manager-menu-page" stylesheets="@../styles/manager.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.ManagerController">
    <children>
       <VBox alignment="CENTER" layoutX="34.0" layoutY="34.0" prefHeight="768.0" prefWidth="100.0" styleClass="side-bar" stylesheets="@../styles/manager.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -20,6 +20,6 @@
             <ImageView fx:id="manageExitBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#exitManage" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--exit" />
          </children>
       </VBox>
-      <AnchorPane layoutX="217.0" prefHeight="768.0" prefWidth="819.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="-12.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutX="217.0" prefHeight="768.0" prefWidth="819.0" styleClass="manage-inventory-page" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

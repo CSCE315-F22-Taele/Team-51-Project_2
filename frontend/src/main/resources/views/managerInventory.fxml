@@ -27,7 +27,7 @@
             <ImageView fx:id="manageExitBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#exitManage" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--exit" />
          </children>
       </VBox>
-      <AnchorPane fx:id="manager_content__inventory" layoutX="10.0" layoutY="10.0" prefHeight="768.0" prefWidth="819.0" styleClass="inventory-page" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="manager_content__inventory" layoutX="10.0" layoutY="10.0" prefHeight="768.0" prefWidth="819.0" styleClass="manage-inventory-page" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <TableView fx:id="inventoryTable" layoutX="35.0" layoutY="146.0" prefHeight="476.0" prefWidth="719.0" styleClass="inventory-table" AnchorPane.bottomAnchor="146.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="146.0">
                <columns>

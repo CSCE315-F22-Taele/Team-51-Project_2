@@ -3,22 +3,17 @@ package com.involuntary.revpos.models;
 import java.util.ArrayList;
 
 public class MenuItem {
-    private ArrayList<Product> ingredients;
+    private String category;
     private String name;
-    private int price;
-    private int calories;
+    private double price;
+    private ArrayList<Product> ingredients;
 
-    public MenuItem(ArrayList<Product> ingredients, String name) {
-        this.ingredients = ingredients;
-        this.name = name;
+    public String getCategory() {
+        return category;
     }
 
-    public ArrayList<Product> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(ArrayList<Product> ingredients) {
-        this.ingredients = ingredients;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getName() {
@@ -29,12 +24,19 @@ public class MenuItem {
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public int getCalories() {
-        return calories;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
+    public ArrayList<Product> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(ArrayList<Product> ingredients) {
+        this.ingredients = ingredients;
+    }
 }

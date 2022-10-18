@@ -16,25 +16,7 @@
    <children>
       <VBox layoutX="110.0" layoutY="15.0" prefHeight="270.0" prefWidth="375.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
          <children>
-            <Label text="Category">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </Label>
-            <HBox prefHeight="37.0" prefWidth="311.0">
-               <children>
-                  <ComboBox fx:id="manageCategoryField" prefHeight="35.0" prefWidth="349.0">
-                     <items>
-                        <FXCollections fx:factory="observableArrayList">
-                           <String fx:value="Entrees" />
-                           <String fx:value="Drinks" />
-                           <String fx:value="Sauces" />
-                           <String fx:value="Desserts" />
-                        </FXCollections>
-                     </items>
-                  </ComboBox>
-               </children>
-            </HBox>
+            <HBox prefHeight="37.0" prefWidth="311.0" />
             <Label text="Type">
                <VBox.margin>
                   <Insets top="10.0" />
@@ -47,7 +29,7 @@
                         <FXCollections fx:factory="observableArrayList">
                            <String fx:value="Price" />
                            <String fx:value="Calories" />
-                           <String fx:value="Quantity" />
+                           <String fx:value="Inventory" />
                         </FXCollections>
                      </items>
                   </ComboBox>

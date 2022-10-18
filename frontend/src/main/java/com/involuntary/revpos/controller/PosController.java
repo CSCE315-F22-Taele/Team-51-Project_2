@@ -3,22 +3,31 @@ package com.involuntary.revpos.controller;
 import java.io.IOException;
 
 import com.involuntary.revpos.database.DatabaseConnection;
+import com.involuntary.revpos.listeners.MyListener;
+import com.involuntary.revpos.models.MenuItem;
 import com.involuntary.revpos.models.Product;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
 
+import java.net.URL;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DecimalFormat;
-import java.util.HashMap;
+import java.util.*;
 
-public class PosController extends MenuController {
+public class PosController extends MenuItemController implements Initializable {
 
     @FXML
     private VBox cart;
@@ -29,7 +38,101 @@ public class PosController extends MenuController {
 
     HashMap<Product, Integer> currentCart = new HashMap<>();
     private double cartTotal = 0;
+    private double cartTaxTotal = 0;
     private static DecimalFormat df2 = new DecimalFormat("#.00");
+
+    @FXML
+    private GridPane grid;
+    private List<MenuItem> menuItems = new ArrayList<>();
+    private MyListener myListener;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        menuItems.addAll(getData());
+        if(menuItems.size() > 0) {
+            myListener = new MyListener() {
+                @Override
+                public void onClickListener(MenuItem item) {
+                    // Function to Assign on Click
+                    addItemsToCart(item.getIngredients());
+                    updateCart(item.getName());
+                    computePrice();
+                    System.out.println(currentCart.size());
+                }
+            };
+        }
+        int column = 0;
+        int row = 1;
+        try {
+            for(int i = 0; i < menuItems.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/views/modelMenuItem.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                MenuItemController menuItemController = fxmlLoader.getController();
+                menuItemController.setData(menuItems.get(i), myListener);
+
+                if(column == 5) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorPane, column++, row);
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private List<MenuItem> getData() {
+        List<MenuItem> menuItems = new ArrayList<>();
+        MenuItem menuItem;
+
+        Connection dbConnection = null;
+        Statement statement = null;
+        ResultSet result = null;
+
+        try {
+            DatabaseConnection connectNow = new DatabaseConnection();
+            dbConnection = connectNow.getConnection();
+
+            String sql = "SELECT * FROM menu";
+            statement = dbConnection.createStatement();
+            result = statement.executeQuery(sql);
+
+            while(result.next()) {
+                menuItem = new MenuItem();
+                menuItem.setName(result.getString("name"));
+                menuItem.setPrice(result.getDouble("price"));
+                ArrayList<String> ids = new ArrayList<String>(Arrays.asList(result.getString("ingredients").split(",")));
+                ArrayList<Product> ingredients = new ArrayList<Product>();
+                for(String id : ids) {
+                    ingredients.add(new Product(Integer.parseInt(id)));
+                }
+                menuItem.setIngredients(ingredients);
+                menuItems.add(menuItem);
+            }
+        } catch (Exception error) {
+            error.printStackTrace();
+        } finally {
+            try { if(result != null) result.close(); } catch (Exception e) {};
+            try { if(statement != null) statement.close(); } catch (Exception e) {};
+            try { if(dbConnection != null) dbConnection.close(); } catch (Exception e) {};
+        }
+
+        return menuItems;
+    }
+
+
 
     @FXML
     public void removeBun() {
@@ -86,358 +189,46 @@ public class PosController extends MenuController {
             }
         }
     }
-    @FXML
-    public void addBlackBeanBurger() {
-        addItemToCart(blackBeanFillet);
-        addItemToCart(bun);
-        addItemToCart(lettuce);
-        addItemToCart(tomato);
-        addItemToCart(pickles);
-        addItemToCart(mealTray);
-        addItemToCart(salt);
-        addItemToCart(pepper);
-        addItemToCart(utensils);
-        addItemToCart(napkins);
-        addMayo();
-        addKetchup();
-        addMustard();
 
-        HBox entry = new HBox();
-        Label label = new Label("Black Bean Burger");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-        Separator separator = new Separator();
-        cart.getChildren().add(separator);
-        computePrice();
+    public void addItemsToCart(ArrayList<Product> products) {
+        for(Product product : products) {
+            Integer count = currentCart.containsKey(product) ? currentCart.get(product) : 0;
+            currentCart.put(product, count + 1);
+            cartTotal += checkPrice(product) * 1.0625;
+        }
     }
 
-    @FXML
-    public void addClassicHamburger() {
-        addItemToCart(burgerFillet);
-        addItemToCart(bun);
-        addItemToCart(lettuce);
-        addItemToCart(tomato);
-        addItemToCart(pickles);
-        addItemToCart(mealTray);
-        addItemToCart(salt);
-        addItemToCart(pepper);
-        addItemToCart(utensils);
-        addItemToCart(napkins);
-        addMayo();
-        addKetchup();
-        addMustard();
+    public double checkPrice(Product product) {
+        Connection dbConnection = null;
+        Statement statement = null;
+        ResultSet result = null;
+        double price = product.getPrice();
+        try {
+            String sql = "SELECT price FROM ingredients" + " WHERE id = " + product.getId();
+            DatabaseConnection connectNow = new DatabaseConnection();
+            dbConnection = connectNow.getConnection();
+            statement = dbConnection.createStatement();
+            result = statement.executeQuery(sql);
+            while(result.next()) {
+                price = Math.round(result.getDouble("price") * 100.0)/ 100.0;
+            }
+        } catch (Exception ex) {
+            System.err.println(ex.getClass().getName()+": "+ex.getMessage());
+            ex.printStackTrace();
+        } finally {
+            try { if(result != null) result.close(); } catch (Exception e) {};
+            try { if(statement != null) statement.close(); } catch (Exception e) {};
+            try { if(dbConnection != null) dbConnection.close(); } catch (Exception e) {};
+        }
 
-        HBox entry = new HBox();
-        Label label = new Label("Burger");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-        Separator separator = new Separator();
-        cart.getChildren().add(separator);
-        computePrice();
+        return price;
     }
 
-
-    @FXML
-    public void addChickenSandwich() {
-
-        addItemToCart(chickenFillet);
-        addItemToCart(bun);
-        addItemToCart(lettuce);
-        addItemToCart(tomato);
-        addItemToCart(pickles);
-        addItemToCart(mealTray);
-        addItemToCart(salt);
-        addItemToCart(pepper);
-        addItemToCart(utensils);
-        addItemToCart(napkins);
-        addMayo();
-        addKetchup();
-        addMustard();
-
-        HBox entry = new HBox();
-        Label label = new Label("Chicken Burger");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-        Separator separator = new Separator();
-        cart.getChildren().add(separator);
-        computePrice();
-    }
-
-    @FXML
-    public void addChickenTenders() {
-        addItemToCart(chickenTender);
-        addItemToCart(chickenTender);
-        addItemToCart(chickenTender);
-        addFries();
-        addItemToCart(mealTray);
-        addItemToCart(salt);
-        addItemToCart(pepper);
-        addItemToCart(utensils);
-        addItemToCart(napkins);
-        addKetchup();
-
-        HBox entry = new HBox();
-        Label label = new Label("Chicken Tenders");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-        Separator separator = new Separator();
-        cart.getChildren().add(separator);
-        computePrice();
-    }
-
-    @FXML
-    public void addFries() {
-        addItemToCart(fries);
-        addItemToCart(mealTray);
-        addItemToCart(salt);
-        addItemToCart(pepper);
-        addItemToCart(utensils);
-        addItemToCart(napkins);
-
-        HBox entry = new HBox();
-        Label label = new Label("Fries");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-        Separator separator = new Separator();
-        cart.getChildren().add(separator);
-        computePrice();
-    }
-
-    @FXML
-    public void addBrisk() {
-        addItemToCart(drinkCup);
-        addItemToCart(brisk);
-
-        HBox entry = new HBox();
-        Label label = new Label("Brisk");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-        Separator separator = new Separator();
-        cart.getChildren().add(separator);
-        computePrice();
-    }
-
-    @FXML
-    public void addGatorade() {
-        addItemToCart(drinkCup);
-        addItemToCart(gatorade);
-
-        HBox entry = new HBox();
-        Label label = new Label("Gatorade");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-        Separator separator = new Separator();
-        cart.getChildren().add(separator);
-        computePrice();
-    }
-
-    @FXML
-    public void addRootBeer() {
-        addItemToCart(drinkCup);
-        addItemToCart(mugRootBeer);
-
-        HBox entry = new HBox();
-        Label label = new Label("Root Beer");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-        Separator separator = new Separator();
-        cart.getChildren().add(separator);
-        computePrice();
-    }
-
-    @FXML
-    public void addPepsi() {
-        addItemToCart(drinkCup);
-        addItemToCart(pepsi);
-
-        HBox entry = new HBox();
-        Label label = new Label("Pepsi");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-        Separator separator = new Separator();
-        cart.getChildren().add(separator);
-        computePrice();
-    }
-
-    @FXML
-    public void addDietPepsi() {
-        addItemToCart(drinkCup);
-        addItemToCart(dietPepsi);
-
-        HBox entry = new HBox();
-        Label label = new Label("Diet Pepsi");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-        Separator separator = new Separator();
-        cart.getChildren().add(separator);
-        computePrice();
-    }
-
-    @FXML
-    public void addSierraMist() {
-        addItemToCart(drinkCup);
-        addItemToCart(sierraMist);
-
-        HBox entry = new HBox();
-        Label label = new Label("Sierra Mist");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-        Separator separator = new Separator();
-        cart.getChildren().add(separator);
-        computePrice();
-    }
-
-    @FXML
-    public void addCaesarDressing() {
-        addItemToCart(caesarDressing);
-
-        HBox entry = new HBox();
-        Label label = new Label("Caesar Dressing");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-    }
-
-    @FXML
-    public void addGigemSauce() {
-        addItemToCart(gigemSauce);
-
-        HBox entry = new HBox();
-        Label label = new Label("Gigem Sauce");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-    }
-
-    @FXML
-    public void addHoneyBBQ() {
-        addItemToCart(honeyBBQ);
-
-        HBox entry = new HBox();
-        Label label = new Label("Honey BBQ");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-    }
-
-    @FXML
-    public void addKetchup() {
-        addItemToCart(ketchup);
-
-        HBox entry = new HBox();
-        Label label = new Label("Ketchup");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-    }
-
-    @FXML
-    public void addMayo() {
-        addItemToCart(mayo);
-
-        HBox entry = new HBox();
-        Label label = new Label("Mayo");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-    }
-
-    @FXML
-    public void addMustard() {
-        addItemToCart(mustard);
-
-        HBox entry = new HBox();
-        Label label = new Label("Mustard");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-    }
-
-    @FXML
-    public void addRanch() {
-        addItemToCart(ranch);
-
-        HBox entry = new HBox();
-        Label label = new Label("Ranch");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-    }
-
-    @FXML
-    public void addChocolateIceCream() {
-        addItemToCart(chocolateIceCream);
-        addDessertBowl();
-        addItemToCart(napkins);
-        addItemToCart(utensils);
-
-        HBox entry = new HBox();
-        Label label = new Label("Chocolate Ice Cream");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-        Separator separator = new Separator();
-        cart.getChildren().add(separator);
-        computePrice();
-    }
-
-    @FXML
-    public void addCookie() {
-        addItemToCart(cookie);
-    }
-
-    @FXML
-    public void addCookieSandwich() {
-        addItemToCart(cookieSandwich);
-
-        HBox entry = new HBox();
-        Label label = new Label("Cookie Sandwich");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-        Separator separator = new Separator();
-        cart.getChildren().add(separator);
-        computePrice();
-    }
-
-    @FXML
-    public void addDessertBowl() {
-        addItemToCart(dessertBowl);
-    }
-
-    @FXML
-    public void addDessertCup() {
-        addItemToCart(dessertCup);
-    }
-
-    @FXML
-    public void addStrawberryIceCream() {
-
-        addDessertCup();
-        HBox entry = new HBox();
-        Label label = new Label("Strawberry Ice Cream");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-        Separator separator = new Separator();
-        cart.getChildren().add(separator);
-        computePrice();
-    }
-
-    @FXML
-    public void addVanillaIceCream() {
-
-        addDessertCup();
-        HBox entry = new HBox();
-        Label label = new Label("Vanilla Ice Cream");
-        entry.getChildren().add(label);
-        cart.getChildren().add(entry);
-        Separator separator = new Separator();
-        cart.getChildren().add(separator);
-        computePrice();
-    }
-
-    public void addItemToCart(Product product) {
-        Integer count = currentCart.containsKey(product) ? currentCart.get(product) : 0;
-        currentCart.put(product, count + 1);
-        cartTotal += checkPrice(product) * 1.0625;
-    }
-
-    public boolean updateCall(String category, String id, int quantity) {
+    public boolean updateCall(String id, int quantity) {
         Connection dbConnection = null;
         Statement statement = null;
         try {
-            String sql = "UPDATE " + category + " SET inventory = inventory - " + quantity + " WHERE id = " + id;
+            String sql = "UPDATE ingredients" + " SET inventory = inventory - " + quantity + " WHERE id = " + id;
             DatabaseConnection connectNow = new DatabaseConnection();
             dbConnection = connectNow.getConnection();
 
@@ -457,21 +248,32 @@ public class PosController extends MenuController {
         return true;
     }
 
+    public void updateCart(String item) {
+        HBox entry = new HBox();
+        Label label = new Label(item);
+        entry.getChildren().add(label);
+        cart.getChildren().add(entry);
+        Separator separator = new Separator();
+        cart.getChildren().add(separator);
+    }
+
     public void computePrice() {
         checkoutBtn.setText("CHARGE $" + df2.format(cartTotal));
     }
     public void checkout() {
+        System.out.println("CURRENT CART SIZE: " + currentCart.size());
         for (Product item : currentCart.keySet()) {
-            updateCall(item.getCategory(), String.valueOf(item.getId()), currentCart.get(item));
+            updateCall(String.valueOf(item.getId()), currentCart.get(item));
         }
 
         cart.getChildren().clear();
         currentCart.clear();
         cartTotal = 0.00;
-        checkoutBtn.setText("CHARGE $" + df2.format(cartTotal));
+        checkoutBtn.setText("CHARGE $0.00");
     }
     public void openSettings() throws IOException {
         Scene scene = openSettingsBtn.getScene();
         LoginController.openModal(scene);
     }
+
 }
