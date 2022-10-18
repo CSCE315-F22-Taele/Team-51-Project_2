@@ -122,4 +122,29 @@ public class Product {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    @Override
+    public int hashCode() {
+        final int temp = 14;
+        int ans = 1;
+        ans = temp * ans + id;
+        return ans;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) {
+            return true;
+        }
+        if(o == null) {
+            return false;
+        }
+        if(this.getClass() != o.getClass()) {
+            return false;
+        }
+        Product other = (Product) o;
+        if(this.id != other.id) {
+            return false;
+        }
+        return true;
+    }
 }

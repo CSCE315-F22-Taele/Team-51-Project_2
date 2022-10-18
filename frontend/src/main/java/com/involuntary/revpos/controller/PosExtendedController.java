@@ -1,6 +1,8 @@
 package com.involuntary.revpos.controller;
 
+import com.involuntary.revpos.database.DatabaseConnection;
 import com.involuntary.revpos.models.MenuItem;
+import com.involuntary.revpos.models.Product;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,13 +16,18 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.*;
 
 public class PosExtendedController implements Initializable {
     @FXML
     private Button confirmChangesBtn;
     private static Button referConfirmChangesBtn;
-
+    @FXML
+    private Button removeProductBtn;
+    private static Button referRemoveProductBtn;
     @FXML
     private ComboBox selectProductField;
     private static ComboBox referSelectProductField;
@@ -29,6 +36,7 @@ public class PosExtendedController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         referConfirmChangesBtn = confirmChangesBtn;
         referSelectProductField = selectProductField;
+        referRemoveProductBtn = removeProductBtn;
     }
 
     public static void openModal(MenuItem item) throws IOException {
@@ -44,13 +52,59 @@ public class PosExtendedController implements Initializable {
         modal.getIcons().add(new Image(PosExtendedController.class.getResourceAsStream("/images/tamulogo.png")));
 
         referSelectProductField.getItems().clear();
-        referSelectProductField.getItems().addAll("lol", "123", "lmao");
+        Connection dbConnection = null;
+        Statement statement = null;
+        ResultSet result = null;
 
+        Map<String, Integer> dictionary = null;
+        try {
+            DatabaseConnection connectNow = new DatabaseConnection();
+            dbConnection = connectNow.getConnection();
+
+            String sql = "SELECT name, id FROM ingredients WHERE id in (";
+            for(Product product : item.getOptions()) {
+                sql += product.getId();
+                if(product.getId() != item.getOptions().get(item.getOptions().size() - 1).getId()) {
+                    sql += ",";
+                }
+            }
+            sql += ")";
+
+            statement = dbConnection.createStatement();
+            result = statement.executeQuery(sql);
+
+            dictionary = new HashMap<String, Integer>();
+            List<String> labels = new ArrayList<>();
+            while(result.next()) {
+                String name = result.getString("name");
+                int id = result.getInt("id");
+                String key = name.substring(0, 1).toUpperCase() + name.substring(1);
+                labels.add(key);
+                dictionary.put(key, id);
+            }
+            referSelectProductField.getItems().addAll(labels);
+        } catch (Exception error) {
+            error.printStackTrace();
+        } finally {
+            try { if(result != null) result.close(); } catch (Exception e) {};
+            try { if(statement != null) statement.close(); } catch (Exception e) {};
+            try { if(dbConnection != null) dbConnection.close(); } catch (Exception e) {};
+        }
+        ArrayList<Product> removeList = new ArrayList<Product>();
+        Map<String, Integer> finalDictionary = dictionary;
+        referRemoveProductBtn.setOnAction(event -> {
+            String key = "" + referSelectProductField.getValue();
+            referSelectProductField.getItems().remove(key);
+            removeList.add(new Product(finalDictionary.get(key)));
+        });
         referConfirmChangesBtn.setOnAction(event -> {
+
             Stage stage = (Stage) (referConfirmChangesBtn.getScene().getWindow());
             stage.close();
+            PosController.removeItemsToCart(removeList);
             PosController.verifyOrder(item);
         });
         modal.showAndWait();
+
     }
 }
