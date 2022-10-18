@@ -7,7 +7,7 @@ public class MenuItem {
     private String name;
     private double price;
     private ArrayList<Product> ingredients;
-    private ArrayList<Product> modifiers;
+    private ArrayList<Product> options;
 
     public String getCategory() {
         return category;
@@ -39,5 +39,12 @@ public class MenuItem {
 
     public void setIngredients(ArrayList<Product> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public ArrayList<Product> getOptions() {
+        return options;
+    }
+
+    public void setOptions(ArrayList<Product> options) { this.options = options;
     }
 }

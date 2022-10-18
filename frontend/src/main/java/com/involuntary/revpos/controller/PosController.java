@@ -10,17 +10,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -46,7 +41,9 @@ public class PosController extends MenuItemController implements Initializable {
     @FXML
     private ImageView openSettingsBtn;
 
-    HashMap<Product, Integer> currentCart = new HashMap<>();
+
+    private HashMap<Product, Integer> currentCart = new HashMap<>();
+    private static HashMap<Product, Integer> referCurrentCart;
     private static double cartTotal = 0;
     private static double cartTaxTotal = 0;
     private static double cartDiscountTotal = 0;
@@ -63,6 +60,7 @@ public class PosController extends MenuItemController implements Initializable {
         referCheckoutBtn = checkoutBtn;
         referDiscountLabel = discountLabel;
         referTaxLabel = taxLabel;
+        referCurrentCart = currentCart;
         menuItems.addAll(getData());
         if(menuItems.size() > 0) {
             myListener = new MyListener() {
@@ -123,17 +121,28 @@ public class PosController extends MenuItemController implements Initializable {
             String sql = "SELECT * FROM menu";
             statement = dbConnection.createStatement();
             result = statement.executeQuery(sql);
+            ArrayList<String> optionsIds;
 
             while(result.next()) {
                 menuItem = new MenuItem();
                 menuItem.setName(result.getString("name"));
                 menuItem.setPrice(result.getDouble("price"));
                 ArrayList<String> ids = new ArrayList<String>(Arrays.asList(result.getString("ingredients").split(",")));
+                if(result.getString("options") == null) {
+                    optionsIds = new ArrayList<String>();
+                } else {
+                    optionsIds = new ArrayList<String>(Arrays.asList(result.getString("options").split(",")));
+                }
                 ArrayList<Product> ingredients = new ArrayList<Product>();
                 for(String id : ids) {
                     ingredients.add(new Product(Integer.parseInt(id)));
                 }
+                ArrayList<Product> options = new ArrayList<>();
+                for(String optionsId : optionsIds) {
+                    options.add(new Product(Integer.parseInt(optionsId)));
+                }
                 menuItem.setIngredients(ingredients);
+                menuItem.setOptions(options);
                 menuItems.add(menuItem);
             }
         } catch (Exception error) {
@@ -147,77 +156,31 @@ public class PosController extends MenuItemController implements Initializable {
         return menuItems;
     }
 
-
-
-    @FXML
-    public void removeBun() {
-        if(currentCart.containsKey(bun)) {
-            if (currentCart.get(bun) <= 1) {
-                currentCart.remove(bun);
-            System.out.println("Bun removed");
-            } else {
-                currentCart.put(bun, currentCart.get(bun)-1);
-            }
-        } else {
-            System.out.println("No buns to be removed");
-        }
-    }
-    @FXML
-    public void removeLettuce() {
-        if(currentCart.containsKey(lettuce)) {
-            currentCart.remove(lettuce);
-            if (currentCart.get(lettuce) <= 1) {
-                currentCart.remove(lettuce);
-            } else {
-                currentCart.put(lettuce, currentCart.get(lettuce)-1);
-            }
-        }
-    }
-    @FXML
-    public void removeTomato() {
-        if(currentCart.containsKey(tomato)) {
-            if (currentCart.get(tomato) <= 1) {
-                currentCart.remove(tomato);
-            } else {
-                currentCart.put(tomato, currentCart.get(tomato)-1);
-            }
-        }
-    }
-    @FXML
-    public void removePickles() {
-        if(currentCart.containsKey(pickles)) {
-            if (currentCart.get(pickles) <= 1) {
-                currentCart.remove(pickles);
-            } else {
-                currentCart.put(pickles, currentCart.get(pickles)-1);
-            }
-        }
-    }
-
-    @FXML
-    public void removeOnion() {
-        if(currentCart.containsKey(onions)) {
-            if (currentCart.get(onions) <= 1) {
-                currentCart.remove(onions);
-            } else {
-                currentCart.put(onions, currentCart.get(onions)-1);
-            }
-        }
-    }
-
     public static void verifyOrder(MenuItem item) {
         updateCart(item.getName());
         computePrice();
     }
     public void addItemsToCart(ArrayList<Product> products) {
         for(Product product : products) {
-            Integer count = currentCart.containsKey(product) ? currentCart.get(product) : 0;
-            currentCart.put(product, count + 1);
+            Integer count = referCurrentCart.containsKey(product) ? referCurrentCart.get(product) : 0;
+            referCurrentCart.put(product, count + 1);
             double price = checkPrice(product);
             cartTaxTotal += price * 0.0625;
             cartTotal += price;
         }
     }
+    public static void removeItemsToCart(ArrayList<Product> products) {
+        for(Product product : products) {
+            if (referCurrentCart.containsKey(product)) {
+                if (referCurrentCart.get(product) <= 1) {
+                    referCurrentCart.remove(product);
+                } else {
+                    referCurrentCart.put(product, referCurrentCart.get(product) - 1);
+                }
+            }
+        }
+    }
+
 
     public double checkPrice(Product product) {
         Connection dbConnection = null;
@@ -293,12 +256,12 @@ public class PosController extends MenuItemController implements Initializable {
     }
 
     public static void computePrice() {
-        System.out.println(cartTotal + " " + cartTaxTotal);
         referTaxLabel.setText("$" + (df2.format(cartTaxTotal).equals(".00") ? "0.00" : df2.format(cartTaxTotal)));
         referDiscountLabel.setText("$" + (df2.format(cartDiscountTotal).equals(".00") ? "0.00" : df2.format(cartDiscountTotal)));
         referCheckoutBtn.setText("CHARGE $" + df2.format(cartTotal + cartTaxTotal - cartDiscountTotal));
     }
     public void checkout() {
+        currentCart = referCurrentCart;
         for (Product item : currentCart.keySet()) {
             updateCall(String.valueOf(item.getId()), currentCart.get(item));
         }
