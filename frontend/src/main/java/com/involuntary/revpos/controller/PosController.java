@@ -32,6 +32,10 @@ public class PosController extends MenuItemController implements Initializable {
     @FXML
     private VBox cart;
     @FXML
+    private Label taxLabel;
+    @FXML
+    private Label discountLabel;
+    @FXML
     private Button checkoutBtn;
     @FXML
     private ImageView openSettingsBtn;
@@ -39,6 +43,7 @@ public class PosController extends MenuItemController implements Initializable {
     HashMap<Product, Integer> currentCart = new HashMap<>();
     private double cartTotal = 0;
     private double cartTaxTotal = 0;
+    private double cartDiscountTotal = 0;
     private static DecimalFormat df2 = new DecimalFormat("#.00");
 
     @FXML
@@ -56,7 +61,6 @@ public class PosController extends MenuItemController implements Initializable {
                     addItemsToCart(item.getIngredients());
                     updateCart(item.getName());
                     computePrice();
-                    System.out.println(currentCart.size());
                 }
             };
         }
@@ -194,7 +198,9 @@ public class PosController extends MenuItemController implements Initializable {
         for(Product product : products) {
             Integer count = currentCart.containsKey(product) ? currentCart.get(product) : 0;
             currentCart.put(product, count + 1);
-            cartTotal += checkPrice(product) * 1.0625;
+            double price = checkPrice(product);
+            cartTaxTotal += price * 0.0625;
+            cartTotal += price;
         }
     }
 
@@ -258,17 +264,22 @@ public class PosController extends MenuItemController implements Initializable {
     }
 
     public void computePrice() {
-        checkoutBtn.setText("CHARGE $" + df2.format(cartTotal));
+        taxLabel.setText("$" + (df2.format(cartTaxTotal).equals(".00") ? "0.00" : df2.format(cartTaxTotal)));
+        discountLabel.setText("$" + (df2.format(cartDiscountTotal).equals(".00") ? "0.00" : df2.format(cartDiscountTotal)));
+        checkoutBtn.setText("CHARGE $" + df2.format(cartTotal + cartTaxTotal - cartDiscountTotal));
     }
     public void checkout() {
-        System.out.println("CURRENT CART SIZE: " + currentCart.size());
         for (Product item : currentCart.keySet()) {
             updateCall(String.valueOf(item.getId()), currentCart.get(item));
         }
 
         cart.getChildren().clear();
         currentCart.clear();
+        cartTaxTotal = 0.00;
+        cartDiscountTotal = 0.00;
         cartTotal = 0.00;
+        taxLabel.setText("$0.00");
+        discountLabel.setText("$0.00");
         checkoutBtn.setText("CHARGE $0.00");
     }
     public void openSettings() throws IOException {
