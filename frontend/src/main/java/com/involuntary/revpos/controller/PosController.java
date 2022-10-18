@@ -16,8 +16,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -31,36 +33,45 @@ public class PosController extends MenuItemController implements Initializable {
 
     @FXML
     private VBox cart;
+    private static VBox referCart;
     @FXML
     private Label taxLabel;
+    private static Label referTaxLabel;
     @FXML
     private Label discountLabel;
+    private static Label referDiscountLabel;
     @FXML
     private Button checkoutBtn;
+    private static Button referCheckoutBtn;
     @FXML
     private ImageView openSettingsBtn;
 
     HashMap<Product, Integer> currentCart = new HashMap<>();
-    private double cartTotal = 0;
-    private double cartTaxTotal = 0;
-    private double cartDiscountTotal = 0;
+    private static double cartTotal = 0;
+    private static double cartTaxTotal = 0;
+    private static double cartDiscountTotal = 0;
     private static DecimalFormat df2 = new DecimalFormat("#.00");
 
     @FXML
     private GridPane grid;
     private List<MenuItem> menuItems = new ArrayList<>();
     private MyListener myListener;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        referCart = cart;
+        referCheckoutBtn = checkoutBtn;
+        referDiscountLabel = discountLabel;
+        referTaxLabel = taxLabel;
         menuItems.addAll(getData());
         if(menuItems.size() > 0) {
             myListener = new MyListener() {
                 @Override
-                public void onClickListener(MenuItem item) {
+                public void onClickListener(MenuItem item) throws IOException {
                     // Function to Assign on Click
                     addItemsToCart(item.getIngredients());
-                    updateCart(item.getName());
-                    computePrice();
+                    PosExtendedController.openModal(item);
+
                 }
             };
         }
@@ -194,6 +205,10 @@ public class PosController extends MenuItemController implements Initializable {
         }
     }
 
+    public static void verifyOrder(MenuItem item) {
+        updateCart(item.getName());
+        computePrice();
+    }
     public void addItemsToCart(ArrayList<Product> products) {
         for(Product product : products) {
             Integer count = currentCart.containsKey(product) ? currentCart.get(product) : 0;
@@ -209,22 +224,36 @@ public class PosController extends MenuItemController implements Initializable {
         Statement statement = null;
         ResultSet result = null;
         double price = product.getPrice();
-        try {
-            String sql = "SELECT price FROM ingredients" + " WHERE id = " + product.getId();
-            DatabaseConnection connectNow = new DatabaseConnection();
-            dbConnection = connectNow.getConnection();
-            statement = dbConnection.createStatement();
-            result = statement.executeQuery(sql);
-            while(result.next()) {
-                price = Math.round(result.getDouble("price") * 100.0)/ 100.0;
+        if(price == 0) {
+            try {
+                String sql = "SELECT price FROM ingredients" + " WHERE id = " + product.getId();
+                DatabaseConnection connectNow = new DatabaseConnection();
+                dbConnection = connectNow.getConnection();
+                statement = dbConnection.createStatement();
+                result = statement.executeQuery(sql);
+                while (result.next()) {
+                    price = Math.round(result.getDouble("price") * 100.0) / 100.0;
+                }
+            } catch (Exception ex) {
+                System.err.println(ex.getClass().getName() + ": " + ex.getMessage());
+                ex.printStackTrace();
+            } finally {
+                try {
+                    if (result != null) result.close();
+                } catch (Exception e) {
+                }
+                ;
+                try {
+                    if (statement != null) statement.close();
+                } catch (Exception e) {
+                }
+                ;
+                try {
+                    if (dbConnection != null) dbConnection.close();
+                } catch (Exception e) {
+                }
+                ;
             }
-        } catch (Exception ex) {
-            System.err.println(ex.getClass().getName()+": "+ex.getMessage());
-            ex.printStackTrace();
-        } finally {
-            try { if(result != null) result.close(); } catch (Exception e) {};
-            try { if(statement != null) statement.close(); } catch (Exception e) {};
-            try { if(dbConnection != null) dbConnection.close(); } catch (Exception e) {};
         }
 
         return price;
@@ -254,19 +283,20 @@ public class PosController extends MenuItemController implements Initializable {
         return true;
     }
 
-    public void updateCart(String item) {
+    public static void updateCart(String item) {
         HBox entry = new HBox();
         Label label = new Label(item);
         entry.getChildren().add(label);
-        cart.getChildren().add(entry);
+        referCart.getChildren().add(entry);
         Separator separator = new Separator();
-        cart.getChildren().add(separator);
+        referCart.getChildren().add(separator);
     }
 
-    public void computePrice() {
-        taxLabel.setText("$" + (df2.format(cartTaxTotal).equals(".00") ? "0.00" : df2.format(cartTaxTotal)));
-        discountLabel.setText("$" + (df2.format(cartDiscountTotal).equals(".00") ? "0.00" : df2.format(cartDiscountTotal)));
-        checkoutBtn.setText("CHARGE $" + df2.format(cartTotal + cartTaxTotal - cartDiscountTotal));
+    public static void computePrice() {
+        System.out.println(cartTotal + " " + cartTaxTotal);
+        referTaxLabel.setText("$" + (df2.format(cartTaxTotal).equals(".00") ? "0.00" : df2.format(cartTaxTotal)));
+        referDiscountLabel.setText("$" + (df2.format(cartDiscountTotal).equals(".00") ? "0.00" : df2.format(cartDiscountTotal)));
+        referCheckoutBtn.setText("CHARGE $" + df2.format(cartTotal + cartTaxTotal - cartDiscountTotal));
     }
     public void checkout() {
         for (Product item : currentCart.keySet()) {

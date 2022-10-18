@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="manager-menu-page" stylesheets="@../styles/manager.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.ManagerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="manager-menu-page" stylesheets="@../styles/manager.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.MenuItemController">
    <children>
       <VBox alignment="CENTER" layoutX="34.0" layoutY="34.0" prefHeight="768.0" prefWidth="100.0" styleClass="side-bar" stylesheets="@../styles/manager.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -20,6 +26,28 @@
             <ImageView fx:id="manageExitBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#exitManage" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--exit" />
          </children>
       </VBox>
-      <AnchorPane layoutX="217.0" prefHeight="768.0" prefWidth="819.0" styleClass="manage-inventory-page" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutX="217.0" prefHeight="768.0" prefWidth="819.0" styleClass="manage-inventory-page" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TextField fx:id="menuItemNameField" layoutX="388.0" layoutY="269.0" />
+            <TextField fx:id="menuItemIngredientsField" layoutX="388.0" layoutY="374.0" />
+            <Label layoutX="388.0" layoutY="252.0" text="Name" />
+            <Label layoutX="390.0" layoutY="357.0" text="Ingredients" />
+            <ComboBox fx:id="menuItemCategoryField" layoutX="387.0" layoutY="217.0" prefWidth="150.0">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Entrees" />
+                     <String fx:value="Sides" />
+                     <String fx:value="Salad" />
+                     <String fx:value="Desserts" />
+                     <String fx:value="Misc" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+            <Label fx:id="statusLabel" layoutX="384.0" layoutY="459.0" text="Label" />
+            <Button layoutX="386.0" layoutY="418.0" mnemonicParsing="false" onAction="#addMenuItem" text="Add" />
+            <TextField fx:id="menuItemPriceField" layoutX="388.0" layoutY="322.0" />
+            <Label layoutX="390.0" layoutY="305.0" text="Price" />
+            <Button layoutX="444.0" layoutY="418.0" mnemonicParsing="false" onAction="#removeMenuItem" text="Remove" />
+         </children></AnchorPane>
    </children>
 </AnchorPane>
