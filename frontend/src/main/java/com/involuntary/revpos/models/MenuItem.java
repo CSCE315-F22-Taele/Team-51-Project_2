@@ -7,6 +7,7 @@ public class MenuItem {
     private String name;
     private double price;
     private ArrayList<Product> ingredients;
+    private ArrayList<Product> modifiers;
 
     public String getCategory() {
         return category;
