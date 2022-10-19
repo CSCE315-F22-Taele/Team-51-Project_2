@@ -2,7 +2,6 @@ package com.involuntary.revpos.controller;
 
 import com.involuntary.revpos.database.DatabaseConnection;
 import com.involuntary.revpos.models.MenuItem;
-import com.involuntary.revpos.models.Product;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -35,7 +34,7 @@ public class StatsController extends ManagerController {
 
     public void openManagerPairReport() throws IOException {
         Parent root = FXMLLoader.load(
-            getClass().getResource("/views/salesTogetherReport.fxml"));
+            getClass().getResource("/views/pairReport.fxml"));
         Scene scene = managerPairReport.getScene();
         scene.setRoot(root);
     }
@@ -43,12 +42,12 @@ public class StatsController extends ManagerController {
     @FXML
     private TableView<MenuItem> pairTable;
     @FXML
-    private TableColumn<Product, String> firstPairCol;
+    private TableColumn<MenuItem, String> firstPairCol;
     @FXML
-    private TableColumn<Product, String> secondPairCol;
+    private TableColumn<MenuItem, String> secondPairCol;
 
-    public ObservableList<String> queryPairs() {
-        ObservableList<String> singleList = FXCollections.observableArrayList();
+    public ObservableList<MenuItem> queryPairs() {
+        ObservableList<MenuItem> itemList = FXCollections.observableArrayList();
 
         try {
             DatabaseConnection connectNow = new DatabaseConnection();
@@ -60,30 +59,46 @@ public class StatsController extends ManagerController {
             ResultSet result = statement.executeQuery(queryData);
 
             while (result.next()) {
-                singleList.add(result.getString("name"));
+                MenuItem menuItem = new MenuItem(
+                    result.getString("name")
+                );
+                itemList.add(menuItem);
             }
 
         } catch (
             Exception ex) {
             ex.printStackTrace();
         }
-        return singleList;
+        return itemList;
     }
 
     public void updatePairTable() {
         try {
-            ObservableList pairList = queryPairs();
+            ObservableList<MenuItem> pairList = queryPairs();
+            ObservableList<MenuItem> pair1 = FXCollections.observableArrayList();
+            ObservableList<MenuItem> pair2 = FXCollections.observableArrayList();
+
+            for(int i = 0; i < pairList.size() / 2; i++) {
+                pair1.add(pairList.get(i));
+                pair2.add(pairList.get(pairList.size() - 1 - i));
+            }
 
             firstPairCol.setCellValueFactory(
-                new PropertyValueFactory<Product, String>("name"));
-            secondPairCol.setCellValueFactory(
-                new PropertyValueFactory<Product, String>("name"));
+                new PropertyValueFactory<MenuItem, String>("name"));
 
-            pairTable.setItems(pairList);
+            pairTable.setItems(pair1);
+
+            secondPairCol.setCellValueFactory(
+                new PropertyValueFactory<MenuItem, String>("name"));
+
+            pairTable.setItems(pair2);
 
 
         } catch (Exception e) {
         }
 
     }
+
+    @FXML
+    private ImageView settingBackBtn;
 }
