@@ -38,27 +38,36 @@ public class StatsController extends ManagerController  {
     @FXML
     private ImageView managerExcessReportBtn;
 
+    /**
+     * Calls FXML to open the restock report scene
+     */
     public void openRestockReport() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(
                 "/views/restockReport.fxml"));
         Scene scene = managerRestockReportBtn.getScene();
         scene.setRoot(root);
     }
-
+    /**
+     * Calls FXML to open the sales report scene
+     */
     public void openSalesReport() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(
                 "/views/salesReport.fxml"));
         Scene scene = managerSalesReportBtn.getScene();
         scene.setRoot(root);
     }
-
+    /**
+     * Calls FXML to open the pair report scene
+     */
     public void openPairReport() throws IOException {
         Parent root = FXMLLoader.load(
                 getClass().getResource("/views/pairReport.fxml"));
         Scene scene = managerPairReportBtn.getScene();
         scene.setRoot(root);
     }
-
+    /**
+     * Calls FXML to open the excess report scene
+     */
     public void openExcessReport() throws IOException {
         Parent root = FXMLLoader.load(
                 getClass().getResource("/views/excessReport.fxml"));
@@ -77,6 +86,9 @@ public class StatsController extends ManagerController  {
     @FXML
     private DatePicker secondDateField;
 
+    /**
+     * Queries the database to get the items that are mostly ordered together
+     */
     public ArrayList<String> queryPairs() {
         ArrayList<String> strings = new ArrayList<>();
 
@@ -188,6 +200,9 @@ public class StatsController extends ManagerController  {
         return strings;
     }
 
+    /**
+     * Calls the query command and populates the FXML TableView with the data requested
+     */
     public void updatePairTable() {
         try {
             ObservableList<Pair> itemList = FXCollections.observableArrayList();
@@ -274,6 +289,9 @@ public class StatsController extends ManagerController  {
         return inventoryList;
     }
 
+    /**
+     * Queries the database to get the items that are not ordered above the threshold
+     */
     @FXML
     private void queryExcess() {
         Connection dbConnection = null;
@@ -355,11 +373,17 @@ public class StatsController extends ManagerController  {
         }
     }
 
+    /**
+     * Calls the query command and populates the FXML TableView with the data requested
+     */
     @FXML
     private void updateExcessTable() {
         queryExcess();
     }
 
+    /**
+     * Calls FXML to switch back to stats scene
+     */
     @FXML
     public void excessGoBack() throws ClassNotFoundException {
         Scene scene = excessBackBtn.getScene();

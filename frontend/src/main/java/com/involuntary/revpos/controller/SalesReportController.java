@@ -46,6 +46,7 @@ public class SalesReportController implements
      *
      * @return a list containing all the product from the database
      */
+
     public ObservableList<revenue> queryProducts(String start, String end,
         int numDays) throws SQLException {
         ObservableList<revenue> inventoryList = FXCollections.observableArrayList();
@@ -127,6 +128,9 @@ public class SalesReportController implements
     @FXML
     public Button salesReportBtn;
 
+    /**
+     * Calls to update the sales report table
+     */
     public void seeSalesReport() {
         String start = startDate.getText();
         String end = endDate.getText();
@@ -134,6 +138,10 @@ public class SalesReportController implements
         updateTable(start, end, numD);
     }
 
+    /**
+     * Calls FXML to go back to the stats scene
+     *
+     */
     @FXML
     public void goBack() throws ClassNotFoundException {
         Scene scene = salesBackBtn.getScene();
