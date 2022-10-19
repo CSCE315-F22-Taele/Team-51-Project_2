@@ -49,9 +49,14 @@
                   </MenuButton>
                </items>
             </ToolBar>
-            <ImageView fx:id="manageReportBtn" fitHeight="75.0" fitWidth="60.0" layoutX="111.0" layoutY="116.0" onMousePressed="#openManageReport" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="manageReportBtn" fitHeight="75.0" fitWidth="60.0" layoutX="157.0" layoutY="121.0" onMousePressed="#openManageReport" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/reportPlaceholder.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="salesReportBtn" fitHeight="74.0" fitWidth="60.0" layoutX="76.0" layoutY="120.0" onMousePressed="#openSalesReport" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/salesPlaceHolder.PNG" />
                </image>
             </ImageView>
          </children>
