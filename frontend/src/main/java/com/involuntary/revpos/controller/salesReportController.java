@@ -29,7 +29,7 @@ public class salesReportController implements
 
         @Override
         public void initialize(URL url, ResourceBundle rb) {
-            updateTable();
+            updateTable("2022-12-02", "2022-12-22", 21);
         }
 
         /**
@@ -38,7 +38,7 @@ public class salesReportController implements
          *
          * @return a list containing all the product from the database
          */
-        public ObservableList<revenue> queryProducts() throws SQLException {
+        public ObservableList<revenue> queryProducts(String start, String end, int numDays) throws SQLException {
             ObservableList<revenue> inventoryList = FXCollections.observableArrayList();
 
             try {
@@ -46,25 +46,37 @@ public class salesReportController implements
                 Connection dbConnection = connectNow.getConnection();
 
                 Statement statement = dbConnection.createStatement();
-
-                //String queryData = "('2022-12-05 to 2022-12-07' date list ) select revenue, date from order_history where date in('2022-12-05','2022-12-06','2022-12-07');";
-                String queryData = "SELECT * from order_history;";
-                ResultSet result = statement.executeQuery(queryData);
-                result.next();
-                System.out.println(result.getDouble("revenue"));
-                String startDate = "2022-12-05";
-                String endDate = "2022-12-07";
-                Boolean getCurrent = true;
-                while (result.next()) {
-                    //if (result.getString("date") == startDate) { getCurrent = true; }
-                    if (getCurrent) {
-                        revenue product = new revenue(
-                                result.getString("date"),
-                                result.getDouble("revenue")
-                        );
-                        inventoryList.add(product);
-                        //if (result.getString("date") == endDate) { break; }
+                int startDay = Integer.parseInt(String.valueOf(start.substring(start.length()-2)));;
+                int endDay = Integer.parseInt(String.valueOf(end.substring(end.length()-2)));
+                String dateRange = "";
+                String date = "";
+                for (int i = 0; i < numDays; i++) {
+                    if (startDay < 10) {
+                        date = "'" + "2022-12-0" + startDay + "'";
+                    } else {
+                        date = "'" + "2022-12-" + startDay + "'";
                     }
+                    startDay = startDay+1;
+                    if (startDay == endDay+1) {
+                        dateRange += date;
+                        break;
+                    }
+
+                    dateRange += date + ",";
+                }
+                System.out.println(dateRange);
+
+                String queryData = "select revenue, date from order_history where date in(" + dateRange + ");";
+                //select revenue, date from order_history where date in('2022-12-05','2022-12-06','2022-12-07');
+                //String queryData = "SELECT * from order_history;";
+                ResultSet result = statement.executeQuery(queryData);
+                while (result.next()) {
+                    //System.out.println(result.getString("date"));
+                    revenue product = new revenue(
+                            result.getString("date"),
+                            result.getDouble("revenue")
+                    );
+                    inventoryList.add(product);
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -77,9 +89,9 @@ public class salesReportController implements
         /**
          * Populates the TableView (Inventory) with the generated list.
          */
-        public void updateTable() {
+        public void updateTable(String start, String end, int numDays) {
             try {
-                ObservableList inventoryList = queryProducts();
+                ObservableList inventoryList = queryProducts(start, end, numDays);
                 dateCol.setCellValueFactory(
                         new PropertyValueFactory<revenue, String>("id"));
                 revenueCol.setCellValueFactory(
@@ -97,8 +109,14 @@ public class salesReportController implements
         public TextField endDate;
 
         @FXML
+        public TextField numDays;
+
+        @FXML
         public Button salesReportBtn;
         public void seeSalesReport() {
-
+            String start = startDate.getText();
+            String end = endDate.getText();
+            int numD = Integer.parseInt(numDays.getText());
+            updateTable(start, end, numD);
         }
 }

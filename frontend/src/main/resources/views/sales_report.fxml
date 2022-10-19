@@ -22,7 +22,9 @@
       <Label layoutX="44.0" layoutY="58.0" prefHeight="17.0" prefWidth="139.0" text="Start Date:" />
       <TextField fx:id="endDate" layoutX="170.0" layoutY="76.0" prefHeight="25.0" prefWidth="101.0" />
       <Label layoutX="169.0" layoutY="58.0" prefHeight="17.0" prefWidth="74.0" text="End Date:" />
-      <Label layoutX="45.0" layoutY="24.0" prefHeight="17.0" prefWidth="187.0" text="Enter a Date Range: (YYYY/MM/DD)" />
-      <Button fx:id="salesReportBtn" layoutX="305.0" layoutY="76.0" mnemonicParsing="false" onMouseClicked="#seeSalesReport" text="See Sales Report" />
+      <Label layoutX="45.0" layoutY="24.0" prefHeight="17.0" prefWidth="201.0" text="Enter a Date Range: (YYYY-MM-DD)" />
+      <Button fx:id="salesReportBtn" layoutX="460.0" layoutY="76.0" mnemonicParsing="false" onMouseClicked="#seeSalesReport" text="See Sales Report" />
+      <TextField fx:id="numDays" layoutX="302.0" layoutY="76.0" prefHeight="25.0" prefWidth="95.0" />
+      <Label layoutX="302.0" layoutY="58.0" text="Number of Days" />
    </children>
 </AnchorPane>
