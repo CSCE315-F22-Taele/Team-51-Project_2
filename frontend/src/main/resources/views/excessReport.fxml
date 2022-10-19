@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.StatsController">
-
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.StatsController">
+   <children>
+      <ImageView fx:id="excessBackBtn" fitHeight="50.0" fitWidth="50.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#excessGoBack" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/backbutton.png" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>

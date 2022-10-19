@@ -215,21 +215,18 @@ public class LoginController implements Initializable {
                 }
             } catch (Exception e) {
             }
-            ;
             try {
                 if (statement != null) {
                     statement.close();
                 }
             } catch (Exception e) {
             }
-            ;
             try {
                 if (dbConnection != null) {
                     dbConnection.close();
                 }
             } catch (Exception e) {
             }
-            ;
         }
     }
 

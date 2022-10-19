@@ -1,0 +1,27 @@
+package com.involuntary.revpos.models;
+
+public class Pair {
+    private String pair1;
+    private String pair2;
+
+    public Pair(String pair1, String pair2) {
+        this.pair1 = pair1;
+        this.pair2 = pair2;
+    }
+
+    public String getPair1() {
+        return pair1;
+    }
+
+    public void setPair1(String pair1) {
+        this.pair1 = pair1;
+    }
+
+    public String getPair2() {
+        return pair2;
+    }
+
+    public void setPair2(String pair2) {
+        this.pair2 = pair2;
+    }
+}

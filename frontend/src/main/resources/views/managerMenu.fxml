@@ -105,7 +105,7 @@
                   </HBox>
                </children>
             </VBox>
-            <Label fx:id="statusLabel" alignment="CENTER" layoutX="448.0" layoutY="615.0" style="-fx-text-alignment: center; -fx-alignment: center;" AnchorPane.leftAnchor="448.0" AnchorPane.rightAnchor="448.0" />
+            <Label fx:id="statusLabel" alignment="CENTER" layoutX="448.0" layoutY="615.0" style="-fx-text-alignment: center; -fx-alignment: center;" AnchorPane.bottomAnchor="136.0" AnchorPane.leftAnchor="448.0" AnchorPane.rightAnchor="448.0" />
          </children></AnchorPane>
    </children>
 </AnchorPane>
