@@ -4,6 +4,12 @@ import java.util.ArrayList;
 
 public class MenuItem {
 
+    public MenuItem() {
+    }
+    public MenuItem(String name) {
+        this.name = name;
+    }
+
     private String category;
     private String name;
     private double price;

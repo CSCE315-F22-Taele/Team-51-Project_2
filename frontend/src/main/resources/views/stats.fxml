@@ -48,7 +48,7 @@
                   <Image url="@../images/reportPlaceholder.PNG" />
                </image>
             </ImageView>
-            <ImageView fx:id="managerPairReport" fitHeight="75.0" fitWidth="60.0" layoutX="233.0" layoutY="239.0" onMousePressed="#openManageReport" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="managerPairReport" fitHeight="75.0" fitWidth="60.0" layoutX="233.0" layoutY="239.0" onMousePressed="#openManagerPairReport" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/reportPlaceholder.PNG" />
                </image>
