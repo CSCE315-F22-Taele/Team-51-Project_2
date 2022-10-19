@@ -146,6 +146,7 @@ public class LoginController implements Initializable {
      * Calls on FXML to open another window for the manager to login
      *
      * @param posScene references the original scene to be passed on
+     * @throws IOException
      */
     public static void openModal(Scene posScene) throws IOException {
         Parent root = FXMLLoader.load(

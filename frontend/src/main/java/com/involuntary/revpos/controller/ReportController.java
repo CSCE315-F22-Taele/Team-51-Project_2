@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class ReportController extends ManagerController implements
-        Initializable {
+    Initializable {
 
     @FXML
     private TableView<Product> inventoryTable;
@@ -66,11 +66,11 @@ public class ReportController extends ManagerController implements
             while (result.next()) {
                 if (result.getInt("inventory") < 25) {
                     Product product = new Product(
-                            result.getInt("id"),
-                            result.getString("name"),
-                            result.getDouble("price"),
-                            result.getInt("calories"),
-                            result.getInt("inventory")
+                        result.getInt("id"),
+                        result.getString("name"),
+                        result.getDouble("price"),
+                        result.getInt("calories"),
+                        result.getInt("inventory")
                     );
                     inventoryList.add(product);
                 }
@@ -90,20 +90,20 @@ public class ReportController extends ManagerController implements
         try {
             ObservableList inventoryList = queryProducts();
             idCol.setCellValueFactory(
-                    new PropertyValueFactory<Product, Integer>("id"));
+                new PropertyValueFactory<Product, Integer>("id"));
             nameCol.setCellValueFactory(
-                    new PropertyValueFactory<Product, String>("name"));
+                new PropertyValueFactory<Product, String>("name"));
             priceCol.setCellValueFactory(
-                    new PropertyValueFactory<Product, Double>("price"));
+                new PropertyValueFactory<Product, Double>("price"));
             caloriesCol.setCellValueFactory(
-                    new PropertyValueFactory<Product, Integer>("calories"));
+                new PropertyValueFactory<Product, Integer>("calories"));
             quantityCol.setCellValueFactory(
-                    new PropertyValueFactory<Product, Integer>("quantity"));
+                new PropertyValueFactory<Product, Integer>("quantity"));
             inventoryTable.setItems(inventoryList);
-
 
 
         } catch (Exception e) {
         }
-    }}
+    }
+}
 
