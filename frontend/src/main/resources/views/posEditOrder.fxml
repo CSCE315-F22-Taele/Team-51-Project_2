@@ -2,22 +2,37 @@
 
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.PosExtendedController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="pos-editor-page" stylesheets="@../styles/pos.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.PosExtendedController">
    <children>
-      <Button fx:id="confirmChangesBtn" layoutX="527.0" layoutY="361.0" mnemonicParsing="false" text="Confirm" />
-      <ComboBox fx:id="selectProductField" layoutX="167.0" layoutY="94.0" prefHeight="41.0" prefWidth="267.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:value="Item 1" />
-               <String fx:value="Item 2" />
-               <String fx:value="Item 3" />
-            </FXCollections>
-         </items>
-      </ComboBox>
-      <Button fx:id="removeProductBtn" layoutX="462.0" layoutY="361.0" mnemonicParsing="false" text="Remove" />
+      <Button fx:id="confirmChangesBtn" layoutX="457.0" layoutY="335.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="129.0" style="-fx-background-radius: 25;" text="Confirm" />
+      <HBox alignment="CENTER" layoutY="101.0" prefHeight="159.0" prefWidth="536.0" spacing="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="64.0">
+         <children>
+            <ComboBox fx:id="selectProductField" prefHeight="75.0" prefWidth="430.0" style="-fx-background-radius: 50;">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Item 1" />
+                     <String fx:value="Item 2" />
+                     <String fx:value="Item 3" />
+                  </FXCollections>
+               </items>
+               <HBox.margin>
+                  <Insets right="50.0" />
+               </HBox.margin>
+            </ComboBox>
+         </children></HBox>
+      <Label layoutY="50.0" prefHeight="51.0" prefWidth="231.0" styleClass="pos-editor-header" text="CUSTOMIZATIONS" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Button fx:id="removeProductBtn" layoutX="461.0" layoutY="98.0" mnemonicParsing="false" prefHeight="153.0" prefWidth="114.0" style="-fx-background-radius: 25; -fx-background-color: transparent;" text="x">
+         <font>
+            <Font size="72.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
