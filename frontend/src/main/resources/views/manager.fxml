@@ -20,6 +20,5 @@
             <ImageView fx:id="manageExitBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#exitManage" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--exit" />
          </children>
       </VBox>
-      <AnchorPane layoutX="217.0" prefHeight="768.0" prefWidth="819.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="-12.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

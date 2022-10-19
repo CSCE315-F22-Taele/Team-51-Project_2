@@ -49,6 +49,11 @@
                   </MenuButton>
                </items>
             </ToolBar>
+            <ImageView fx:id="manageReportBtn" fitHeight="75.0" fitWidth="60.0" layoutX="111.0" layoutY="116.0" onMousePressed="#openManageReport" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/reportPlaceholder.PNG" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
