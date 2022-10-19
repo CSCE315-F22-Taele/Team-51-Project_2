@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -50,6 +43,12 @@
                </items>
             </ToolBar>
             <ImageView fx:id="manageReportBtn" fitHeight="75.0" fitWidth="60.0" layoutX="157.0" layoutY="121.0" onMousePressed="#openManageReport" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="manageReportBtn" fitHeight="75.0" fitWidth="60.0" layoutX="91.0" layoutY="239.0" onMousePressed="#openManageReport" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/reportPlaceholder.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="managerPairReport" fitHeight="75.0" fitWidth="60.0" layoutX="233.0" layoutY="239.0" onMousePressed="#openManageReport" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/reportPlaceholder.PNG" />
                </image>
