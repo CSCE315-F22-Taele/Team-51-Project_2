@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.StatsController">
    <children>
@@ -20,44 +24,80 @@
             <ImageView fx:id="manageExitBtn" fitHeight="75.0" fitWidth="75.0" onMousePressed="#exitManage" pickOnBounds="true" preserveRatio="true" styleClass="side-bar--exit" />
          </children>
       </VBox>
-      <AnchorPane layoutX="246.0" layoutY="-59.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1005.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="127.0" layoutY="-59.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="897.0" style="-fx-background-color: #8E97A5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <LineChart layoutX="39.0" layoutY="235.0" prefHeight="452.0" prefWidth="725.0">
-               <xAxis>
-                  <CategoryAxis side="BOTTOM" />
-               </xAxis>
-               <yAxis>
-                  <NumberAxis side="LEFT" />
-               </yAxis>
-            </LineChart>
-            <ToolBar layoutX="230.0" layoutY="121.0" prefHeight="63.0" prefWidth="390.0">
-               <items>
-                  <Label text="Total Revenue for:" />
-                  <MenuButton mnemonicParsing="false" text="time window">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Most Recent Day" />
-                        <MenuItem mnemonicParsing="false" text="Past 1 Week" />
-                        <MenuItem mnemonicParsing="false" text="Past 3 Weeks" />
-                     </items>
-                  </MenuButton>
-               </items>
-            </ToolBar>
-            <ImageView fx:id="manageReportBtn" fitHeight="75.0" fitWidth="60.0" layoutX="157.0" layoutY="121.0" onMousePressed="#openManageReport" pickOnBounds="true" preserveRatio="true">
-            <ImageView fx:id="manageReportBtn" fitHeight="75.0" fitWidth="60.0" layoutX="91.0" layoutY="239.0" onMousePressed="#openManageReport" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/reportPlaceholder.PNG" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="managerPairReport" fitHeight="75.0" fitWidth="60.0" layoutX="233.0" layoutY="239.0" onMousePressed="#openManagerPairReport" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/reportPlaceholder.PNG" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="salesReportBtn" fitHeight="74.0" fitWidth="60.0" layoutX="76.0" layoutY="120.0" onMousePressed="#openSalesReport" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/salesPlaceHolder.PNG" />
-               </image>
-            </ImageView>
+            <HBox alignment="CENTER" layoutY="282.0" prefHeight="204.0" prefWidth="924.0" spacing="50.0" AnchorPane.bottomAnchor="282.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="282.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fx:id="managerSalesReportBtn" fitHeight="175.0" fitWidth="175.0" onMousePressed="#openSalesReport" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/statssales.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" text="Sales Report">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Inter Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fx:id="managerRestockReportBtn" fitHeight="175.0" fitWidth="175.0" onMousePressed="#openRestockReport" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/statsrestock.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" text="Restock Report">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Inter Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fx:id="managerPairReportBtn" fitHeight="175.0" fitWidth="175.0" onMousePressed="#openPairReport" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/statspair.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" text="Pair Report">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Inter Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fx:id="managerExcessReportBtn" fitHeight="175.0" fitWidth="175.0" onMousePressed="#openExcessReport" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/statsexcess.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" text="Excess Report">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Inter Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </children>

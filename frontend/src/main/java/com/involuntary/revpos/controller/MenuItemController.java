@@ -105,13 +105,15 @@ public class MenuItemController extends ManagerController {
             statement = dbConnection.createStatement();
             result = statement.executeUpdate(sql);
             if (result == 1) {
+                sql = "ALTER TABLE order_history ADD " + menuItemNameField.getText() + " varchar(255)";
+                System.out.println("ALTER TABLE order_history ADD " + menuItemNameField.getText() + "varchar(255)");
+                statement.executeUpdate(sql);
                 statusLabel.setText("Good job!");
             }
 
-            // Adds to Order History for other queries to work
-            sql = "ALTER TABLE order_history ADD";
         } catch (Exception error) {
             error.printStackTrace();
+            statusLabel.setText("Failed! Invalid data...");
         } finally {
             try {
                 if (statement != null) {
@@ -155,12 +157,14 @@ public class MenuItemController extends ManagerController {
             statement = dbConnection.createStatement();
             result = statement.executeUpdate(sql);
             if (result == 1) {
+                sql = "ALTER TABLE order_history DROP COLUMN " + menuItemNameField.getText();
                 statusLabel.setText("Good job!");
             } else {
                 statusLabel.setText("Failed");
             }
         } catch (Exception error) {
             error.printStackTrace();
+            statusLabel.setText("Failed");
         } finally {
             try {
                 if (statement != null) {

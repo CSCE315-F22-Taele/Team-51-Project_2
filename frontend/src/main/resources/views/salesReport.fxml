@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.SalesReportController">
+   <children>
+      <TableView fx:id="salesTable" layoutX="165.0" layoutY="196.0" prefHeight="476.0" prefWidth="695.0" styleClass="inventory-table">
+         <columns>
+            <TableColumn fx:id="dateCol" editable="false" maxWidth="3000.0" minWidth="-Infinity" prefWidth="-1.0" sortable="false" text="Date" />
+            <TableColumn fx:id="revenueCol" prefWidth="75.0" text="Revenue" />
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <TextField fx:id="startDate" layoutX="166.0" layoutY="148.0" prefHeight="25.0" prefWidth="101.0" />
+      <Label layoutX="165.0" layoutY="130.0" prefHeight="17.0" prefWidth="139.0" text="Start Date:" />
+      <TextField fx:id="endDate" layoutX="291.0" layoutY="148.0" prefHeight="25.0" prefWidth="101.0" />
+      <Label layoutX="290.0" layoutY="130.0" prefHeight="17.0" prefWidth="74.0" text="End Date:" />
+      <Label layoutX="166.0" layoutY="96.0" prefHeight="17.0" prefWidth="201.0" text="Enter a Date Range: (YYYY-MM-DD)" />
+      <Button fx:id="salesReportBtn" layoutX="581.0" layoutY="148.0" mnemonicParsing="false" onMouseClicked="#seeSalesReport" text="See Sales Report" />
+      <TextField fx:id="numDays" layoutX="423.0" layoutY="148.0" prefHeight="25.0" prefWidth="95.0" />
+      <Label layoutX="423.0" layoutY="130.0" text="Number of Days" />
+      <ImageView fx:id="salesBackBtn" fitHeight="50.0" fitWidth="50.0" layoutX="2.0" layoutY="2.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/backbutton.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

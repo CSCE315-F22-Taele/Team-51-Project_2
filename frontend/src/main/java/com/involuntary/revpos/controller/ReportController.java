@@ -23,6 +23,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.scene.image.ImageView;
 
 public class ReportController extends ManagerController implements
     Initializable {
@@ -39,6 +40,8 @@ public class ReportController extends ManagerController implements
     private TableColumn<Product, Integer> caloriesCol;
     @FXML
     private TableColumn<Product, Integer> quantityCol;
+    @FXML
+    private ImageView restockBackBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -102,6 +105,16 @@ public class ReportController extends ManagerController implements
             inventoryTable.setItems(inventoryList);
 
 
+        } catch (Exception e) {
+        }
+    }
+    @FXML
+    public void goBack() throws ClassNotFoundException {
+        Scene scene = restockBackBtn.getScene();
+        try {
+            Parent root = FXMLLoader.load(
+                getClass().getResource("/views/stats.fxml"));
+            scene.setRoot(root);
         } catch (Exception e) {
         }
     }

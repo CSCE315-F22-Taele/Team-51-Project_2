@@ -9,9 +9,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1024.0" stylesheets="@../styles/report.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.ReportController">
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.ReportController">
    <children>
-      <AnchorPane fx:id="manager_content__inventory" prefHeight="768.0" prefWidth="995.0" styleClass="manage-inventory-page" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="manager_content__inventory" prefHeight="768.0" prefWidth="995.0" style="-fx-background-color: #88a3cc;" styleClass="manage-inventory-page" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <TableView fx:id="inventoryTable" layoutX="149.0" layoutY="146.0" prefHeight="476.0" prefWidth="719.0" styleClass="inventory-table" AnchorPane.bottomAnchor="146.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="146.0">
                <columns>
@@ -41,5 +41,10 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <ImageView fx:id="restockBackBtn" fitHeight="50.0" fitWidth="50.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/backbutton.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
