@@ -26,13 +26,20 @@ public class StatsController extends ManagerController {
     @FXML
     private ImageView managerPairReport;
 
+    @FXML
+    private ImageView salesReportBtn;
+
     public void openManageReport() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(
             "/views/restockReport.fxml"));
         Scene scene = manageReportBtn.getScene();
         scene.setRoot(root);
     }
-
+    public void openSalesReport() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/views/sales_report.fxml"));
+        Scene scene = salesReportBtn.getScene();
+        scene.setRoot(root);
+    }
     public void openManagerPairReport() throws IOException {
         Parent root = FXMLLoader.load(
             getClass().getResource("/views/salesTogetherReport.fxml"));

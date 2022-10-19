@@ -22,6 +22,27 @@
       </VBox>
       <AnchorPane layoutX="246.0" layoutY="-59.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1005.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <LineChart layoutX="39.0" layoutY="235.0" prefHeight="452.0" prefWidth="725.0">
+               <xAxis>
+                  <CategoryAxis side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis side="LEFT" />
+               </yAxis>
+            </LineChart>
+            <ToolBar layoutX="230.0" layoutY="121.0" prefHeight="63.0" prefWidth="390.0">
+               <items>
+                  <Label text="Total Revenue for:" />
+                  <MenuButton mnemonicParsing="false" text="time window">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Most Recent Day" />
+                        <MenuItem mnemonicParsing="false" text="Past 1 Week" />
+                        <MenuItem mnemonicParsing="false" text="Past 3 Weeks" />
+                     </items>
+                  </MenuButton>
+               </items>
+            </ToolBar>
+            <ImageView fx:id="manageReportBtn" fitHeight="75.0" fitWidth="60.0" layoutX="157.0" layoutY="121.0" onMousePressed="#openManageReport" pickOnBounds="true" preserveRatio="true">
             <ImageView fx:id="manageReportBtn" fitHeight="75.0" fitWidth="60.0" layoutX="91.0" layoutY="239.0" onMousePressed="#openManageReport" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/reportPlaceholder.PNG" />
@@ -30,6 +51,11 @@
             <ImageView fx:id="managerPairReport" fitHeight="75.0" fitWidth="60.0" layoutX="233.0" layoutY="239.0" onMousePressed="#openManageReport" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/reportPlaceholder.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="salesReportBtn" fitHeight="74.0" fitWidth="60.0" layoutX="76.0" layoutY="120.0" onMousePressed="#openSalesReport" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/salesPlaceHolder.PNG" />
                </image>
             </ImageView>
          </children>
