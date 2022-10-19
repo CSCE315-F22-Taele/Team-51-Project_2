@@ -5,10 +5,11 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-
 
 <AnchorPane prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #88a3cc;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.StatsController">
    <children>
@@ -43,5 +44,10 @@
             </HBox>
          </children>
       </VBox>
+      <ImageView fx:id="pairBackBtn" fitHeight="50.0" fitWidth="50.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#pairGoBack" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/backbutton.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
