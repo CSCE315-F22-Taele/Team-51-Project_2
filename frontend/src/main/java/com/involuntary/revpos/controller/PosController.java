@@ -54,6 +54,13 @@ public class PosController extends MenuItemController implements Initializable {
     private List<MenuItem> menuItems = new ArrayList<>();
     private MyListener myListener;
 
+    /**
+     * Executes the body when the FXML Controller is loaded Dynamically creates
+     * the menu interface for all menu items in the database
+     *
+     * @param url            represents the location of the fxml file
+     * @param resourceBundle represents any resources utilized
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         referCart = cart;
@@ -62,8 +69,13 @@ public class PosController extends MenuItemController implements Initializable {
         referTaxLabel = taxLabel;
         referCurrentCart = currentCart;
         menuItems.addAll(getData());
-        if(menuItems.size() > 0) {
+        if (menuItems.size() > 0) {
             myListener = new MyListener() {
+                /**
+                 * Executes the body when the FXML Controller is loaded
+                 *
+                 * @param item assigns a listener for when the FXML object is clicked
+                 */
                 @Override
                 public void onClickListener(MenuItem item) throws IOException {
                     // Function to Assign on Click
@@ -76,15 +88,16 @@ public class PosController extends MenuItemController implements Initializable {
         int column = 0;
         int row = 1;
         try {
-            for(int i = 0; i < menuItems.size(); i++) {
+            for (int i = 0; i < menuItems.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/views/modelMenuItem.fxml"));
+                fxmlLoader.setLocation(
+                    getClass().getResource("/views/modelMenuItem.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
                 MenuItemController menuItemController = fxmlLoader.getController();
                 menuItemController.setData(menuItems.get(i), myListener);
 
-                if(column == 5) {
+                if (column == 5) {
                     column = 0;
                     row++;
                 }
@@ -106,6 +119,12 @@ public class PosController extends MenuItemController implements Initializable {
         }
     }
 
+    /**
+     * Queries the database and parses the data to an array to be used in other
+     * processes throughout the POS interface
+     *
+     * @return a list of object MenuItem
+     */
     private List<MenuItem> getData() {
         List<MenuItem> menuItems = new ArrayList<>();
         MenuItem menuItem;
@@ -123,22 +142,24 @@ public class PosController extends MenuItemController implements Initializable {
             result = statement.executeQuery(sql);
             ArrayList<String> optionsIds;
 
-            while(result.next()) {
+            while (result.next()) {
                 menuItem = new MenuItem();
                 menuItem.setName(result.getString("name"));
                 menuItem.setPrice(result.getDouble("price"));
-                ArrayList<String> ids = new ArrayList<String>(Arrays.asList(result.getString("ingredients").split(",")));
-                if(result.getString("options") == null) {
+                ArrayList<String> ids = new ArrayList<String>(
+                    Arrays.asList(result.getString("ingredients").split(",")));
+                if (result.getString("options") == null) {
                     optionsIds = new ArrayList<String>();
                 } else {
-                    optionsIds = new ArrayList<String>(Arrays.asList(result.getString("options").split(",")));
+                    optionsIds = new ArrayList<String>(
+                        Arrays.asList(result.getString("options").split(",")));
                 }
                 ArrayList<Product> ingredients = new ArrayList<Product>();
-                for(String id : ids) {
+                for (String id : ids) {
                     ingredients.add(new Product(Integer.parseInt(id)));
                 }
                 ArrayList<Product> options = new ArrayList<>();
-                for(String optionsId : optionsIds) {
+                for (String optionsId : optionsIds) {
                     options.add(new Product(Integer.parseInt(optionsId)));
                 }
                 menuItem.setIngredients(ingredients);
@@ -148,71 +169,123 @@ public class PosController extends MenuItemController implements Initializable {
         } catch (Exception error) {
             error.printStackTrace();
         } finally {
-            try { if(result != null) result.close(); } catch (Exception e) {};
-            try { if(statement != null) statement.close(); } catch (Exception e) {};
-            try { if(dbConnection != null) dbConnection.close(); } catch (Exception e) {};
+            try {
+                if (result != null) {
+                    result.close();
+                }
+            } catch (Exception e) {
+            }
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+            } catch (Exception e) {
+            }
+            try {
+                if (dbConnection != null) {
+                    dbConnection.close();
+                }
+            } catch (Exception e) {
+            }
         }
 
         return menuItems;
     }
 
+    /**
+     * Calls on two helper functions that set the cart values on the interface
+     *
+     * @param item represents the item being checked/verified
+     */
     public static void verifyOrder(MenuItem item) {
         updateCart(item.getName());
         computePrice();
     }
+
+    /**
+     * Loops through products and adds ingredients to the cart and their
+     * associated prices
+     *
+     * @param products represent the array that needs to be recorded to the cart
+     *                 as ordered from the customer
+     */
     public void addItemsToCart(ArrayList<Product> products) {
-        for(Product product : products) {
-            Integer count = referCurrentCart.containsKey(product) ? referCurrentCart.get(product) : 0;
+        for (Product product : products) {
+            Integer count =
+                referCurrentCart.containsKey(product) ? referCurrentCart.get(
+                    product) : 0;
             referCurrentCart.put(product, count + 1);
             double price = checkPrice(product);
             cartTaxTotal += price * 0.0625;
             cartTotal += price;
         }
     }
+
+    /**
+     * Loops through products and remove ingredients in the parameter to the
+     * cart
+     *
+     * @param products represent the array that needs to be removed from cart as
+     *                 ordered from the customer
+     */
     public static void removeItemsToCart(ArrayList<Product> products) {
-        for(Product product : products) {
+        for (Product product : products) {
             if (referCurrentCart.containsKey(product)) {
                 if (referCurrentCart.get(product) <= 1) {
                     referCurrentCart.remove(product);
                 } else {
-                    referCurrentCart.put(product, referCurrentCart.get(product) - 1);
+                    referCurrentCart.put(product,
+                        referCurrentCart.get(product) - 1);
                 }
             }
         }
     }
 
-
+    /**
+     * Queries the database for a price if the price from the getter is zero
+     *
+     * @param product represent product that needs a price check
+     */
     public double checkPrice(Product product) {
         Connection dbConnection = null;
         Statement statement = null;
         ResultSet result = null;
         double price = product.getPrice();
-        if(price == 0) {
+        if (price == 0) {
             try {
-                String sql = "SELECT price FROM ingredients" + " WHERE id = " + product.getId();
+                String sql = "SELECT price FROM ingredients" + " WHERE id = "
+                    + product.getId();
                 DatabaseConnection connectNow = new DatabaseConnection();
                 dbConnection = connectNow.getConnection();
                 statement = dbConnection.createStatement();
                 result = statement.executeQuery(sql);
                 while (result.next()) {
-                    price = Math.round(result.getDouble("price") * 100.0) / 100.0;
+                    price =
+                        Math.round(result.getDouble("price") * 100.0) / 100.0;
                 }
             } catch (Exception ex) {
-                System.err.println(ex.getClass().getName() + ": " + ex.getMessage());
+                System.err.println(
+                    ex.getClass().getName() + ": " + ex.getMessage());
                 ex.printStackTrace();
             } finally {
                 try {
-                    if (result != null) result.close();
+                    if (result != null) {
+                        result.close();
+                    }
                 } catch (Exception e) {
                 }
                 ;
                 try {
-                    if (statement != null) statement.close();
+                    if (statement != null) {
+                        statement.close();
+                    }
                 } catch (Exception e) {
                 }
                 ;
                 try {
-                    if (dbConnection != null) dbConnection.close();
+                    if (dbConnection != null) {
+                        dbConnection.close();
+                    }
                 } catch (Exception e) {
                 }
                 ;
@@ -222,30 +295,58 @@ public class PosController extends MenuItemController implements Initializable {
         return price;
     }
 
+    /**
+     * Updates the database using the order/product information provided.
+     *
+     * @param id       id to be used in SQL query
+     * @param quantity quantity to be removed from the database
+     * @return true if successful and false on fail
+     */
     public boolean updateCall(String id, int quantity) {
         Connection dbConnection = null;
         Statement statement = null;
         try {
-            String sql = "UPDATE ingredients" + " SET inventory = inventory - " + quantity + " WHERE id = " + id;
+            String sql =
+                "UPDATE ingredients" + " SET inventory = inventory - "
+                    + quantity + " WHERE id = " + id;
             DatabaseConnection connectNow = new DatabaseConnection();
             dbConnection = connectNow.getConnection();
 
             statement = dbConnection.createStatement();
             int callStatus = statement.executeUpdate(sql);
-            if(callStatus != 1) {
+            if (callStatus != 1) {
                 return false;
             }
         } catch (Exception ex) {
-            System.err.println(ex.getClass().getName()+": "+ex.getMessage());
+            System.err.println(
+                ex.getClass().getName() + ": " + ex.getMessage());
             ex.printStackTrace();
             return false;
         } finally {
-            try { if(statement != null) statement.close(); } catch (Exception e) {};
-            try { if(dbConnection != null) dbConnection.close(); } catch (Exception e) {};
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+            } catch (Exception e) {
+            }
+            ;
+            try {
+                if (dbConnection != null) {
+                    dbConnection.close();
+                }
+            } catch (Exception e) {
+            }
+            ;
         }
         return true;
     }
 
+    /**
+     * Updates the FXML cart variable with menu item labels based on what's
+     * ordered
+     *
+     * @param item represent menu item name to be added to the cart visual
+     */
     public static void updateCart(String item) {
         HBox entry = new HBox();
         Label label = new Label(item);
@@ -255,11 +356,23 @@ public class PosController extends MenuItemController implements Initializable {
         referCart.getChildren().add(separator);
     }
 
+    /**
+     * Sets the cart labels associated with price to the respective variables
+     */
     public static void computePrice() {
-        referTaxLabel.setText("$" + (df2.format(cartTaxTotal).equals(".00") ? "0.00" : df2.format(cartTaxTotal)));
-        referDiscountLabel.setText("$" + (df2.format(cartDiscountTotal).equals(".00") ? "0.00" : df2.format(cartDiscountTotal)));
-        referCheckoutBtn.setText("CHARGE $" + df2.format(cartTotal + cartTaxTotal - cartDiscountTotal));
+        referTaxLabel.setText(
+            "$" + (df2.format(cartTaxTotal).equals(".00") ? "0.00"
+                : df2.format(cartTaxTotal)));
+        referDiscountLabel.setText(
+            "$" + (df2.format(cartDiscountTotal).equals(".00") ? "0.00"
+                : df2.format(cartDiscountTotal)));
+        referCheckoutBtn.setText("CHARGE $" + df2.format(
+            cartTotal + cartTaxTotal - cartDiscountTotal));
     }
+
+    /**
+     * Loop through the cart calling a database update on each item in the cart
+     */
     public void checkout() {
         currentCart = referCurrentCart;
         for (Product item : currentCart.keySet()) {
@@ -275,9 +388,12 @@ public class PosController extends MenuItemController implements Initializable {
         discountLabel.setText("$0.00");
         checkoutBtn.setText("CHARGE $0.00");
     }
+
+    /**
+     * Calls FXML to open the setting scene
+     */
     public void openSettings() throws IOException {
         Scene scene = openSettingsBtn.getScene();
         LoginController.openModal(scene);
     }
-
 }

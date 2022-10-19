@@ -12,12 +12,15 @@ import java.io.IOException;
 import java.sql.Connection;
 
 public class Main extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(
+            Main.class.getResource("/views/login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1024, 768);
         stage.setTitle("Login");
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/tamulogo.png")));
+        stage.getIcons().add(
+            new Image(getClass().getResourceAsStream("/images/tamulogo.png")));
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.show();

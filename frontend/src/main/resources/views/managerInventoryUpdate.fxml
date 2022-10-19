@@ -9,22 +9,25 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.InventoryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #4B5A72;" stylesheets="@../styles/manager.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.involuntary.revpos.controller.InventoryController">
    <children>
-      <VBox layoutX="110.0" layoutY="15.0" prefHeight="270.0" prefWidth="375.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+      <VBox layoutX="128.0" layoutY="15.0" prefHeight="270.0" prefWidth="357.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="128.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
          <children>
             <HBox prefHeight="37.0" prefWidth="311.0" />
-            <Label text="Type">
+            <Label text="Type" textFill="WHITE">
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets bottom="5.0" top="10.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Source Sans Pro SemiBold" size="16.0" />
+               </font>
             </Label>
             <HBox prefHeight="37.0" prefWidth="311.0">
                <children>
-                  <ComboBox fx:id="manageTypeField" prefHeight="35.0" prefWidth="349.0">
+                  <ComboBox fx:id="manageTypeField" prefHeight="40.0" prefWidth="500.0">
                      <items>
                         <FXCollections fx:factory="observableArrayList">
                            <String fx:value="Price" />
@@ -35,38 +38,50 @@
                   </ComboBox>
                </children>
             </HBox>
-            <Label text="Product ID">
+            <Label text="Product ID" textFill="WHITE">
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets bottom="5.0" top="10.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Source Sans Pro SemiBold" size="16.0" />
+               </font>
             </Label>
-            <TextField fx:id="manageIDField" prefHeight="37.0" prefWidth="311.0">
+            <TextField fx:id="manageIDField" prefHeight="40.0" prefWidth="500.0">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </TextField>
-            <Label text="Value">
+            <Label text="Value" textFill="WHITE">
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets bottom="5.0" top="10.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Source Sans Pro SemiBold" size="16.0" />
+               </font>
             </Label>
-            <TextField fx:id="manageValueField" prefHeight="37.0" prefWidth="311.0" />
-            <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
+            <TextField fx:id="manageValueField" prefHeight="40.0" prefWidth="500.0" />
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="71.0" prefWidth="357.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#updateInventory" prefHeight="36.0" prefWidth="156.0" text="Save" />
-                  <Pane prefHeight="69.0" prefWidth="113.0" />
+                  <Button mnemonicParsing="false" onAction="#updateInventory" prefHeight="36.0" prefWidth="156.0" text="Save">
+                     <font>
+                        <Font name="Inter Bold" size="18.0" />
+                     </font>
+                  </Button>
                   <Label fx:id="manageInvStatusLabel" />
                </children>
             </HBox>
          </children>
       </VBox>
-      <VBox alignment="CENTER" layoutX="61.0" layoutY="50.0" prefHeight="200.0" prefWidth="75.0" style="-fx-spacing: 25px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" layoutX="61.0" layoutY="50.0" prefHeight="300.0" prefWidth="100.0" style="-fx-spacing: 25px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#switchInventoryModal" text="Quantity" />
-            <Button mnemonicParsing="false" onAction="#switchAddDeleteModal" text="Add/Delete" />
+            <Button mnemonicParsing="false" onAction="#switchInventoryModal" prefWidth="85.0" text="Quantity">
+               <font>
+                  <Font name="Inter Bold" size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#switchAddDeleteModal" prefWidth="85.0" text="Add/Delete">
+               <font>
+                  <Font name="Inter Bold" size="12.0" />
+               </font></Button>
          </children>
       </VBox>
    </children>

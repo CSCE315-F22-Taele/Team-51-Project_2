@@ -110,3 +110,13 @@ CART STYLING
     -fx-font-family: "SourceSansPro Bold";
     -fx-font-size: 16px;
 }
+
+.pos-editor-page {
+    -fx-background-color: #4B5A73;
+}
+.pos-editor-header {
+    -fx-alignment: center;
+    -fx-font-size: 35px;
+    -fx-font-family: "Inter Bold";
+    -fx-text-fill: #FFFFFF;
+}

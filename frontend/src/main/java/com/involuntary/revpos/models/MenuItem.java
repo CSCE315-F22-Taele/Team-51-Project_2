@@ -3,6 +3,7 @@ package com.involuntary.revpos.models;
 import java.util.ArrayList;
 
 public class MenuItem {
+
     private String category;
     private String name;
     private double price;
@@ -45,6 +46,7 @@ public class MenuItem {
         return options;
     }
 
-    public void setOptions(ArrayList<Product> options) { this.options = options;
+    public void setOptions(ArrayList<Product> options) {
+        this.options = options;
     }
 }
