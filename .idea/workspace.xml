@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5af2d59-0e4c-4996-b17e-0b09e5a73769" name="Changes" comment="Added SQL calls to allow server complete a customer's order">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/postgresql_42_2_8__2_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/ReportController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/reports.fxml" afterDir="false" />
+    <list default="true" id="c5af2d59-0e4c-4996-b17e-0b09e5a73769" name="Changes" comment="sales report completed">
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/resources/styles/report.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/StatsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/involuntary/revpos/controller/StatsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/resources/views/manager.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/manager.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/resources/views/stats.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/resources/views/stats.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +174,35 @@
       <option name="project" value="LOCAL" />
       <updated>1665607012840</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="added report placeholder">
+      <created>1666146574406</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1666146574406</updated>
+    </task>
+    <task id="LOCAL-00012" summary="restock report done">
+      <created>1666148982225</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1666148982225</updated>
+    </task>
+    <task id="LOCAL-00013" summary="sales report added">
+      <created>1666155410972</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1666155410972</updated>
+    </task>
+    <task id="LOCAL-00014" summary="sales report completed">
+      <created>1666159695391</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1666159695391</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -216,7 +239,11 @@
     <MESSAGE value="Added more functionality to settings" />
     <MESSAGE value="Implement initial inventory table" />
     <MESSAGE value="Added list functionality for cart" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added list functionality for cart" />
+    <MESSAGE value="added report placeholder" />
+    <MESSAGE value="restock report done" />
+    <MESSAGE value="sales report added" />
+    <MESSAGE value="sales report completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="sales report completed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
