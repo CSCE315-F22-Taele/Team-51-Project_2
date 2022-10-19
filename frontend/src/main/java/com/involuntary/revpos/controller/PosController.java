@@ -203,8 +203,8 @@ public class PosController extends MenuItemController implements Initializable {
     }
 
     /**
-     * Queries the database and parses the data to an array to be used in other
-     * processes throughout the POS interface
+     * Loops through products and adds ingredients to the cart and their
+     * associated prices
      *
      * @param products represent the array that needs to be recorded to the cart
      *                 as ordered from the customer
@@ -221,6 +221,13 @@ public class PosController extends MenuItemController implements Initializable {
         }
     }
 
+    /**
+     * Loops through products and remove ingredients in the parameter to the
+     * cart
+     *
+     * @param products represent the array that needs to be removed from cart as
+     *                 ordered from the customer
+     */
     public static void removeItemsToCart(ArrayList<Product> products) {
         for (Product product : products) {
             if (referCurrentCart.containsKey(product)) {
@@ -234,7 +241,11 @@ public class PosController extends MenuItemController implements Initializable {
         }
     }
 
-
+    /**
+     * Queries the database for a price if the price from the getter is zero
+     *
+     * @param product represent product that needs a price check
+     */
     public double checkPrice(Product product) {
         Connection dbConnection = null;
         Statement statement = null;
@@ -284,6 +295,13 @@ public class PosController extends MenuItemController implements Initializable {
         return price;
     }
 
+    /**
+     * Updates the database using the order/product information provided.
+     *
+     * @param id       id to be used in SQL query
+     * @param quantity quantity to be removed from the database
+     * @return true if successful and false on fail
+     */
     public boolean updateCall(String id, int quantity) {
         Connection dbConnection = null;
         Statement statement = null;
@@ -323,6 +341,12 @@ public class PosController extends MenuItemController implements Initializable {
         return true;
     }
 
+    /**
+     * Updates the FXML cart variable with menu item labels based on what's
+     * ordered
+     *
+     * @param item represent menu item name to be added to the cart visual
+     */
     public static void updateCart(String item) {
         HBox entry = new HBox();
         Label label = new Label(item);
@@ -332,6 +356,9 @@ public class PosController extends MenuItemController implements Initializable {
         referCart.getChildren().add(separator);
     }
 
+    /**
+     * Sets the cart labels associated with price to the respective variables
+     */
     public static void computePrice() {
         referTaxLabel.setText(
             "$" + (df2.format(cartTaxTotal).equals(".00") ? "0.00"
@@ -343,6 +370,9 @@ public class PosController extends MenuItemController implements Initializable {
             cartTotal + cartTaxTotal - cartDiscountTotal));
     }
 
+    /**
+     * Loop through the cart calling a database update on each item in the cart
+     */
     public void checkout() {
         currentCart = referCurrentCart;
         for (Product item : currentCart.keySet()) {
@@ -359,9 +389,11 @@ public class PosController extends MenuItemController implements Initializable {
         checkoutBtn.setText("CHARGE $0.00");
     }
 
+    /**
+     * Calls FXML to open the setting scene
+     */
     public void openSettings() throws IOException {
         Scene scene = openSettingsBtn.getScene();
         LoginController.openModal(scene);
     }
-
 }

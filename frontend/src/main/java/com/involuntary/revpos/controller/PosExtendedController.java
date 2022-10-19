@@ -33,6 +33,12 @@ public class PosExtendedController implements Initializable {
     private ComboBox selectProductField;
     private static ComboBox referSelectProductField;
 
+    /**
+     * Executes the body when the FXML Controller is loaded
+     *
+     * @param url            represents the location of the fxml file
+     * @param resourceBundle represents any resources utilized
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         referConfirmChangesBtn = confirmChangesBtn;
@@ -40,6 +46,11 @@ public class PosExtendedController implements Initializable {
         referRemoveProductBtn = removeProductBtn;
     }
 
+    /**
+     * Calls FXML to open the modal that allows modification to an order
+     *
+     * @param item represents the item being edited/modified
+     */
     public static void openModal(MenuItem item) throws IOException {
         Parent root = FXMLLoader.load(PosExtendedController.class.getResource(
             "/views/posEditOrder.fxml"));

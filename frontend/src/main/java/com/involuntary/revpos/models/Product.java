@@ -5,13 +5,17 @@ package com.involuntary.revpos.models;
  */
 public class Product {
 
-    private String category;
     private int id;
     private String name;
     private double price;
     private int calories;
     private int quantity;
 
+    /**
+     * Creates a product object given the params
+     *
+     * @param id id of the product to be assigned
+     */
     public Product(int id) {
         this.id = id;
     }
@@ -24,8 +28,7 @@ public class Product {
      * @param price price of the product to be assigned
      * @return a new Product object
      */
-    public Product(String category, int id, String name, double price) {
-        this.category = category;
+    public Product(int id, String name, double price) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -50,23 +53,6 @@ public class Product {
         this.quantity = quantity;
     }
 
-    /**
-     * @return category of a product
-     */
-    public String getCategory() {
-        return category;
-    }
-
-    /**
-     * @param category category to set (string)
-     */
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    /**
-     * @return id of a product
-     */
     public int getId() {
         return id;
     }
@@ -134,6 +120,9 @@ public class Product {
         this.quantity = quantity;
     }
 
+    /**
+     * Overrides making Product an immutable class, specifying a hash
+     */
     @Override
     public int hashCode() {
         final int temp = 14;
@@ -142,6 +131,9 @@ public class Product {
         return ans;
     }
 
+    /**
+     * Overrides making Product compared to other initialization of the same object type
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
