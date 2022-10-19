@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
- *
  * @author Johnny Le
  */
 public class DatabaseConnection {
+
     public Connection databaseLink;
 
     /**
@@ -19,13 +19,16 @@ public class DatabaseConnection {
         String teamNumber = "51";
         String sectionNumber = "904";
         String dbName = "csce331_" + sectionNumber + "_" + teamNumber;
-        String dbConnectionString = "jdbc:postgresql://csce-315-db.engr.tamu.edu/" + dbName;
+        String dbConnectionString =
+            "jdbc:postgresql://csce-315-db.engr.tamu.edu/" + dbName;
 
         try {
             Class.forName("org.postgresql.Driver");
-            databaseLink = DriverManager.getConnection(dbConnectionString, dbSetup.user, dbSetup.pswd);
+            databaseLink = DriverManager.getConnection(dbConnectionString,
+                dbSetup.user, dbSetup.pswd);
         } catch (Exception ex) {
-            System.err.println(ex.getClass().getName()+": "+ex.getMessage());
+            System.err.println(
+                ex.getClass().getName() + ": " + ex.getMessage());
             return null;
         }
 
