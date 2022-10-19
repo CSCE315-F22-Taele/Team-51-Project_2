@@ -10,9 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
+
+import com.involuntary.revpos.models.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -27,7 +27,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import java.time.*;
 
-public class StatsController extends ManagerController {
+public class StatsController extends ManagerController  {
 
     @FXML
     private ImageView managerRestockReportBtn;
@@ -236,7 +236,8 @@ public class StatsController extends ManagerController {
     private DatePicker excessDatePicker;
 
     @FXML
-    private TableColumn<Excess, String> excessNameCol;
+    private DatePicker excessDatePicker2;
+
 
     @FXML
     private TableColumn<Excess, Integer> percentSoldCol;
@@ -244,6 +245,34 @@ public class StatsController extends ManagerController {
     @FXML
     private ImageView excessBackBtn;
 
+    static HashMap<Integer, Product> inventoryList = new HashMap<Integer, Product>();
+
+    public HashMap<Integer, Product> queryProducts() throws SQLException {
+        try {
+            DatabaseConnection connectNow = new DatabaseConnection();
+            Connection dbConnection = connectNow.getConnection();
+
+            Statement statement = dbConnection.createStatement();
+
+            String queryData = "SELECT * FROM ingredients";
+            ResultSet result = statement.executeQuery(queryData);
+
+            while (result.next()) {
+                Product product = new Product(
+                        result.getInt("id"),
+                        result.getString("name"),
+                        result.getDouble("price"),
+                        result.getInt("calories"),
+                        result.getInt("inventory")
+                );
+                inventoryList.put(product.getId(), product);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return inventoryList;
+    }
 
     @FXML
     private void queryExcess() {
@@ -262,7 +291,9 @@ public class StatsController extends ManagerController {
                     "yyyy-MM-dd",
                     Locale.US);
             String firstDate = (excessDatePicker.getValue()).format(formatter);
-            String secondDate = LocalDateTime.now().format(formatter);
+
+            String secondDate = excessDatePicker2.getValue().format(formatter);
+            String date_string = "2022-12-10";
             LocalDate start = LocalDate.parse(firstDate);
             LocalDate end = LocalDate.parse(secondDate);
 
@@ -285,12 +316,39 @@ public class StatsController extends ManagerController {
 
             //need way to loop through all items
             //  1. get every item name and current inventory
+                // - Populate list with inventory of every item
             //  2. get number sold within the date rage
-            //  3. divide that number sold by the current inventory to get percent (calculatePercentSold)
+            //  3. Determine if amount sold for each product is < product.inventory*0.1
             //  4. output both the name and percent told to table
             //  5. done
-            String sqlQuery = "SELECT * FROM order_history";
-            //result = statement.executeQuery(sqlQuery);
+            //
+            String sqlQuery;
+            HashMap<Integer, Product> inventoryList = queryProducts();
+            int day = start.getDayOfMonth();
+            while (day > end.getDayOfMonth()) { //(x = inventory*0.1, y is date )
+                //get inventory here
+                String d = (day < 10) ? "0" + String.valueOf(day) : "1" + String.valueOf(day);
+                sqlQuery = "select 2022/12/" + d + ", "
+                    + "Pepsi, Diet_pepsi, Gatorade, Mug_Rootbeer, Sierra_mist, Brisk, "
+                    + "Straws, Lids, Drink_Cups, "
+                    + "Burger_Fillet, Chicken_Fillet, Chicken_Tender, Black_Bean_Fillet, "
+                    + "Bun, Lettuce, Pickles, Tomato, Onions, American_Cheese, Swiss_American_Cheese, Fries, Bacon, "
+                    + "Meal_Tray, Salt, Pepper, Utensils, Napkins, "
+                    + "GigEm_Sauce, Ketchup, Mustard, Mayo, Ranch, Honey_BBQ, Caesar_Dressing, "
+                    + "Chocolate, Vanilla, Strawberry, Milk, Whipped_Cream, cookie_sandwich, "
+                    + "Dessert_Bowls, Dessert_Cups from order_history where "
+                        + "date = " + d + " and (Pepsi < " + inventoryList.get(1000).getQuantity()*.1 + " or Diet_pepsi <" + inventoryList.get(1001).getQuantity()*0.1 + " or Gatorade < " + inventoryList.get(1002).getQuantity()*0.1 + " or Mug_Rootbeer < " + inventoryList.get(1003).getQuantity()*0.1 + " or Sierra_mist < "+ inventoryList.get(1004).getQuantity()*0.1 +  " or Brisk < " + inventoryList.get(1005).getQuantity()*0.1
+                        + " or Straws < " + inventoryList.get(1008).getQuantity()*0.1 +  " or Lids < " + inventoryList.get(1007).getQuantity()*0.1 + " or Drink_Cups < " + inventoryList.get(1006).getQuantity()*0.1
+                        + " or Burger_Fillet < "+ inventoryList.get(2008).getQuantity()*0.1 + " or Chicken_Fillet < " + inventoryList.get(2007).getQuantity()*0.1 + " or Chicken_Tender < " + inventoryList.get(2009).getQuantity()*0.1 + " or Black_Bean_Fillet < " + inventoryList.get(2010).getQuantity()*0.1
+                        + " or Bun < " + inventoryList.get(2011).getQuantity()*0.1 + " or Lettuce < " + inventoryList.get(2012).getQuantity()*0.1 + " or Pickles < " + inventoryList.get(2014).getQuantity()*0.1 + " or tomato < " + inventoryList.get(2013).getQuantity()*0.1 + " or onions < " + inventoryList.get(2015).getQuantity()*0.1
+                        + " or American_Cheese < " + inventoryList.get(2016).getQuantity() + " or Swiss_American_Cheese < " + inventoryList.get(2017).getQuantity() + " or fries < " + inventoryList.get(2018).getQuantity() + " or bacon < " + inventoryList.get(2019).getQuantity()
+                        + " or meal_tray < " + inventoryList.get(2020).getQuantity() + " or salt < " + inventoryList.get(2021).getQuantity() + " or pepper < " + inventoryList.get(2022).getQuantity() + " or utensils < " + inventoryList.get(2023).getQuantity() + " or napkins < " + inventoryList.get(2024).getQuantity()
+                        + " or GigEm_Sauce < " + inventoryList.get(3025).getQuantity() + " or Ketchup < " + inventoryList.get(3026).getQuantity() + " or Mustard < " + inventoryList.get(3027).getQuantity() + " or Mayo < " + inventoryList.get(3028).getQuantity() + " or Ranch < " + inventoryList.get(3029).getQuantity() + " or Honey_BBQ < " + inventoryList.get(3030).getQuantity() + " or Caesar_Dressing < " + inventoryList.get(3031).getQuantity()
+                        + " or Chocolate < " + inventoryList.get(4032).getQuantity() + " or Vanilla < " + inventoryList.get(4033).getQuantity() + " or Strawberry < " + inventoryList.get(4034).getQuantity() + " or Milk < " + inventoryList.get(4039).getQuantity() + " or Whipped_Cream < " + inventoryList.get(4040).getQuantity() + " or cookie_sandwich < " + inventoryList.get(4035).getQuantity()
+                        + " or Dessert_Bowls < " + inventoryList.get(4037).getQuantity() + " or Dessert_Cups < " + inventoryList.get(4036).getQuantity() + ";";
+                result = statement.executeQuery(sqlQuery);
+            }
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -299,7 +357,7 @@ public class StatsController extends ManagerController {
 
     @FXML
     private void updateExcessTable() {
-
+        queryExcess();
     }
 
     @FXML

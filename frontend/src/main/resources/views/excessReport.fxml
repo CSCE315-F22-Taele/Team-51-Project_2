@@ -25,5 +25,7 @@
       <DatePicker fx:id="excessDatePicker" layoutX="87.0" layoutY="83.0" />
       <Label layoutX="87.0" layoutY="65.0" prefHeight="17.0" prefWidth="175.0" text="Start Date:" />
       <Button layoutX="309.0" layoutY="584.0" mnemonicParsing="false" onAction="#updateExcessTable" prefHeight="43.0" prefWidth="96.0" style="-fx-background-radius: 25;" text="Refresh" />
+      <DatePicker fx:id="excessDatePicker2" layoutX="301.0" layoutY="83.0" />
+      <Label layoutX="301.0" layoutY="65.0" prefHeight="17.0" prefWidth="69.0" text="End Date:" />
    </children>
 </AnchorPane>
